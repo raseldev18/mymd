@@ -8,7 +8,7 @@ let handler  = async (m, { conn, args, text }) => {
   let { url, width, height } = pickRandom(results) || {}
   if (!url) return m.reply('Maaf image tidak ditemukan!')
   conn.sendTemplateButtonImg(m.chat, `
-*────「 GOOGLE IMAGE 」────*
+*────「 GOOGLE IMAGE 」───*
 
 ➤ *search :* ${text}
 ➢ *width :* ${width}
