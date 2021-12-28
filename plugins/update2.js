@@ -4,8 +4,8 @@ const { promisify } = require('util')
 const { join } = require('path')
 
 let confirmation = {}
-let repository = 'raselxnadin/mybot'
-let branch = 'main'
+let repository = 'raselcomel/lucubot-md'
+let branch = 'multi-device'
 
 async function handler(m, { text }) {
     let res = await fetch(`https://raw.githubusercontent.com/${repository}/${branch}/${text}`)
