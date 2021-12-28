@@ -55,7 +55,7 @@ module.exports = {
     let time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss') 
     let runtime = clockString(_uptime)
     let mode = //
-    global.infobot = `
+        global.infobott = `
 *╭───●──❑ LUCU - BOT ❑──●───*
 *│*
 *│✇ Library : Baileys-MD*
