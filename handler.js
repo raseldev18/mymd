@@ -64,7 +64,7 @@ module.exports = {
 *│✇ Version : ^0.0.2*
 *│✇ Developer Bot :* @6285346545126 
 *│✇ Runtime : ${runtime}*
-*│✇ Prefix : Multi Prefix 「 ${usedPrefix} 」*
+*│✇ Prefix : Multi Prefix*
 *│✇ Mode : -*
 *│✇ Tanggal :*
 *│✇ ${week} ${date}*
