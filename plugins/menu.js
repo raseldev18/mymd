@@ -218,7 +218,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                   "description": "Menu Semua Perintah",
                   "rowId": `${_p}? all`
                   }],
-                "title": "*───「 List Menu Lcubot 」──*"
+                "title": "*───「 List Menu Lucubot 」──*"
               }, {
                 "rows": [{
                   "title": `Menu Game`,
@@ -405,7 +405,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                 "rows": [{
                   "title":  `Menu Nsfw`,
                   "description": "Menu 18+",
-                  "rowId": `${_p}? update`
+                  "rowId": `${_p}? nsfw`
                 }],
                 "title": "─────「 27 」"
               }
