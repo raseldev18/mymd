@@ -1,17 +1,16 @@
 let handler = async (m) => {
-let fetch = require('node-fetch')
 let _uptime = process.uptime() * 1000
 let uptime = clockString(_uptime)
 let time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss')
 let runnya = `
-*─────「 RUNTIME BOT 」─────*
+*────「 RUNTIME BOT 」────*
 
 Time : ${time}
 Runtime : ${uptime}
 ${namabot}
 `
-conn.sendButton(m.chat, runnya, wm, null, [['Menu', '.menu']], m) 
-//await conn.sendTemplateButtonLoc(m.chat, runnya.trim(), wm, await(await require('node-fetch')(img)).buffer(), `Menu`, `#menu`, m)
+//conn.sendButton(m.chat, runnya, wm, null, [['Menu', '.menu']], m) 
+await conn.sendTemplateButtonLoc(m.chat, runnya.trim(), wm, await(await require('node-fetch')(img)).buffer(), `Menu`, `#menu`, m)
 }
 handler.help = ['runtime']
 handler.tags = ['info']
