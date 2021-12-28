@@ -12,7 +12,7 @@ handler.all = async function (m, { isBlocked }) {
 Hai ${await this.getName(m.sender)}, ${ucapan()}
 Saya adalah ${namabot}, salah satu bot whatsapp multi device ada yang bisa saya bantu? 
 
-Sebelum menggunakan bot, baca rules bot terlebih dahulu dengan mengetik *#peraturan atau #rules* atau klik button dibawah! 
+Sebelum menggunakan bot, baca rules bot terlebih dahulu dengan mengetik *#peraturan atau #rules*.
 
 Mau chat sama simi(bot)? ketik *#on simi*
 `
