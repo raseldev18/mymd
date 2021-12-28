@@ -198,7 +198,6 @@ let anu = `
 │༆ Baterai : *${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*
 │༆ Pengguna : *${Object.keys(global.db.data.users).length}* 
 │༆ Registrasi : *${Object.values(global.db.data.users).filter(user => user.registered == true).length}* 
-│༆ Jadibot : *${totaljadibot.length}* 
 │༆ Terblock : *${conn.blocklist.length}* 
 │༆ Chat Terbanned : *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* 
 │༆ Pengguna Terbanned : *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* 
