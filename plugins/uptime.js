@@ -10,7 +10,8 @@ Time : ${time}
 Runtime : ${uptime}
 ${namabot}
 `
-await conn.sendTemplateButtonLoc(m.chat, runnya.trim(), wm, await(await require('node-fetch')(img)).buffer(), `Menu`, `#menu`, m)
+conn.sendButton(m.chat, runnya, wm, null, [['Menu', '.menu']], m) 
+//await conn.sendTemplateButtonLoc(m.chat, runnya.trim(), wm, await(await require('node-fetch')(img)).buffer(), `Menu`, `#menu`, m)
 }
 handler.help = ['runtime']
 handler.tags = ['info']
