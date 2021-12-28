@@ -52,7 +52,7 @@ let d = new Date(new Date + 3600000)
 *╰──●─「 MULTI
 let handler = async (m, { conn, jid, text }) => {
 //await conn.sendTemplateButtonLoc(m.chat, global.infobot.trim(), wm, await(await require('node-fetch')(img)).buffer(), `✨Menu `,`#menu`, m)
- conn.reply(m.chat, infonya, m, 0, { contextInfo: { mentionedJid: ['6285345545126']}})
+ conn.reply(m.chat, global.infobott, m, 0, { contextInfo: { mentionedJid: ['6285345545126@s.WhatsApp.net']}})
 }
 handler.help = ['infobot']
 handler.tags = ['info']
