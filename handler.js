@@ -40,7 +40,7 @@ module.exports = {
     let runtime = clockString(_uptime)
     let mode = //
         global.infobot = `
-*╭───●──❑ LUCU-BOT ❑──●───*
+*╭──●──❑ LUCU-BOT ❑──●──*
 *│*
 *│✇ Library : Baileys-MD*
 *│☣ Language : Javascript*
@@ -597,9 +597,8 @@ global.dfail = (type, m, conn) => {
         nsfw: '*───「 NSFW NOT ACTIVE 」───*\n\n\nNSFW doesn\'t active.\nNSFW tidak aktif!.',
         rpg: '*────「 RPG NOT ACTIVE 」────*\n\n\nRPG doesn\'t active.\nRPG tidak aktif!.'
       }[type]
-    if (msg) return conn.sendButtonLoc(m.chat, msg, wm, await(await fetch(img)).buffer(), [[`Menu`, `#menu`]], m)
-}
-
+    if (msg) return conn.sendButton(m.chat, msg.trim(), wm, null, [[`Menu`, `#menu`]], m)
+    }
 let fs = require('fs')
 let chalk = require('chalk')
 const { default: fetch } = require('node-fetch')
