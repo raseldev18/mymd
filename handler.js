@@ -43,16 +43,16 @@ module.exports = {
 *╭──●──❑ LUCU-BOT ❑──●──*
 *│*
 *│✇ Library : Baileys-MD*
-*│☣ Language : Javascript*
-*│☣ Database : MongoDB*
+*│✇ Language : Javascript*
+*│✇ Database : MongoDB*
 *│✇ Version : ^0.0.1*
 *│✇ Developer :* @6285346545126 
 *│✇ Runtime : ${runtime}*
 *│✇ Prefix : Multi Prefix*
 *│✇ Mode : -*
-*│✇ Tanggal :*
-*│✇ ${week} ${date}*
-*│✇ Waktu :*
+*│✇ Date & Time :*
+*│✇ ${week}*
+*│✇ ${date}*
 *│✇ ${time}*
 *│*
 *╰──●─「 MULTI-DEVICE 」─●──*
