@@ -40,7 +40,7 @@ module.exports = {
     let runtime = clockString(_uptime)
     let mode = //
         global.infobot = `
-*╭───●──❑ LUCU - BOT ❑──●───*
+*╭───●──❑ LUCU-BOT ❑──●───*
 *│*
 *│✇ Library : Baileys-MD*
 *│☣ Language : Javascript*
@@ -55,7 +55,7 @@ module.exports = {
 *│✇ Waktu :*
 *│✇ ${time}*
 *│*
-*╰──●─「 MULTI-DEVICE 」─●───*
+*╰──●─「 MULTI-DEVICE 」─●──*
 `
         if (!m) return
         console.log(JSON.stringify(m, null, 4))
