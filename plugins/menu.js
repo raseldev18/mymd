@@ -218,7 +218,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                   "description": "Menu Semua Perintah",
                   "rowId": `${_p}? all`
                   }],
-                "title": "*───「 List Menu Lucubot 」──*"
+                "title": "─────「 List Menu Lucu Bot 」─────"
               }, {
                 "rows": [{
                   "title": `Menu Game`,
@@ -469,7 +469,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     //let pp = await conn.profilePictureUrl(conn.user.jid, 'image').catch(_ => path.join(__dirname, '../src/avatar_contact.png'))
-    await conn.send3TemplateButtonLoc(m.chat, text.trim(), wm, await(await require('node-fetch')(img)).buffer(), `🏅Owner`, `#owner`, `🎖SnK`, `#snk`, `🎗  Donasi  🎗`, `#donasi`, m)
+    await conn.send3TemplateButtonLoc(m.chat, text.trim(), wm, await(await require('node-fetch')(img)).buffer(), `🏅Owner`, `#owner`, `🎖ThanksTo`, `#ttq`, `🎗  Info Bot  🎗`, `#infobot`, m)
     } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
