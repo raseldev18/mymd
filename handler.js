@@ -45,7 +45,7 @@ module.exports = {
 *│✇ Library : Baileys-MD*
 *│✇ Language : Javascript*
 *│✇ Database : MongoDB*
-*│✇ Version : ^0.0.1*
+*│✇ Version : ^0.0.2*
 *│✇ Developer :* @6285346545126 
 *│✇ Runtime : ${runtime}*
 *│✇ Prefix : Multi Prefix*
