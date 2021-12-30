@@ -55,7 +55,7 @@ module.exports = {
 *│✇ ${date}*
 *│✇ ${time}*
 *│*
-*╰──●─「 MULTI-DEVICE 」─●──*
+*╰─●─「 MULTI-DEVICE 」─●──*
 `
         if (!m) return
         console.log(JSON.stringify(m, null, 4))
