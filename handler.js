@@ -46,7 +46,7 @@ module.exports = {
 *│✇ Language : Javascript*
 *│✇ Database : MongoDB*
 *│✇ Version : ^0.0.2*
-*│✇ Developer :* @6285346545126 
+*│✇ Dev :* @6285346545126 
 *│✇ Runtime : ${runtime}*
 *│✇ Prefix : Multi Prefix*
 *│✇ Mode : -*
