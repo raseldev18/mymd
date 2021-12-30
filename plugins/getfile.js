@@ -6,7 +6,7 @@ let handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
     m.reply('Executing...')
     let o
     try {
-        o = await exec('type ' + text + '.js')
+        o = await exec('type ' + text)
     } catch (e) {
         o = e
     } finally {
