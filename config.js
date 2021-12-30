@@ -25,15 +25,16 @@ global.APIKeys = { // APIKey Here
 }
 
 //===========Sticker WM============//
-global.packname = 'lucubot MD'
-global.author = 'by instagram: @rasel.ganz' // this is my Instagram 😇
+global.packname = 'bot-md'
+global.author = '@rasel.ganz' // this is my Instagram 😇
 
+global.wm = 'github.com/raselcomel'
 global.img = 'https://i.pinimg.com/originals/f0/67/f0/f067f00a885fab47d76d4e5423d54c35.jpg' // image 
 global.fla = 'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text='
 
 
 //========Url 1 Template Buttons=========//
-global.dtu1 = 'Instagram My Owner'
+global.dtu1 = 'Instagram Owner'
 global.urlnya1 = 'https://instagram.com/rasel.ganz'
 
 //========Url 2 Template Buttons=========//
@@ -41,13 +42,9 @@ global.dtu2 = 'Group Bot WhatsApp'
 global.urlnya2 = 'https://chat.whatsapp.com/CUCsW6BWfmJLJwJgPQIaKM'
 
 //=============callButtons=============//
-global.dtc = 'Add My Owner'
-global.phn = '+62 853-4654-5126'
+global.dtc = 'Add Me'
+global.phn = '+62 822-5604-8971'
 
-
-global.wm = '@rasel.ganz\n         ×͜×'
-global.wait = '*「 ⏱️ 」Tunggu sebentar...*'
-global.eror = '*「 📡 」Maaf server down...*'
 
 global.multiplier = 69 // The higher, The harder levelup
 
