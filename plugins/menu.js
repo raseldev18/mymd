@@ -9,8 +9,8 @@ let fetch = require('node-fetch')
 let { perfomance } = require('perf_hooks')
 let moment = require('moment-timezone')
 const defaultMenu = {
-          before: `*Bot ini masih tahap pengembangan, jika ada bug/eror harap laporkan ke owner/developer bot*
-%readmore`.trimStart(),
+          before: `*Bot ini masih tahap pengembangan, jika ada bug eror fitur harap laporkan ke owner atau developer bot*
+Klik disini=>%readmore`.trimStart(),
   header: '╭─「 %category 」',
   body: '│ • %cmd %islimit %isPremium',
   footer: '╰────\n',
