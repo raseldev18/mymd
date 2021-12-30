@@ -3,7 +3,7 @@ let { MessageType } = require('@adiwajshing/baileys-md')
 let handler = async(m, { conn, DevMode }) => {
     try {
         let old = performance.now()
-        await m.reply('_Testing speed..._')
+        await m.reply('```Testing speed...```')
         let neww = performance.now()
         m.reply(neww - old + ' ms')
     } catch (e) {
