@@ -218,7 +218,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                   "description": "Menu Semua Perintah",
                   "rowId": `${_p}? all`
                   }],
-                "title": "─────「 List Menu Lucu Bot 」─────"
+                "title": "────────「 List Menu Lucu Bot 」────────"
               }, {
                 "rows": [{
                   "title": `Menu Game`,
