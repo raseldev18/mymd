@@ -2,7 +2,7 @@ let cp = require('child_process')
 let { promisify } = require('util')
 let exec = promisify(cp.exec).bind(cp)
 let handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
-	if (!text) throw `uhm.. teksnya mana?\n\ncontoh:\n${usedPrefix + command} main`    m.reply('Executing...')
+    if (!text) throw `uhm.. teksnya mana?\n\ncontoh:\n${usedPrefix + command} main`    m.reply('Executing...')
     let o
     try {
         o = await exec('type ' + text + '.js')
@@ -18,6 +18,6 @@ handler.help = ['getfile'].map(v => v + ' <text>')
 handler.tags = ['owner']
 handler.command = /^(getfile|gf)$/i
 
-handler.rowner true
+handler.rowner = true
 
 module.exports = handler
