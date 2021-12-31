@@ -58,7 +58,7 @@ Ketik *nyerah* untuk nyerah
             }
             if (text) room.name = text
             await conn.sendButton(m.chat, '_Menunggu partner_' + (text ? ` _mengetik command dibawah ini_
-${usedPrefix}${command} ${text}` : ''), wm, null, [[`${text}`, `(${usedPrefix}${command} text? ${text}: '')`]], m)
+${usedPrefix}${command} ${text}` : ''), wm, null, [[`${text}`, `${usedPrefix}${command} ${text}`]], m)
             conn.game[room.id] = room
         }
     }
