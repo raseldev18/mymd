@@ -30,7 +30,6 @@ let handler = async (m, { conn }) => {
             await conn.sendFile(m.chat, stiker, '', '', m)
         }
         else {
-
             throw 0
         }
     }
