@@ -38,7 +38,7 @@ module.exports = {
     let _uptime = process.uptime() * 1000
     let time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss') 
     let runtime = clockString(_uptime)
-    let mode = //
+        global.opts["self"] = !isPublic
         global.infobot = `
 *╭─●──❑ LUCU-BOT ❑──●──*
 *│*
@@ -49,7 +49,7 @@ module.exports = {
 *│✇ Dev :* @6285346545126 
 *│✇ Runtime : ${runtime}*
 *│✇ Prefix : Multi Prefix*
-*│✇ Mode : -*
+*│✇ Mode : ${!isPublic ? "Self" : "Public"}*
 *│✇ Date & Time :*
 *│✇ ${week}*
 *│✇ ${date}*
