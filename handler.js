@@ -40,7 +40,7 @@ module.exports = {
     let runtime = clockString(_uptime)
     let mode = //
         global.infobot = `
-*╭──●──❑ LUCU-BOT ❑──●──*
+*╭─●──❑ LUCU-BOT ❑──●──*
 *│*
 *│✇ Library : Baileys-MD*
 *│✇ Language : Javascript*
