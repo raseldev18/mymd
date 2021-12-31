@@ -31,7 +31,7 @@ global.author = '@rasel.ganz' // this is my Instagram 😇
 global.wm = 'github.com/raselcomel'
 global.img = 'https://i.pinimg.com/originals/f0/67/f0/f067f00a885fab47d76d4e5423d54c35.jpg' // image 
 global.fla = 'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text='
-
+global.qr = ''
 
 //========Url 1 Template Buttons=========//
 global.dtu1 = 'Instagram Owner'
