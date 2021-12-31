@@ -16,7 +16,7 @@ Sebelum menggunakan bot, baca rules bot terlebih dahulu dengan mengetik *#peratu
 
 Mau chat sama simi(bot)? ketik *#on simi*
 `
-await conn.sendTemplateButtonLoc(m.chat, anu.trim(), wm, await(await fetch(img)).buffer(), `✨ Menu`, `#menu`, m)
+await conn.sendTemplateButtonLoc(m.chat, anu.trim(), wm, await(await fetch(img)).buffer(), `Menu`, `#menu`, m)
 user.pc = new Date * 1
 }
 
