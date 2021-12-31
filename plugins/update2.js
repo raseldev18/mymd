@@ -50,7 +50,7 @@ handler.all = async m => {
 handler.rowner = true
 handler.help = ['update2']
 handler.tags = ['host']
-handler.command = ['update2', 'u2', 'uopdate2','uo2', 'up2'] //ANJIRRR VVIBU
+handler.command = ['update2', 'u2', 'uopdate2','uo2', 'up2'] //ANJIRRR VVIBU:V
 
 handler.rowner = true
 
