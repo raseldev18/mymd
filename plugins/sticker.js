@@ -31,7 +31,6 @@ let handler = async (m, { conn }) => {
             await conn.sendFile(m.chat, stiker, 'stiker.webp', '', m)
         }
         else {
-
             throw 0
         }
     }
