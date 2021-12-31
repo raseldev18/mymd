@@ -7,7 +7,7 @@ let confirmation = {}
 let repository = 'raselcomel/lucubot-md'
 let branch = 'multi-device'
 
-async function handler(m, { text }) {
+async function handler(m, { conn, text }) {
     let res = await fetch(`https://raw.githubusercontent.com/${repository}/${branch}/${text}`)
     if (!res.ok) throw await res.text()
     let filename = join(__dirname, '..', text)
@@ -16,10 +16,10 @@ async function handler(m, { text }) {
             res,
             filename,
             text,
-            timeout: setTimeout(() => (m.reply('timed out'), delete confirmation[m.sender]), 60000)
+            timeout: setTimeout(() => (conn.sendButton(m.chat, `Timeout, do you want update again?`, wm, null, [[`Yes`, `.u2 ${text}`], [`No`, `n`]], m), delete confirmation[m.sender]), 60000)
         }
-        throw 'File sudah ada, yakin ingin menimpa? (Y/n) (60s Timeout)'
-    }
+        return conn.sendButton(m.chat, `The file already exists, are you sure you want to overwrite it?  (Y/n) (60s Timeout)`, wm, null, [[`Yes`, `y`], [`No`, `n`]], m)
+     }
     res.body.pipe(createWriteStream(filename))
     res.body.once('end', () => {
         m.reply('Berhasil memperbaharui!')
