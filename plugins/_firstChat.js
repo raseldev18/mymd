@@ -1,5 +1,5 @@
 let moment = require('moment-timezone')
-let fetch = require ('node-fetch')
+let fetch = require('node-fetch')
 let handler = m => m
 
 handler.all = async function (m, { isBlocked }) {
@@ -12,11 +12,11 @@ handler.all = async function (m, { isBlocked }) {
 Hai ${await this.getName(m.sender)}, ${ucapan()}
 Saya adalah ${namabot}, salah satu bot whatsapp multi device ada yang bisa saya bantu? 
 
-Sebelum menggunakan bot, baca rules bot terlebih dahulu dengan mengetik *#peraturan atau #rules*.
+Sebelum menggunakan bot, baca rules bot terlebih dahulu dengan mengetik *#peraturan* atau *#rules*.
 
 Mau chat sama simi(bot)? ketik *#on simi*
 `
-await conn.sendTemplateButtonLoc(m.chat, anu.trim(), wm, await(await require('node-fetch')(img)).buffer(), `✨ Menu`, `#menu`, m)
+await conn.sendTemplateButtonLoc(m.chat, anu.trim(), wm, await(await fetch(img)).buffer(), `✨ Menu`, `#menu`, m)
 user.pc = new Date * 1
 }
 
