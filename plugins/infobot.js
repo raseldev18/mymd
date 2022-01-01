@@ -1,5 +1,5 @@
-let handler = async (m, { conn, usedPrefix, text }) => {
-  await conn.sendTemplateButtonLoc(m.chat, global.infobot.trim(), wm, await(await require('node-fetch')(img)).buffer(), `✨Menu `,`#menu`, m)
+let handler = async (m, { conn, command, usedPrefix, text }) => {
+  await conn.sendButtonLoc(m.chat, global.infobot.trim(), wm, await(await require('node-fetch')(fla + `${command}`)).buffer(), [[`Menu `, `${usedPrefix}menu`]], m)
 }
 handler.help = ['infobot']
 handler.tags = ['info']
