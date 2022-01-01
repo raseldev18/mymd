@@ -63,7 +63,7 @@ const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fro
                     }
                 }, {
                     quickReplyButton: {
-                        display: `🔎 YT Search ${text}`,
+                        displayText: `🔎 YT Search ${text}`,
                         id: `.yts ${text}`
                     },
                     selectedIndex: 1
