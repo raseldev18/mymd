@@ -51,12 +51,12 @@ const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fro
                 }, {
                    quickReplyButton: {
                         displayText: `🎵 Audio (${filesizeF})`,
-                        id: `yta ${vid.url}`
+                        id: `.yta ${vid.url}`
                     }
                 }, {
                    quickReplyButton: {
                         displayText: `📽 Video (${yt2.filesizeF})`,
-                        id: `ytv ${vid.url}`
+                        id: `.ytv ${vid.url}`
                     },
                     selectedIndex: 1
                 }]
