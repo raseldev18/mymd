@@ -78,7 +78,7 @@ const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fro
     )
 //await sock.send3Template2UrlButtonLoc(m.chat,capt.trim(), wm, await (await fetch(thumb)).buffer(), 'Video', `.ytv ${vid.url}`, 'Audio', `.yta ${vid.url}`, 'Menu', '#menu', m)
 }
-handler.help = ['play'].map(v => v + ' <>')
+handler.help = ['play'].map(v => v + ' <query>')
 handler.tags = ['downloader']
 handler.command = /^(dj|musik|song|lagu|p(lay)?)$/i
 
