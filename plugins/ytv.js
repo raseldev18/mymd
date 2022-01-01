@@ -14,22 +14,12 @@ let handler = async(m, { conn, args, isPrems, isOwner }) => {
     if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp4', `
 *Title:* ${title}
 *Filesize:* ${filesizeF}
-    `.trim(), m, false, { thumbnail: Buffer.alloc(0), mimetype: 'video/mp4' })
+    `.trim(), m, false, { thumbnail: Buffer.alloc(0)})
 }
 handler.help = ['ytmp4 <link>']
 handler.tags = ['downloader']
 handler.command = /^yt(v|mp4)?$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
 
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-
-handler.exp = 3
+handler.limit = true
 
 module.exports = handler
