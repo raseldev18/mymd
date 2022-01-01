@@ -14,17 +14,7 @@ let handler = async(m, { conn, args, isPrems, isOwner }) => {
 handler.help = ['ytmp3 <link>']
 handler.tags = ['downloader']
 handler.command = /^yt(a|udio|mp3)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
 
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-
-handler.exp = 3
+handler.limit = true
 
 module.exports = handler
