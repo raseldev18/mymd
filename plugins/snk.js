@@ -38,7 +38,7 @@ Whatsap Bot Multi-Device
     const template = generateWAMessageFromContent(m.key.remoteJid, proto.Message.fromObject({
         templateMessage: {
             hydratedTemplate: {
-                locationMessage: { jpegThumbnail: await (await fetch(img)).buffer()},
+                locationMessage: { jpegThumbnail: await (await fetch(fla + `syarat ketentuan & peraturan bot`)).buffer()},
                 hydratedContentText: teks.trim(),
                 hydratedFooterText: wm,
                 hydratedButtons: [{
