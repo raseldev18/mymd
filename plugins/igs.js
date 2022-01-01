@@ -25,7 +25,8 @@ Memposting pada ${new Date(taken_at * 1000).toLocaleDateString('id', dateConfig)
 }
 handler.help = ['igstory'].map(v => v + ' <username>')
 handler.tags = ['downloader']
-
 handler.command = /^(igs(tory)?)$/i
-handler.disabled = true
+
+handler.limit = true
+
 module.exports = handler
