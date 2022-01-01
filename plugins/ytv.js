@@ -1,4 +1,4 @@
-let limit = 150
+let limit = 50
 let fetch = require('node-fetch')
 const { servers, ytv } = require('../lib/y2mate')
 let handler = async(m, { conn, args, isPrems, isOwner }) => {
@@ -29,6 +29,7 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
-handler.exp = 0
+
+handler.exp = 3
 
 module.exports = handler
