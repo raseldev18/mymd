@@ -15,11 +15,10 @@ module.exports = {
         if (chatUpdate.messages.length > 1) console.log(chatUpdate.messages)
         let m = chatUpdate.messages[chatUpdate.messages.length - 1]
         global.sock = conn
-        global.img1 = pickRandom(global.waifu)
-        global.fla1 = pickRandom(global.flaaa)
-        global.wm1 = `© @rasel.ganz`
-        global.wait = '*「 ⏱️ 」Tunggu Sebentar Sayang...*'
-        global.eror = '*「 📡 」Maaf Server Sedang Sibuk...*'
+        global.img = pickRandom(global.waifu)
+        global.fla = pickRandom(global.flaaa)
+        global.wait = '*Tunggu Sebentar Sayang*'
+        global.eror = '*Maaf Server Sedang Sibuk*'
         global.namabot = conn.user.name
         
     let d = new Date(new Date + 3600000)
