@@ -10,7 +10,7 @@ let handler  = async (m, { conn, usedPrefix, command, args, text }) => {
   let { url, width, height } = pickRandom(results) || {}
   if (!url) return m.reply('Maaf image tidak ditemukan!')
   let sell = `
-*────「 GOOGLE IMAGE 」───*
+*───「 GOOGLE IMAGE 」───*
 
 ➤ *search :* ${text}
 ➢ *width :* ${width}
