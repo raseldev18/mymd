@@ -28,7 +28,9 @@ global.APIKeys = { // APIKey Here
 global.packname = 'bot-md'
 global.author = '@rasel.ganz' // this is my Instagram 😇
 
-global.wm = 'github.com/raselcomel'
+global.wm = '@rasel.ganz'
+global.wait = '*Tunggu Sebentar Ya Sayang*'
+global.eror = '*Maaf Server Sedang Sibuk*'
 
 //========Url 1 Template Buttons=========//
 global.dtu1 = 'Instagram Owner'
