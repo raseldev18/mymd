@@ -36,9 +36,9 @@ let handler = async (m, { conn }) => {
         }
     }
 }
-handler.help = ['sticker3']
+handler.help = ['sticker']
 handler.tags = ['sticker']
-handler.command = /^((stiker|s|sticker)3)$/i
+handler.command = /^(s(tic?ker)?(gif)?(wm)?)$/i
 
 module.exports = handler
 
