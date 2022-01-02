@@ -14,7 +14,7 @@ async function handler(m, { command, usedPrefix }) {
             }
             conn.reply(m.chat, '_Ok_', m)
             let other = room.other(m.sender)
-            if (other) await this.sendButton(other, '_Partner meninggalkan chat_', 'Mau cari patner chat lagi?', await(await fetch(fla + 'partner left chat')).buffer(), [['Start Again', `${usedPrefix}start`]], m)
+            if (other) await this.sendButtonLoc(other, '_Partner meninggalkan chat_', 'Mau cari patner chat lagi?', await(await fetch(fla + 'partner left chat')).buffer(), [['Start Again', `${usedPrefix}start`]], m)
             delete this.anonymous[room.id]
             if (command === 'leave') break
         }
