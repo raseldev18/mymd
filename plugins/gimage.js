@@ -1,6 +1,6 @@
 const {
-    //default: makeWASocket,
-    //useSingleFileAuthState,
+    default: makeWASocket,
+    useSingleFileAuthState,
     WAMessage,
     proto,
     generateWAMessageFromContent
