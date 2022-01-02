@@ -37,7 +37,7 @@ module.exports = {
     let _uptime = process.uptime() * 1000
     let time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss') 
     let runtime = clockString(_uptime)
-        
+    let mode = //  
         global.infobot = `
 *╭─●──❑ LUCU-BOT ❑──●──*
 *│*
@@ -50,9 +50,9 @@ module.exports = {
 *│✇ Prefix : Multi Prefix*
 *│✇ Mode : -*
 *│✇ Date & Time :*
-*│✇ ${week}*
-*│✇ ${date}*
-*│✇ ${time}*
+*│✇ Day : ${week}*
+*│✇ Date : ${date}*
+*│✇ Time : ${time}*
 *│*
 *╰─●─「 MULTI-DEVICE 」─●──*
 `
