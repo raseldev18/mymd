@@ -20,15 +20,15 @@ async function handler(m, { command, usedPrefix }) {
         }
         case 'start': {
             if (Object.values(this.anonymous).find(room => room.check(m.sender))) {
-                await this.sendButtonLoc(m.chat, '_Kamu masih berada di dalam anonymous chat, menunggu partner_', 'Mau nunggu apa keluar?', await(await fetch(fla + 'looking for partner')).buffer(), [['Leave', `${usedPrefix}leave`]], m)
+                await this.sendButtonLoc(m.chat, '_Kamu masih berada di dalam anonymous chat_', 'Mau keluar?', await(await fetch(fla + 'leave chat?')).buffer(), [['Leave', `${usedPrefix}leave`]], m)
                 throw false
             }
             let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
             if (room) {
-                await this.sendButtonLoc(room.a, '_Partner ditemukan!_', 'Silahkan chatingan', await(await fetch(fla + 'partner found')).buffer(), [['Halo', '']], m)
+                await this.sendButtonLoc(room.a, '_Partner ditemukan!_', 'Silahkan chatingan🤗', await(await fetch(fla + 'partner found')).buffer(), [['Halo', '👋']], m)
                 room.b = m.sender
                 room.state = 'CHATTING'
-                await this.sendButtonLoc(room.b, '_Partner ditemukan!_', 'Silahkan chatingan', await(await fetch(fla + 'partner found')).buffer(), [['Hai', '']], m)
+                await this.sendButtonLoc(room.b, '_Partner ditemukan!_', 'Silahkan chatingan🤗', await(await fetch(fla + 'partner found')).buffer(), [['Hai', '👋']], m)
             } else {
                 let id = + new Date
                 this.anonymous[id] = {
