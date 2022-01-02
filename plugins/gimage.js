@@ -23,7 +23,8 @@ let handler  = async (m, { conn, usedPrefix, command, args, text }) => {
 ➢ *height :* ${height}
 `
   let message = await prepareWAMessageMedia({ image: await(await require('node-fetch')(url)).buffer()}, { upload: conn.waUploadToServer })
-     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+  const { default: makeWASocket, generateWAMessageFromContent, proto, prepareWAMessageMedia } = require('@adiwajshing/baileys-md')
+  const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
       templateMessage: {
             hydratedTemplate: {
                 imageMessage: message.imageMessage,
