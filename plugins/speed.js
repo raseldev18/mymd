@@ -1,7 +1,7 @@
 let { performance } = require('perf_hooks')
 let { MessageType } = require('@adiwajshing/baileys-md')
 let fetch = require('node-fetch')
-let handler = async(m, { conn, usedPrefix, command, usedPrefix, DevMode }) => {
+let handler = async(m, { conn, command, usedPrefix, DevMode }) => {
     try {
         let old = performance.now()
         await conn.reply(m.chat, '_Testing speed..._', m)
