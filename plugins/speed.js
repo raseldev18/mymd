@@ -1,11 +1,12 @@
 let { performance } = require('perf_hooks')
 let { MessageType } = require('@adiwajshing/baileys-md')
-let handler = async(m, { conn, usedPrefix, DevMode }) => {
+let fetch = require('node-fetch')
+let handler = async(m, { conn, usedPrefix, command, usedPrefix, DevMode }) => {
     try {
         let old = performance.now()
-        await m.reply('_Testing speed..._')
+        await conn.reply(m.chat, '_Testing speed..._', m)
         let neww = performance.now()
-        conn.sendButton(m.chat, neww - old + ' milidetik 💬', wm, 0, [[`Menu`, `${usedPrefix}menu`]], m)
+        conn.sendButtonLoc(m.chat, neww - old + ' milidetik 💬', wm, await(await fetch(fla + `${command}`)).buffer(), [[`Menu`, `${usedPrefix}menu`]], m)
     } catch (e) {
         console.log(e)
         m.reply('Error!!')
