@@ -1,11 +1,11 @@
 let { performance } = require('perf_hooks')
 let { MessageType } = require('@adiwajshing/baileys-md')
-let handler = async(m, { conn, DevMode }) => {
+let handler = async(m, { conn, usedPrefix, DevMode }) => {
     try {
         let old = performance.now()
         await m.reply('```Testing speed...```')
         let neww = performance.now()
-        m.reply(neww - old + ' ms')
+        conn.sendButton(m.chat, neww - old + ' ms', wm, 0, [[`Menu`, `${usedPrefix}menu`]], m)
     } catch (e) {
         console.log(e)
         m.reply('Error!!')
