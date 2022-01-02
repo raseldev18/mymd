@@ -5,7 +5,7 @@ let handler = async(m, { conn, usedPrefix, DevMode }) => {
         let old = performance.now()
         await m.reply('_Testing speed..._')
         let neww = performance.now()
-        conn.sendButton(m.chat, neww - old + 'ms', wm, 0, [[`Menu`, `${usedPrefix}menu`]], m)
+        conn.sendButton(m.chat, neww - old + ' milidetik', wm, 0, [[`Menu`, `${usedPrefix}menu`]], m)
     } catch (e) {
         console.log(e)
         m.reply('Error!!')
