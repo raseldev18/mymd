@@ -10,7 +10,7 @@ let cd2 = Math.ceil(59 - cds)
     global.db.data.users[m.sender].lastclaim = new Date * 1
   } else throw `Kamu sudah mengambil exp hari ini silahkan.\n\nTunggu ${cd1} Menit ${cd2} Detik!`
 }
-handler.command = /^(t(ambahe?)?xp)$/i
+handler.command = /^(t(ambah)?e?xp)$/i
 
 handler.premium = true
 handler.exp = 0
