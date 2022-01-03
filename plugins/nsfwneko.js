@@ -20,7 +20,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
                     }
                 }, {
                    quickReplyButton: {
-                        displayText: `Get Again`,
+                        displayText: `🔞 Get Again`,
                         id: `${usedPrefix}${command}`
                     },
                     selectedIndex: 1
@@ -40,5 +40,6 @@ handler.tags = ['nsfw']
 handler.command = /^(nsfwneko|nekonsfw)$/i
 
 handler.limit = true
+handler.register = true
 
 module.exports = handler
