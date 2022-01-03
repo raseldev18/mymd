@@ -16,7 +16,7 @@ module.exports = {
         let m = chatUpdate.messages[chatUpdate.messages.length - 1]
         global.sock = conn
         global.img = pickRandom(global.waifu)
-        global.fla = pickRandom(global.flaaa
+        global.fla = pickRandom(global.flaaa)
         global.namabot = conn.user.name
         
     let d = new Date(new Date + 3600000)
