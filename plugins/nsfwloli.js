@@ -2,9 +2,9 @@ const { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessa
 let fetch = require('node-fetch')
      let handler  = async (m, { conn, usedPrefix, command }) => {
      let res = await fetch(`https://api.lolhuman.xyz/api/random/nsfw/loli?apikey=Dawnfrostkey`)
-     let lolinya = await res.buffer()
+     let json = await res.buffer()
    //conn.sendButtonImg(m.chat, json, 'Jangan coli ya', wm, '➡️ NEXT', `${usedPrefix + command}`, m, false)
-   let message = await prepareWAMessageMedia({ image: await(await fetch(lolinya)).buffer()}, { upload: conn.waUploadToServer })
+   let message = await prepareWAMessageMedia({ image: await(await fetch(json)).buffer()}, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
       templateMessage: {
             hydratedTemplate: {
@@ -15,7 +15,7 @@ let fetch = require('node-fetch')
                   index: 0,
                    urlButton: {
                         displayText: `🖼 Url Image`,
-                        url: `${lolinya}`
+                        url: `${json}`
                     }
                 }, {
                    quickReplyButton: {
