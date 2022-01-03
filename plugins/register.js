@@ -16,16 +16,16 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   user.registered = true
   let sn = createHash('md5').update(m.sender).digest('hex')
   conn.reply(m.chat, `
-*Successful Registration*
+*──「 Successful Registration 」──*
 
 ╭─「 Info 」
 │• Nama   : ${name}
 │• Umur   : ${age} tahun
-│• Status : Tedaftar ☑️
+│• Status : Tedaftar √
 ╰─────
 
-SN (Serial Number) di kirim di chat pribadi dan digunaan untuk daftar ulang, jika lupa sn silahkan ketik *${usedPrefix}sn* untuk mengecek sn kamu! 
-`.trim())
+*SN* (Serial Number) di kirim di chat pribadi dan digunakan untuk daftar ulang, jika lupa *SN* silahkan ketik *${usedPrefix}sn* untuk mengecek *SN* kamu! 
+`, m) 
 conn.sendMessage(m.sender, {text: `SN: ${sn}`})
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <nama>.<umur>')
