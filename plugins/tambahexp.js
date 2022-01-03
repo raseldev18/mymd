@@ -8,7 +8,7 @@ let cd2 = Math.ceil(59 - cds)
     global.db.data.users[m.sender].exp += 100000
     conn.sendButton(m.chat, `Nih kak expnya ✨100000\nSilahkan cek dengan mengetikkan *${usedPrefix}limit*`, wm, 0, [[`Limit`, `${usedPrefix}.limit`]], m)
     global.db.data.users[m.sender].lastclaim = new Date * 1
-  } else throw `Kamu sudah mengambil exp hari ini silahkan.\n\nTunggu ${cd1} Menit ${cd2} Detik!`
+  } else throw conn.reply(m.chat, `Kamu sudah mengambil exp hari ini silahkan.\n\nTunggu ${cd1} Menit ${cd2} Detik!`, m) 
 }
 handler.command = /^(t(ambah)?e?xp)$/i
 
