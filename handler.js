@@ -540,7 +540,7 @@ module.exports = {
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || sock.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', sock.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || sock.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            sock.sendTemplateButtonLoc(id, text, wm, await(await fetch(pp)).buffer(), action === 'add' ? 'Welcome🙏' : 'Goodbye👋', '@rasel.ganz', null, {
+                            sock.sendTemplateButtonLoc(id, text, wm, await(await fetch(pp)).buffer(), [[action === 'add' ? 'Welcome🙏' : 'Goodbye👋', '@rasel.ganz']], null, {
                                 contextInfo: {
                                     mentionedJid: [user]
                                 }
