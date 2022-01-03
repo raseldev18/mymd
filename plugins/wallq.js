@@ -11,6 +11,7 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
   if (!res.ok) throw eror
   let json = await res.json()
   let img = json.wallpapers[Math.floor(Math.random() * json.wallpapers.length)]
+  let selll = `*────「 Wallpaper 」────*\n\n➤ *search :* ${text}\n➢ *type :* image/jpg`
   //await conn.sendFile(m.chat, img.url_image, 'wallpaper', '', m, 0, { thumbnail: Buffer.alloc(0) })
   let message = await prepareWAMessageMedia({ image: await(await fetch(img.url_image)).buffer()}, { upload: conn.waUploadToServer })
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
