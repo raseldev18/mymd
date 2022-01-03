@@ -1,5 +1,5 @@
 let handler = m => m
-let fetch = requier('node-fetch')
+//let fetch = requier('node-fetch')
 let linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 handler.before = async function (m, { isAdmin, isBotAdmin }) {
   if (m.isBaileys && m.fromMe) return true
