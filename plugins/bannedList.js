@@ -18,7 +18,7 @@ let fetch = require('node-fetch')
 `.trim()).join('\n') : ''}
 ╰────
 `.trim()
-    conn.sendButton(m.chat, caption, wm, await(await fetch(fla + `${command}`)).buffer(), [[`Menu`, `${usedPrefix}menu`]], m, { contextInfo: { mentionedJid: conn.parseMention(caption) } })
+    conn.sendButtonLoc(m.chat, caption, wm, await(await fetch(fla + `${command}`)).buffer(), [[`Menu`, `${usedPrefix}menu`]], m, { contextInfo: { mentionedJid: conn.parseMention(caption) } })
 }
 handler.help = ['bannedlist']
 handler.tags = ['info']
