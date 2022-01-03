@@ -28,7 +28,7 @@ SN (Serial Number) di kirim di chat pribadi dan digunaan untuk daftar ulang, jik
 `.trim())
 conn.sendMessage(m.sender, {text: `SN: ${sn}`})
 }
-handler.help = ['daftar', 'reg', 'register'].map(v => v + ' <nama>.<umur>')
+handler.help = ['daftar', 'register'].map(v => v + ' <nama>.<umur>')
 handler.tags = ['xp']
 
 handler.command = /^(daftar|reg(is(ter))?)$/i
