@@ -1,15 +1,16 @@
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
 let handler = async (m, { jid, conn, usedPrefix, command, isOwner }) => {
 let fetch = require('node-fetch')
     let chats = Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned)
     let users = Object.entries(global.db.data.users).filter(user => user[1].banned)
-    let caption = `
+    let caption = `${readMore}
 ╭─「 Daftar Chat Terbanned 」
 │✇ Total : ${chats.length} Chat${chats ? '\n' + chats.map(([jid], i) => `
 │• ${i + 1}. ${conn.getName(jid) == undefined ? 'Unknown' : conn.getName(jid)}
 │• ${isOwner ? '@' + jid.split`@`[0] : jid}
 `.trim()).join('\n') : ''}
 ╰────
-
 
 ╭─「 Daftar Pengguna Terbanned 」
 │✇ Total : ${users.length} Pengguna${users ? '\n' + users.map(([jid], i) => `
