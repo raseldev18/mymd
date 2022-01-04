@@ -42,9 +42,9 @@ let handler = async (m, { usedPrefix, command, conn, text }) => {
         { messageId: template.key.id }
     )
 }
-handler.help = ['wallpaperq <pencarian>']
+handler.help = ['wallpaperq <query>']
 handler.tags = ['internet']
 handler.command = /^wall(paper)?q?$/i
 handler.limit = true
-handler.register = false
+handler.register = true
 module.exports = handler
