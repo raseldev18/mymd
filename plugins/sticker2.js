@@ -22,7 +22,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
             .on('end', function () {
                 console.log('Finish')
                 buff = fs.readFileSync(ran)
-                conn.sendMessage(m.chat, buff, 'stickerMessage', { quoted: m })
+                conn.sendStimg(m.chat, buff, m, { packname: global.packname, author: global.author })
+                //conn.sendMessage(m.chat, buff, 'stickerMessage', { quoted: m })
                 fs.unlinkSync(media)
                 fs.unlinkSync(ran)
             })
@@ -48,7 +49,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
             .on('end', function () {
                 console.log('Finish')
                 buff = fs.readFileSync(ran)
-                conn.sendMessage(m.chat, buff, 'stickerMessage', { quoted: m })
+                conn.sendStvid(m.chat, buff, m, { packname: global.packname, author: global.author })
+                //conn.sendMessage(m.chat, buff, 'stickerMessage', { quoted: m })
                 fs.unlinkSync(media)
                 fs.unlinkSync(ran)
             })
