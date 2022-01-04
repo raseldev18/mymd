@@ -14,7 +14,7 @@ let fetch = require('node-fetch')
                   index: 0,
                    urlButton: {
                         displayText: `🖼 Url Image`,
-                        url: `https://api.lolhuman.xyz/api/random/nsfw/loli?apikey=apikeylubanh:v`
+                        url: `https://api.lolhuman.xyz/api/random/nsfw/loli?apikey=apikeylubanh:V`
                     }
                 }, {
                    quickReplyButton: {
