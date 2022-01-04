@@ -1,5 +1,5 @@
 let { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys-md')
-let limit = 50
+let limit = 40
 const { servers, yta } = require('../lib/y2mate')
 let handler = async(m, { conn, args, isPrems, isOwner }) => {
     if (!args || !args[0]) return m.reply('Uhm... urlnya mana?')
@@ -8,13 +8,16 @@ let handler = async(m, { conn, args, isPrems, isOwner }) => {
     let { dl_link, thumb, title, filesize, filesizeF } = await yta(args[0], servers.includes(server) ? server : servers[0])
     let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
     conn.reply(m.chat, wait, m)
-    if (!isLimit) //conn.sendMessage(m.chat,{ audio: { url: dl_link }}, {quoted: m})
-    conn.sendFile(m.chat, dl_link, `mp3-downloader.mp3`, 0, m, 0, { title: `${title}.mp3`, mtype: 'documentMessage', thumbnail: Buffer.alloc(0), mimetype: 'audio/mpeg' })
+    if (!isLimit)
+    await sock.sendMessage(
+    m.chat, 
+    { document: { url: dl_link}, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}
+, {quoted: m})
 }
-handler.help = ['ytmp3 <link>']
+handler.help = ['ytmp3 <query>']
 handler.tags = ['downloader']
-handler.command = /^yt(a|udio|mp3)$/i
+handler.command = /^yt(a(udio)?|mp3|musik|lagu)$/i
 
-handler.limit = true
+handler.limit = true 
 
 module.exports = handler
