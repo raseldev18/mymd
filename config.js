@@ -24,8 +24,6 @@ global.APIKeys = { // APIKey Here
   'https://leyscoders-api.herokuapp.com': 'dappakntlll'
 }
 
-global.apikeylolhuman = `yourapikey` //for plugins nsfwlolu
-
 //===========Sticker WM============//
 global.packname = 'bot-md'
 global.author = '@rasel.ganz' // this is my Instagram 😇
