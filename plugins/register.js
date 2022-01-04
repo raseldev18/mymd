@@ -28,7 +28,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 `, m) 
 conn.sendMessage(m.sender, {text: `SN: ${sn}`})
 }
-handler.help = ['daftar', 'register'].map(v => v + ' <nama>.<umur>')
+handler.help = ['daftar', 'register'].map(v => v + ' <name>.<age>')
 handler.tags = ['xp']
 
 handler.command = /^(daftar|reg(is(ter))?)$/i
