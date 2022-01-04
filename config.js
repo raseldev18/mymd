@@ -19,7 +19,7 @@ global.APIKeys = { // APIKey Here
   'https://api.xteam.xyz': 'yourapikey',
   'https://api.lolhuman.xyz': 'yourapikey',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
-  'https://api.zeks.xyz': 'chika-key',
+  'https://api.zeks.xyz': 'apivinz',
   'https://pencarikode.xyz': 'pais',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll'
 }
