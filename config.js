@@ -19,10 +19,12 @@ global.APIKeys = { // APIKey Here
   'https://api.xteam.xyz': 'yourapikey',
   'https://api.lolhuman.xyz': 'yourapikey',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
-  'https://api.zeks.xyz': 'apivinz',
+  'https://api.zeks.xyz': 'chika-key',
   'https://pencarikode.xyz': 'pais',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll'
 }
+
+global.apikeylolhuman = `yourapikey` //for plugins nsfwlolu
 
 //===========Sticker WM============//
 global.packname = 'bot-md'
