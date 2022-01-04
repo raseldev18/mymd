@@ -29,8 +29,8 @@ global.packname = 'bot-md'
 global.author = 'instagram\n@rasel.ganz' // this is my Instagram 😇
 
 global.wm = '@rasel.ganz'
-global.wait = '*Tunggu Sebentar Ya Sayang*'
-global.eror = '*Maaf Server Sedang Sibuk*'
+global.wait = '*Tunggu sebentar ya sayang*'
+global.eror = '*Maaf server sedang sibuk*'
 
 //========Url 1 Template Buttons=========//
 global.dtu1 = 'Instagram Owner'
