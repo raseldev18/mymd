@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || ''
     if (/image/.test(mime)) {
         const encmedia = m.quoted ? m.quoted.fakeObj : m
-        const media = await conn.downloadMedia(encmedia)
+        const media = await conn.downloadMed(encmedia)
         const ran = getRandom('.webp')
         await ffmpeg(`./${media}`)
             .input(media)
@@ -32,7 +32,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     } else if (/video/.test(mime)) {
         if ((q.msg || q).seconds > 11) throw `_*Maksimal 10 detik! Ubah menjadi gif terlebih dahulu*_`
         const encmedia = m.quoted ? m.quoted.fakeObj : m
-        const media = await conn.downloadMedia(encmedia)
+        const media = await conn.downloadMed(encmedia)
         const ran = getRandom('.webp')
         await ffmpeg(`./${media}`)
             .inputFormat(media.split('.')[1])
