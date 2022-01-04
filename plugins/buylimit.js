@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix, command, args }) => {
     conn.sendButton(m.chat, `Kamu membeli limit dengan harga\n*${xpperlimit * count} XP* dan mendapatkan *${count} Limit.*`, wm, 0, [[`Limit`,`${usedPrefix}limit`]], m)
   } else conn.sendButton(m.chat, `XP tidak mencukupi untuk membeli *${count} Limit.*`, wm, 0, [[`Claim`, `${usedPrefix}claim`]], m)
 }
-handler.help = ['buy<jumlah limit>', 'buy <jumlah limit>', 'buyall']
+handler.help = ['buy <number>', 'buyall']
 handler.tags = ['xp']
 handler.command = /^buy([0-9]+)|buy|buyall$/i
 
