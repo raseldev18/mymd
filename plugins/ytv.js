@@ -11,7 +11,7 @@ let handler = async(m, { conn, args, isPrems, isOwner }) => {
     let _thumb = {}
     try { _thumb = { thumbnail: await (await fetch(thumb)).buffer() } } catch (e) {}
     //m.reply(wait)
-    if (!isLimit) > await sock.sendMessage(m.chat, { document: { url: dl_link }, mimetype: 'video/mp4', fileName: title + `.mp4`}, {quoted: m})
+    if (!isLimit) await sock.sendMessage(m.chat, { document: { url: dl_link }, mimetype: 'video/mp4', fileName: title + `.mp4`}, {quoted: m})
 //conn.sendFile(m.chat, dl_link, title + '.mp4', `
 //*Title:* ${title}
 //*Filesize:* ${filesizeF}
