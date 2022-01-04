@@ -11,13 +11,13 @@ global.APIs = { // API Prefix
   pencarikode: 'https://pencarikode.xyz',
   LeysCoder: 'https://leyscoders-api.herokuapp.com',
   neoxr: 'https://neoxr-api.herokuapp.com',
-  irwan: 'https://irwan-api1-xyz.herokuapp.com'
+  lolhuman: 'https://api.lolhuman.xyz'
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://neoxr-api.herokuapp.com': 'yntkts',
-  'https://api.xteam.xyz': 'd90a9e986e18778b',
-  'https://irwan-api1-xyz.herokuapp.com': 'IrwanGans',
+  'https://api.xteam.xyz': 'yourapikey',
+  'https://api.lolhuman.xyz': 'yourapikey',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'chika-key',
   'https://pencarikode.xyz': 'pais',
