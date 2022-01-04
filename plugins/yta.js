@@ -1,5 +1,5 @@
 let { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys-md')
-let limit = 40
+let limit = 50
 const { servers, yta } = require('../lib/y2mate')
 let handler = async(m, { conn, args, isPrems, isOwner }) => {
     if (!args || !args[0]) return m.reply('Uhm... urlnya mana?')
@@ -17,7 +17,5 @@ let handler = async(m, { conn, args, isPrems, isOwner }) => {
 handler.help = ['ytmp3 <query>']
 handler.tags = ['downloader']
 handler.command = /^yt(a(udio)?|mp3|musik|lagu)$/i
-
-handler.limit = true 
 
 module.exports = handler
