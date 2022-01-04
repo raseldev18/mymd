@@ -26,7 +26,7 @@ global.APIKeys = { // APIKey Here
 
 //===========Sticker WM============//
 global.packname = 'bot-md'
-global.author = '@rasel.ganz' // this is my Instagram 😇
+global.author = 'instagram\n@rasel.ganz' // this is my Instagram 😇
 
 global.wm = '@rasel.ganz'
 global.wait = '*Tunggu Sebentar Ya Sayang*'
