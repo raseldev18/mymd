@@ -41,6 +41,7 @@ handler.help = ['nsfwneko']
 handler.tags = ['nsfw']
 handler.command = /^(nsfwneko|nekonsfw)$/i
 
+handler.private = true
 handler.limit = true
 handler.register = true
 
