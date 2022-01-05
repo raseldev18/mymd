@@ -18,8 +18,8 @@ let handler = async (m, { conn, text }) => {
 *Total Video:* ${v.videoCount} video
 `.trim()
     }
-  }).filter(v => v).join('\n*=========================*\n')
- conn.reply(m.chat, teks, m)
+  }).filter(v => v).join('\n\n*=========================*\n\n')
+ conn.reply(m.chat, '*───「 Youtube Search 」───*\n\n' + teks, m)
 }
 handler.help = ['ytsearch <query>']
 handler.tags = ['tools', 'internet']
