@@ -28,7 +28,7 @@ https://github.com/raselcomel
 \`\`\`${conn.user.name}\`\`\`
 `
      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-      templateMessage: {
+     templateMessage: {
             hydratedTemplate: {
                 locationMessage: { jpegThumbnail: await(await fetch('https://avatars.githubusercontent.com/u/18616827?v=4')).buffer() }, 
                 hydratedContentText: tqto,
