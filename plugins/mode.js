@@ -6,7 +6,7 @@ let handler = async(m, { conn, usedPrefix, command }) => {
 
   global.opts["self"] = !isPublic
 
-  conn.sendButton(m.chat, `Berhasil ${!isPublic ? "Self" : "Public"} bot!`, wm, false, [[`${global.opts['restrict'] ? 'Self' : 'Public'}`, `${usedPrefix}${global.opts['restrict'] ? 'self' : 'public'}`]], m)    
+  conn.sendButton(m.chat, `Berhasil ${!isPublic ? "Self" : "Public"} bot!`, wm, false, [[`${!isPublic ? "Public" : "Self"}`, `${usedPrefix}${!isPublic ? "public" : "self"}`]], m)    
 }
 
 handler.help = ["self", "public"]
