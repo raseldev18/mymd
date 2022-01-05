@@ -1,6 +1,9 @@
 const simple = require('./lib/simple')
 const util = require('util')
 
+const isNumber = x => typeof x === 'number' && !isNaN(x)
+const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
+
 let handler = async (m, { conn, command, usedPrefix, text }) => {
   let d = new Date(new Date + 3600000)
     let locale = 'id'
@@ -23,7 +26,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
 │✇ Version : *^0.0.1*
 │✇ Dev : *@6285346545126*
 │✇ Runtime : *${runtime}*
-│✇ Prefix : *Multi Prefix*
+│✇ Prefix : *Multi Prefix 「 ${usedPrefix} 」*
 │✇ Mode : *${global.opts['self'] ? 'Self' : 'Public'}*
 │✇ User : *${usergakdaftar}*
 │✇ Register : *${userdaftar}*
