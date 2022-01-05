@@ -334,7 +334,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
               }, {
                 "rows": [{
                   "title": `Menu Nsfw`,
-                  "description": "Menu menu dewasa 🔞",
+                  "description": "Menu khusus dewasa 🔞",
                   "rowId": `${_p}? nsfw`
                 }],
                 "title": "─────「 17 」"
@@ -404,7 +404,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                 }, {
                 "rows": [{
                   "title":  `Menu Owner`,
-                  "description": "Menu fitur terbaru",
+                  "description": `Menu khusus untuk owner ${conn.user.name}`,
                   "rowId": `${_p}? update`
                 }],
                 "title": "─────「 27 」"
