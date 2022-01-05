@@ -1,3 +1,6 @@
+const simple = require('./lib/simple')
+const util = require('util')
+
 let handler = async (m, { conn, command, usedPrefix, text }) => {
   let d = new Date(new Date + 3600000)
     let locale = 'id'
