@@ -37,7 +37,7 @@ module.exports = {
     let runtime = clockString(_uptime)
     let mode = //  
         global.infobot = `
-*╭──「 ${namabot} ──࿐
+*╭──「 ${namabot} ──࿐*
 *│*
 *│✇ Library : Baileys-MD*
 *│✇ Language : Javascript*
@@ -52,7 +52,7 @@ module.exports = {
 *│✇ Date : ${date}*
 *│✇ Time : ${time}*
 *│*
-*╰────────⳹*
+*╰─────────⳹*
 `
         if (!m) return
         console.log(JSON.stringify(m, null, 4))
