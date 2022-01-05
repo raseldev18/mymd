@@ -48,7 +48,7 @@ let handler = async(m, { conn, command, usedPrefix, DevMode }) => {
         let _ramTotal = (ramTotal + ' MB')
         let neww = performance.now()
         conn.sendButtonLoc(m.chat, `
-*───「 Info Testing 」───*
+*────「 Info Testing 」────*
 
 OS : *${OS}*
 CPU Model : *${cpuModel}*
