@@ -1,6 +1,8 @@
 const { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, downloadContentFromMessage, downloadHistory, proto, getMessage, generateWAMessageContent, prepareWAMessageMedia } = require('@adiwajshing/baileys-md')
 let fetch = require('node-fetch')
 let handler = async (m, { conn, usedPrefix, command }) => {
+  var {age} = db.data.users[m.sender]
+  if (age <17) throw conn.reply(m.chat, 'Lu masih di bawah umur jangan dulu deh', m) 
   let res = await fetch('https://api.waifu.pics/nsfw/neko')
   if (!res.ok) throw conn.reply(m.chat, eror, m) 
   let json = await res.json()
