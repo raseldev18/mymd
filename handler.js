@@ -37,7 +37,7 @@ module.exports = {
     let runtime = clockString(_uptime)
     let mode = //  
         global.infobot = `
-*╭─●──❑ LUCU-BOT ❑──●──*
+*╭──「 ${namabot} ──࿐
 *│*
 *│✇ Library : Baileys-MD*
 *│✇ Language : Javascript*
@@ -46,13 +46,13 @@ module.exports = {
 *│✇ Dev :* @6285346545126 
 *│✇ Runtime : ${runtime}*
 *│✇ Prefix : Multi Prefix*
-*│✇ Mode : -*
+*│✇ Mode : ${global.opts['self'] ? 'Self' : 'Public'}*
 *│✇ Date & Time :*
 *│✇ Day : ${week}*
 *│✇ Date : ${date}*
 *│✇ Time : ${time}*
 *│*
-*╰─●─「 MULTI-DEVICE 」─●──*
+*╰────────⳹*
 `
         if (!m) return
         console.log(JSON.stringify(m, null, 4))
@@ -478,7 +478,7 @@ module.exports = {
         } catch (e) {
             console.error(e)
         } finally {
-        conn.sendPresenceUpdate('composing', m.chat) 
+       // conn.sendPresenceUpdate('composing', m.chat) 
             //console.log(global.db.data.users[m.sender])
             let user, stats = global.db.data.stats
             if (m) {
