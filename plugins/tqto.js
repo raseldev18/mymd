@@ -5,7 +5,7 @@
 **/
 
 const { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, downloadContentFromMessage, downloadHistory, proto, getMessage, generateWAMessageContent, prepareWAMessageMedia } = require('@adiwajshing/baileys-md')
-let fetch = requier('node-fetch')
+let fetch = require('node-fetch')
 let handler = async (m, { usedPrefix}) => {
 let tqto = `
 *───「  BIG THANKS TO  」───*
