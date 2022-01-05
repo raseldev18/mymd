@@ -11,7 +11,7 @@ let moment = require('moment-timezone')
 const defaultMenu = {
           before: `*Bot ini masih tahap pengembangan, jika ada bug eror fitur harap laporkan ke owner atau developer bot*
 Klik disini=>%readmore`.trimStart(),
-  header: '╭─「 %category 」',
+  header: '╭─「 *%category* 」',
   body: '│ • %cmd %islimit %isPremium',
   footer: '╰────\n',
           after: ` `,
@@ -218,196 +218,203 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
                   "description": "Menu Semua Perintah",
                   "rowId": `${_p}? all`
                   }],
-                "title": "────────「 List Menu Lucu Bot 」────────"
+                "title": `List Menu ${conn.user.name}`
               }, {
                 "rows": [{
-                  "title": `Menu Game`,
-                  "description": "Menu untuk bermain Game",
-                  "rowId": `${_p}? game`
+                  "title": `Menu Anime`,
+                  "description": "Menu search & random anime wibu baka>//<",
+                  "rowId": `${_p}? anime`
                 }],
                 "title": "─────「 1 」"
               }, {
                 "rows": [{
-                  "title": `Menu XP & Limit`,
-                  "description": "Menu untuk cek XP & Limit",
-                  "rowId": `${_p}? xp`
+                  "title": `Menu Admin & Group`,
+                  "description": "Menu untuk admin & grup",
+                  "rowId": `${_p}? admin`
                 }],
                 "title": "─────「 2 」"
               }, {
                 "rows": [{
-                  "title": `Menu Sticker`,
-                  "description": "Menu untuk membuat/mencari Sticker",
-                  "rowId": `${_p}? stiker`
+                  "title": `Menu Anonymous`,
+                  "description": "Menu untuk bermain anonymous chat versi whatsapp",
+                  "rowId": `${_p}? anonymous`
                 }],
                 "title": "─────「 3 」"
               }, {
                 "rows": [{
-                  "title": `Menu Kerang Ajaib`,
-                  "description": "Menu kerang ajaib, jawaban random dari Bot",
-                  "rowId": `${_p}? kerangajaib`
+                  "title": `Menu Audio`,
+                  "description": "Menu pengubah suara audio atau convert audio",
+                  "rowId": `${_p}? audio`
                 }],
                 "title": "─────「 4 」"
               }, {
                 "rows": [{
-                  "title": `Menu Quotes`,
-                  "description": "Menu random Quotes",
-                  "rowId": `${_p}? quotes`
+                  "title": `Menu Downloader`,
+                  "description": "Menu download media video, foto, dan file",
+                  "rowId": `${_p}? downloader`
                 }],
                 "title": "─────「 5 」"
               }, {
                 "rows": [{
-                  "title": `Admin & Group`,
-                  "description": "Menu untuk Admin & Grup",
-                  "rowId": `${_p}? admin`
+                  "title": `Menu Database`,
+                  "description": "Menu cek database bot",
+                  "rowId": `${_p}? database`
                 }],
                 "title": "─────「 6 」"
               }, {
                 "rows": [{
-                  "title": `Menu Random`,
-                  "description": "Menu Random Image/Video/Stiker",
-                  "rowId": `${_p}? random`
+                  "title": `Menu Edukasi`,
+                  "description": "Menu edukasi untuk sehari-hari",
+                  "rowId": `${_p}? edukasi`
                 }],
                 "title": "─────「 7 」"
               }, {
                 "rows": [{
-                  "title": `Menu Premium`,
-                  "description": "Menu untuk pengguna Premium",
-                  "rowId": `${_p}? premium`
+                  "title": `Menu Fun`,
+                  "description": "Menu fun hanya untuk bersenang-senang, jangan baperan yaa<3",
+                  "rowId": `${_p}? fun`
                 }],
                 "title": "─────「 8 」"
               }, {
                 "rows": [{
-                  "title": `Menu Internet`,
-                  "description": "Menu untuk menjelajahi Internet",
-                  "rowId": `${_p}? internet`
+                  "title": `Menu Game`,
+                  "description": "Menu untuk bermain game dan mendapatkan xp untuk levelup",
+                  "rowId": `${_p}? game`
                 }],
                 "title": "─────「 9 」"
               }, {
                 "rows": [{
-                  "title": `Menu Anonymous Chat`,
-                  "description": "Menu untuk bermain Anonymous Chat versi WhatsApp",
-                  "rowId": `${_p}? anonymous`
+                  "title": `Menu Info`,
+                  "description": "Menu info seperti pemilik bot dan source code bot",
+                  "rowId": `${_p}? info`
                 }],
                 "title": "─────「 10 」"
               }, {
                 "rows": [{
-                  "title": `Menu Nulis & Logo`,
-                  "description": "Menu untuk Nulis & Logo",
-                  "rowId": `${_p}? nulis`
-                }],
-                "title": "─────「 11 」"
+                  "title": `Menu Internet`,
+                  "description": "Menu untuk menjelajah di internet",
+                  "rowId": `${_p}? internet`
+                 }],
+                 "title": "─────「 11 」"
               }, {
                 "rows": [{
-                  "title": `Menu Downloader`,
-                  "description": "Menu downlod video/foto/file",
-                  "rowId": `${_p}? downloader`
+                  "title": `Menu Islamic`,
+                  "description": "Menu agama islam, tetap jaga toleransi beragama ya kak 🥰",
+                  "rowId": `${_p}? islamic`
                 }],
                 "title": "─────「 12 」"
               }, {
-                "rows":[{
-                  "title": `Menu Tools`,
-                  "description": "Menu alat seperti kalkulator & translate",
-                  "rowId": `${_p}? tools`
+                "rows": [{
+                  "title": `Menu Jadibot`,
+                  "description": "Menu jadibot smentara",
+                  "rowId": `${_p}? jadibot`
                 }],
                 "title": "─────「 13 」"
               }, {
-                "rows": [{
-                  "title": `Menu Fun`,
-                  "description": "Menu untuk Fun, jangan baper yak",
-                  "rowId": `${_p}? fun`
+                "rows":[{
+                  "title": `Menu Kerang Ajaib`,
+                  "description": "Menu jawaban random dari bot, masa gak tau gak pernah nonton spongebob ya?",
+                  "rowId": `${_p}? kerangajaib`
                 }],
                 "title": "─────「 14 」"
               }, {
                 "rows": [{
-                  "title": `Menu Database`,
-                  "description": "Menu Database Bot",
-                  "rowId": `${_p}? database`
+                  "title": `Menu News`,
+                  "description": "Menu berita lokal sampai internasional",
+                  "rowId": `${_p}? news`
                 }],
                 "title": "─────「 15 」"
               }, {
                 "rows": [{
-                  "title": `Menu Vote & Absen`,
-                  "description": "Menu untuk Vote & Absen di Grup",
-                  "rowId": `${_p}? vote`
+                  "title": `Menu Nulis & Logo`,
+                  "description": "Menu mager nulis & logo",
+                  "rowId": `${_p}? nulis`
                 }],
                 "title": "─────「 16 」"
               }, {
                 "rows": [{
-                  "title": `Menu Islamic`,
-                  "description": "Menu Agama Islam, tetap jaga toleransi beragama ya🥰",
-                  "rowId": `${_p}? islamic`
+                  "title": `Menu Nsfw`,
+                  "description": "Menu menu dewasa 🔞",
+                  "rowId": `${_p}? nsfw`
                 }],
                 "title": "─────「 17 」"
               }, {
                 "rows": [{
-                  "title": `Menu Pengubah Suara`,
-                  "description": "Menu Pengubah Suara vn/audio",
-                  "rowId": `${_p}? audio`
+                  "title": `Menu Premium`,
+                  "description": "Menu untuk user premium, jika ingin menggunakannya daftar premium dulu ke owner",
+                  "rowId": `${_p}? premium`
                 }],
                 "title": "─────「 18 」"
               }, {
                 "rows": [{
-                  "title":  `Menu Jadi Bot`,
-                  "description": "Menu untuk jadibot smentara",
-                  "rowId": `${_p}? jadibot`
+                  "title": `Menu Quotes`,
+                  "description": "Menu random quotes & membuat quotes",
+                  "rowId": `${_p}? quotes`
                 }],
                 "title": "─────「 19 」"
               }, {
                 "rows": [{
-                  "title": `Menu Info`,
-                  "description": "Menu Info seperti pemilik bot dan source code bot",
-                  "rowId": `${_p}? info`
+                  "title":  `Menu RPG`,
+                  "description": "Menu game rpg (role playing game)",
+                  "rowId": `${_p}? rpg`
                 }],
                 "title": "─────「 20 」"
               }, {
                 "rows": [{
-                  "title":  `Menu Owner`,
-                  "description": "Menu Khusus Owner",
-                  "rowId": `${_p}? owner`
+                  "title": `Menu Random`,
+                  "description": "Menu random foto, video, dan stiker",
+                  "rowId": `${_p}? random`
                 }],
                 "title": "─────「 21 」"
               }, {
                 "rows": [{
-                  "title":  `Menu Edukasi`,
-                  "description": "Menu Edukasi untuk sehari-hari",
-                  "rowId": `${_p}? edukasi`
+                  "title":  `Menu Stiker`,
+                  "description": "Menu membuat stiker dan mencari stiker",
+                  "rowId": `${_p}? stiker`
                 }],
                 "title": "─────「 22 」"
               }, {
                 "rows": [{
-                  "title":  `Menu Anime`,
-                  "description": "Menu Anime untuk para vvibu baka>//<",
-                  "rowId": `${_p}? anime`
+                  "title":  `Menu Tools`,
+                  "description": "Menu alat convert",
+                  "rowId": `${_p}? tools`
                 }],
                 "title": "─────「 23 」"
               }, {
                 "rows": [{
-                  "title":  `Menu Rpg`,
-                  "description": "Menu untuk bermain Game Rpg",
-                  "rowId": `${_p}? rpg`
+                  "title":  `Menu Update`,
+                  "description": "Menu fitur baru bot, silahkan di cek <3",
+                  "rowId": `${_p}? update`
                 }],
                 "title": "─────「 24 」"
-                }, {
+              }, {
                 "rows": [{
-                  "title":  `Menu News`,
-                  "description": "Menu Berita Local sampai Internasional",
-                  "rowId": `${_p}? news`
+                  "title":  `Menu Vote & Absen`,
+                  "description": "Menu untuk vote dan absen",
+                  "rowId": `${_p}? vote`
                 }],
                 "title": "─────「 25 」"
                 }, {
                 "rows": [{
-                  "title":  `Menu Update`,
-                  "description": "Menu fitur terbaru",
-                  "rowId": `${_p}? update`
+                  "title":  `Menu XP dan Limit`,
+                  "description": "Menu cek level, xp, limit, dan pendaftaran user",
+                  "rowId": `${_p}? xp`
                 }],
                 "title": "─────「 26 」"
                 }, {
                 "rows": [{
-                  "title":  `Menu Nsfw`,
-                  "description": "Menu 18+",
-                  "rowId": `${_p}? nsfw`
+                  "title":  `Menu Owner`,
+                  "description": "Menu fitur terbaru",
+                  "rowId": `${_p}? update`
                 }],
                 "title": "─────「 27 」"
+                }, {
+                "rows": [{
+                  "title":  `Shop`,
+                  "description": "Jual rdp murah dll",
+                  "rowId": `${_p}shop`
+                }],
+                "title": "WTS RDP MURAH"
               }
             ], "contextInfo": {
               "stanzaId": m.key.id,
@@ -469,7 +476,7 @@ let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     //let pp = await conn.profilePictureUrl(conn.user.jid, 'image').catch(_ => path.join(__dirname, '../src/avatar_contact.png'))
-    await conn.send3TemplateButtonLoc(m.chat, text.trim(), wm, await(await require('node-fetch')(img)).buffer(), `🏅Owner`, `#owner`, `🎖ThanksTo`, `#ttq`, `🎗  Info Bot  🎗`, `#infobot`, m)
+    await conn.send3TemplateButtonLoc(m.chat, text.trim(), wm, await(await require('node-fetch')(img)).buffer(), `🏅Owner`, `${usedPrefix}owner`, `🎖ThanksTo`, `${usedPrefix}tqto`, `🎗  Info Bot  🎗`, `${usedPrefix}infobot`, m)
     } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
