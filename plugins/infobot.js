@@ -21,7 +21,7 @@ let handler = async (m, { conn, command, usedPrefix, text }) => {
 │✇ Version : *^0.0.1*
 │✇ Dev : *@6285346545126*
 │✇ Runtime : *${runtime}*
-│✇ Prefix : *Multi Prefix 「 ${usedPrefix}」*
+│✇ Prefix : *Multi Prefix 「 ${usedPrefix} 」*
 │✇ Mode : *${global.opts['self'] ? 'Self' : 'Public'}*
 │✇ User : *${usergakdaftar}*
 │✇ Register : *${userdaftar}*
