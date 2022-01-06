@@ -12,7 +12,7 @@ ${json.url}
 `.trim(), m)
 }
 handler.help = ['kompas', 'liputan6', 'tribun', 'jalantikus']
-handler.tags = ['internet']
+handler.tags = ['news']
 handler.command = /^kompas|liputan6|tribun|jalantikus$/i
 
 
