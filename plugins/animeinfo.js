@@ -39,6 +39,6 @@ let animeingfo = `✨️ *Title:* ${title}
 }
 handler.help = ['animeinfo <query>', 'anime <query>']
 handler.tags = ['anime']
-handler.command = /^(anime(ing?fo))$/i
+handler.command = /^(anime(ing?fo)?)$/i
 handler.register = true 
 module.exports = handler
