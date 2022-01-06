@@ -590,7 +590,7 @@ global.dfail = (type, m, conn) => {
         private: '*────「 ACCESS DENIED 」────*\n\n\nThis command can only be used in  _*Private Chat!*_\n\nPerintah ini hanya dapat digunakan di _*Chat Pribadi!*_.',
         admin: '*────「 ACCESS DENIED 」────*\n\n\nThis command can only be used by  _*Admin!*_\n\nPerintah ini hanya dapat digunakan oleh _*Admin!*_.',
         botAdmin: '*────「 ACCESS DENIED 」────*\n\n\nMake the bot the _*Admin*_ to use this command\n\nJadikan bot sebagai _*Admin*_ untuk menggunakan perintah ini!.',
-        unreg: '*────「 ACCESS DENIED 」────*\n\n\nPlease register to use this feature by typing:\n*#register*\n\nExample: *#register*\n\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar*\n\nContoh: *#daftar*',
+        unreg: '*────「 ACCESS DENIED 」────*\n\n\nPlease register to use this feature by typing:\n*#register <name>.<age>*\n\nExample: *#register rasel.18*\n\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar <nama>.<umur>*\n\nContoh: *#daftar rasel.18*',
         nsfw: '*────「 ACCESS DENIED 」────*\n\n\nNSFW doesn\'t active.\nNSFW tidak aktif!.',
         rpg: '*────「 ACCESS DENIED 」────*\n\n\nRPG doesn\'t active.\nRPG tidak aktif!.'
       }[type]
