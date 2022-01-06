@@ -33,7 +33,7 @@ let handler = async (m, { conn, args: [event], text }) => {
             break
         default: throw `daftar event: add, bye, promote, demote, delete`
     }
-    if (action) return conn.onParticipantsUpdate({
+    if (action) return conn.groupParticipantsUpdate({
         jid: m.chat,
         participants,
         action
