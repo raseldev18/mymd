@@ -15,7 +15,7 @@ let handler = async (m, { conn, text }) => {
 		var number = text
   }
 
-  if(!text && !m.quoted) return conn.reply(m.chat, `*❏ DELETE USER*\n\nTag user, tulis nomor, atau balas member yang ingin di RESET`, m)
+  if(!text && !m.quoted) return conn.reply(m.chat, `*DELETE USER*\n\nTag user, tulis nomor, atau balas member yang ingin di RESET`, m)
   //let exists = await conn.isOnWhatsApp(number)
   // if (exists) return conn.reply(m.chat, `*Nomor target tidak terdaftar di WhatsApp*`, m)
   if(isNaN(number)) return conn.reply(m.chat, `Nomor yang kamu masukkan tidak valid!`, m)
