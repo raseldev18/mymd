@@ -547,7 +547,7 @@ module.exports = {
                                 }
                             }
                         }
-                    }
+                    
                 
                 break
             case 'promote':
