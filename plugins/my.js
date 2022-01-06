@@ -15,9 +15,9 @@ let mynya = `
 │✇ Role: *${user.role}*
 ╰──────⳹
 `
- conn.sendButtonLoc(m.chat, mynya, wm, await(await fetch(fla + `${command}`)).buffer(), [[`Menu`,`${usedPrefix}menu`]], m) 
+ conn.sendButtonLoc(m.chat, mynya, wm, await(await fetch(fla + `${command} ${user.name}`)).buffer(), [[`Menu`,`${usedPrefix}menu`]], m) 
 }
-handler.help = ['my', 'my @user']
+handler.help = ['limit', 'limit @user']
 handler.tags = ['xp']
 handler.command = /^(my|limit|balance)$/i
 
