@@ -25,7 +25,7 @@ ${usedPrefix + command} buka
 }
 handler.help = ['grup <open/close>']
 handler.tags = ['admin']
-handler.command = /^(gro?up|gc)$/i
+handler.command = /^(gro?up|gc?)$/i
 
 handler.botAdmin = true
 
