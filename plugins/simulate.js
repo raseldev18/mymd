@@ -6,7 +6,7 @@ let handler = async (m, { conn, args: [event], text }) => {
     switch (event.toLowerCase()) {
         case 'add':
         case 'invite':
-        caae 'w':
+        case 'w':
         case 'wel':
         case 'welcome':
             if (!db.data.chats[m.chat].welcome) return await conn.sendButton(m.chat, 'welcome belum diaktikan!', wm, 0, [['aktifkan', '.1 welcome']], m)
