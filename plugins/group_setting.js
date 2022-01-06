@@ -8,31 +8,31 @@ let handler  = async (m, { isAdmin, isOwner, conn, args, usedPrefix, command }) 
 	} else if(args[0] == 'open') {
 		conn.groupSettingUpdate(m.chat, 'not_announcement')
 		conn.sendMessage(m.chat, `*Success open group*`, m) 
- }
-   })
+	}
+     }
    
 	} else if(args[0] == 'close') {
 		conn.groupSettingUpdate(m.chat, 'announcement')
 		conn.sendMessage(m.chat, `*Success close group*`, m) 
- }
-   })
+	}
+     }
 
 	} else if(args[0] == 'buka') {
 		conn.groupSettingUpdate(m.chat, 'not_announcement')
 		conn.sendMessage(m.chat, `*Berhasil buka grup*`, m) 
- }
-   })
+	}
+     }
 
 	} else if(args[0] == 'tutup') {
 		conn.groupSettingUpdate(m.chat, 'announcement')
 		conn.sendMessage(m.chat, `*Berhasil tutup grup*`, m) 
- }
-   })
+	}
+     }
 
 }
 handler.help = ['group <open>/<close>']
 handler.tags = ['group']
-handler.command = /^(group|grup)$/i
+handler.command = /^(group|gru?p|gc)$/i
 
 handler.botAdmin = true
 
