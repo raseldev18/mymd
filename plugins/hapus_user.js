@@ -2,7 +2,7 @@
 buatan qisyana😅
 **/
 
-let handler = async (m, { conn, text }) => {
+let handler = async (m, { conn, usedPrefix, text }) => {
 	function no(number){
     return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
