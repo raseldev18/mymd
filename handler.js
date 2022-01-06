@@ -521,43 +521,34 @@ module.exports = {
             if (opts['queque'] && m.text && quequeIndex !== -1) sock.msgqueque.splice(quequeIndex, 1)
         }
     },
-    async participantsUpdate({ jid, participants, action }) {
-    let chat = global.db.data.chats[jid] || {}
-    let text = ''
-    switch (action) {
-      case 'add':
-      case 'remove':
-        if (chat.welcome) {
-          let groupMetadata = await this.groupMetadata(jid)
-          for (let user of participants) {
-            if (user.includes(this.user.jid)) return // biar ngga nyambut diri sendiri, kalo simulasi harus tag yang lain
-            let pp = 'https://telegra.ph/file/22fd84e4a3244e1b17e4e.png'
-            try {
-              pp = await this.getProfilePicture(user)
-            } catch (e) {
-            } finally {
-              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '').replace('@mem', groupMetadata.participants.length) :
-                (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split('@')[0])
-                this.sendButton(jid, text, wm, 0, [[action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', 'p']], {
-                  key: {
-                  fromMe: false,
-                  participant: '0@s.whatsapp.net',
-                  remoteJid: 'status@broadcast'
-                },
-                message: {
-                  contactMessage: {
-                    displayName: this.getName(user),
-                    vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;WA;;;\nFN: WA\nTEL ; type=VOICE;waid=${user.split('@')[0]}:${user.split('@')[0]}\nEND:VCARD`
-                  }
+    async participantsUpdate({ id, participants, action }) {
+        if (opts['self']) return
+        // if (id in conn.chats) return // First login will spam
+        if (global.isInit) return
+        let chat = global.db.data.chats[id] || {}
+        let text = ''
+        switch (action) {
+            case 'add':
+            case 'remove':
+                if (chat.welcome) {
+                    let groupMetadata = await sock.groupMetadata(id) || (conn.chats[id] || {}).metadata
+                    for (let user of participants) {
+                    	if (user.includes(this.user.jid)) return // biar ngga nyambut diri sendiri, kalo simulasi harus tag yang lain
+                        let pp = 'https://telegra.ph/file/22fd84e4a3244e1b17e4e.png'
+                        try {
+                            pp = await sock.profilePictureUrl(user, 'image')
+                        } catch (e) {
+                        } finally {
+                            text = (action === 'add' ? (chat.sWelcome || sock.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', sock.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
+                                (chat.sBye || sock.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
+                                sock.sendButtonLoc(id, text, wm, await(await fetch(pp)).buffer(), [[action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', 'Instagram.com/rasel.ganz', null,  {
+                                contextInfo: {
+                                    mentionedJid: [user]
+                                }
+                            })
+                        }
+                    }
                 }
-              }, null, false, {
-                contextInfo: {
-                  mentionedJid: [user]
-                }
-              })
-            }
-          }
-        }
                 break
             case 'promote':
                 text = (chat.sPromote || sock.spromote || conn.spromote || '@user ```is now Admin```')
