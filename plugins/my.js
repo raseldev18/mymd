@@ -1,6 +1,6 @@
 let fs = require('fs')
 let fetch = require('node-fetch')
-let handler = async (m, { usedPrefix }) => {
+let handler = async (m, { usedPrefix, command }) => {
     let who
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     else who = m.sender
@@ -15,7 +15,7 @@ let mynya = `
 │✇ Role: *${user.role}*
 ╰──────⳹
 `
- conn.sendButtonLoc(m.chat, mynya, wm, await(await fetch(fla + `${await this.getName(who)}`)).buffer(), [[`Menu`,`${usedPrefix}menu`]], m) 
+ conn.sendButtonLoc(m.chat, mynya, wm, await(await fetch(fla + `${command}`)).buffer(), [[`Menu`,`${usedPrefix}menu`]], m) 
 }
 handler.help = ['my', 'my @user']
 handler.tags = ['xp']
