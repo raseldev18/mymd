@@ -538,7 +538,7 @@ module.exports = {
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '').replace('@mem', groupMetadata.participants.length) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split('@')[0])
-                this.sendButton(jid, text, wm, [[action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', 'p']], {
+                this.sendButton(jid, text, wm, 0, [[action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', 'p']], {
                   key: {
                   fromMe: false,
                   participant: '0@s.whatsapp.net',
