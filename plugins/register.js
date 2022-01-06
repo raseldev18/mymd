@@ -15,7 +15,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   user.regTime = + new Date
   user.registered = true
   let sn = createHash('md5').update(m.sender).digest('hex')
-  conn.reply(m.chat, `
+  conn.sendButton(m.chat, `
 *──「 Successful Registration 」──*
 
 ╭─「 Info 」
@@ -25,8 +25,8 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 ╰─────
 
 *SN* (Serial Number) di kirim di chat pribadi dan digunakan untuk daftar ulang, jika lupa *SN* silahkan ketik *${usedPrefix}sn* untuk mengecek *SN* kamu! 
-`, m) 
-conn.sendMessage(m.sender, {text: `SN: ${sn}`}, m)
+`.trim(), wm, false, [[`Profile`,`${usedPrefix}profile`]], m) 
+conn.sendMessage(m.sender, {text: `*SN:* ${sn}`}, m)
 }
 handler.help = ['daftar', 'register'].map(v => v + ' <name>.<age>')
 handler.tags = ['xp']
