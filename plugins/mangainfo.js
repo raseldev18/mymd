@@ -17,7 +17,7 @@ let mangaingfo = `✨️ *Title:* ${title}
       templateMessage: {
             hydratedTemplate: {
                 imageMessage: message.imageMessage,
-                hydratedContentText: animeingfo,
+                hydratedContentText: mangaingfo,
                 hydratedFooterText: wm,
                 hydratedButtons: [{
                   index: 0,
