@@ -37,8 +37,8 @@ let animeingfo = `✨️ *Title:* ${title}
     )
  // conn.sendFile(m.chat, image_url, '', animeingfo, m)
 }
-handler.help = ['animeinfo <query>']
+handler.help = ['animeinfo <query>', 'anime <query>']
 handler.tags = ['anime']
-handler.command = /^(animeing?fo)$/i
+handler.command = /^(anime(ing?fo))$/i
 handler.register = true 
 module.exports = handler
