@@ -1,5 +1,6 @@
 let handler = async (m, { conn }) => {
-    conn.reply(m.chat, `*Link Group:* ${conn.getName(m.chat)}\n\nhttps://chat.whatsapp.com/` + await conn.groupInviteCode(m.chat), m)
+    var namagcnya = conn.getName(m.chat)
+    conn.reply(m.chat, `*Link Group:* ${namagcnya}\n\nhttps://chat.whatsapp.com/` + await conn.groupInviteCode(m.chat), m)
   }
   handler.help = ['linkgroup']
   handler.tags = ['group']
