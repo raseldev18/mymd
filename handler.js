@@ -541,14 +541,14 @@ module.exports = {
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || sock.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', sock.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || sock.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                                sock.sendButtonLoc(id, text, wm, await(await fetch(pp)).buffer(), [[action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', 'Instagram.com/rasel.ganz', null,  {
+                                sock.sendButtonLoc(id, text, wm, await(await fetch(pp)).buffer(), [[action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', 'Instagram.com/rasel.ganz', null, {
                                 contextInfo: {
                                     mentionedJid: [user]
                                 }
                             })
                         }
                     }
-                }
+                
                 break
             case 'promote':
                 text = (chat.sPromote || sock.spromote || conn.spromote || '@user ```is now Admin```')
