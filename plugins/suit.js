@@ -10,10 +10,10 @@ let handler = async (m, { conn, usedPrefix, text, isOwner }) => {
     conn.suit = conn.suit ? conn.suit : {}
     if (Object.values(conn.suit).find(room => room.id.startsWith('suit') && [room.p, room.p2].includes(m.sender))) throw 'selesaikan suit mu yang sebelumnya'
     let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
-    if (!who) return m.reply(`tag atau mention seseorang.\n\ncontoh:\n${usedPrefix}suit @${m.sender.split`@`[0]} ${db.data.users[m.sender].exp}`)
+    if (!who) return conn.reply(m.chat, `tag atau mention seseorang.\n\ncontoh:\n${usedPrefix}suit @${m.sender.split`@`[0]} ${db.data.users[m.sender].exp}`, m)
     if (who === m.sender) throw 'tidak bisa menantang diri sendiri!'
     let txt = text.replace('@' + who.split`@`[0], '').trim()
-    if (!txt) return m.reply(`uhm.. mau taruhan berapa XP?\n\ncontoh:\n${usedPrefix}suit @${m.sender.split`@`[0]} ${db.data.users[m.sender].exp}`)
+    if (!txt) return conn.reply(m.chat, `uhm.. mau taruhan berapa XP?\n\ncontoh:\n${usedPrefix}suit @${m.sender.split`@`[0]} ${db.data.users[m.sender].exp}`, m)
     if (isNaN(txt)) throw 'XP harus angka!'
     let poin = parseInt(txt)
     if (poin < 1) throw 'minimal 1 XP!'
