@@ -44,7 +44,7 @@ silahkan @${who.split`@`[0]} ketik Y untuk bermain, ketik N untuk menolaknya
         status: 'wait',
         chat: await conn.sendButton(m.chat, caption, wm, false, [['Y', 'Y'], ['N', 'N']], m, 0, {
            contextInfo: {
-        mentionedJid: [m.sender, who] }}),
+        mentionedJid: [p, p2] }}),
         waktu: setTimeout(async () => {
             if (conn.suit[id]) await conn.reply(m.chat, `_Waktu suit habis_`, conn.suit[id].chat)
             delete conn.suit[id]
