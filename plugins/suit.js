@@ -42,7 +42,7 @@ silahkan @${who.split`@`[0]} ketik Y untuk bermain, ketik N untuk menolaknya
         p: m.sender,
         p2: who,
         status: 'wait',
-        chat: await conn.sendButtonLoc(m.chat, caption, wm, await(await fetch(fla + 'suit challenge')).buffer(), [['Y', 'Y'], ['N', 'N']], m, 0, {
+        chat: await conn.sendButton(m.chat, caption, wm, false, [['Y', 'Y'], ['N', 'N']], m, 0, {
            contextInfo: {
         mentionedJid: [m.sender, who] }}),
         waktu: setTimeout(async () => {
