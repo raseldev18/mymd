@@ -1,6 +1,6 @@
-let timeout = 90000
+let timeout = 10000
 let fetch = require('node-fetch')
-let handler = async (m, { conn, usedPrefix, text, isOwner }) => {
+let handler = async (m, { jid, conn, usedPrefix, text, isOwner }) => {
     if (!m.isGroup) {
         if (!isOwner) {
             dfail('group', m, conn)
@@ -44,7 +44,7 @@ silahkan @${who.split`@`[0]} ketik Y untuk bermain, ketik N untuk menolaknya
         status: 'wait',
         chat: await conn.sendButton(m.chat, caption, wm, false, [['Y', 'Y'], ['N', 'N']], m, 0, {
            contextInfo: {
-        mentionedJid: [p, p2] }}),
+        mentionedJid: [m.sender, who] }}),
         waktu: setTimeout(async () => {
             if (conn.suit[id]) await conn.reply(m.chat, `_Waktu suit habis_`, conn.suit[id].chat)
             delete conn.suit[id]
