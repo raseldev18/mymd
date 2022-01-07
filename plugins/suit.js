@@ -1,4 +1,4 @@
-let timeout = 10000
+let timeout = 100000
 let fetch = require('node-fetch')
 let handler = async (m, { jid, conn, usedPrefix, text, isOwner }) => {
     if (!m.isGroup) {
@@ -27,11 +27,12 @@ let handler = async (m, { jid, conn, usedPrefix, text, isOwner }) => {
     if (Object.values(conn.suit).find(room => room.id.startsWith('suit') && [room.p, room.p2].includes(who))) throw `yang kamu tag sedang bermain!`
     let id = 'suit_' + new Date() * 1
     let caption = `
-*Suit Game*
+*───「 Suit Game 」───*
 
-@${m.sender.split`@`[0]} menantang @${who.split`@`[0]} untuk bermain suit
 
-@${m.sender.split`@`[0]} bertaruh sebanyak ${poin} XP,
+${await conn.getName(m.sender)} menantang ${await conn.getName(who)} untuk bermain suit
+
+${await conn.getName(m.sender)} bertaruh sebanyak ${poin} XP,
 menang: +${poin} XP
 kalah: -${poin} XP
 
@@ -42,9 +43,7 @@ silahkan @${who.split`@`[0]} ketik Y untuk bermain, ketik N untuk menolaknya
         p: m.sender,
         p2: who,
         status: 'wait',
-        chat: await conn.sendButton(m.chat, caption, wm, false, [['Y', 'Y'], ['N', 'N']], m, 0, {
-           contextInfo: {
-        mentionedJid: [m.sender, who] }}),
+        chat: await conn.sendButton(m.chat, caption, wm, false, [['Y', 'Y'], ['N', 'N']], m),
         waktu: setTimeout(async () => {
             if (conn.suit[id]) await conn.reply(m.chat, `_Waktu suit habis_`, conn.suit[id].chat)
             delete conn.suit[id]
