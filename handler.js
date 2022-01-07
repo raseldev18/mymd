@@ -522,7 +522,7 @@ module.exports = {
         }
     },
     
-  async participantsUpdate({ id, participants, action }) {
+  async participantsUpdate(m, { jid, participants, action }) {
         if (opts['self']) return
         // if (id in conn.chats) return // First login will spam
         if (global.isInit) return
@@ -541,7 +541,7 @@ module.exports = {
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || sock.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', sock.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || sock.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            sock.sendButtonLoc(id, text, wm, await(await fetch(pp)).buffer(), [[action === 'add' ? 'Welcome🙏' : 'Goodbye👋', '@rasel.ganz']], null, {
+                            sock.sendButtonLoc(m.chat, text, wm, await(await fetch(pp)).buffer(), [[action === 'add' ? 'Welcome🙏' : 'Goodbye👋', '@rasel.ganz']], null, {
                                 contextInfo: {
                                     mentionedJid: [user]
                                 }
