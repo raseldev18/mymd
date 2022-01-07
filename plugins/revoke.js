@@ -6,7 +6,7 @@ let handler = async (m, { isAdmin, isOwner, conn, command }) => {
   conn.groupRevokeInvite(m.chat)
   conn.reply(m.chat, `Sukses ${command} link grup, link telah di kirim ke chat pribadi`, m)
   await delay(1000)
-  let linknya = conn.groupInviteCode(m.chat)
+  let linknya = await conn.groupInviteCode(m.chat)
   conn.reply(m.sender, 'https://chat.whatsapp.com/' + linknya, m)
 }
 handler.help = ['revoke']
