@@ -17,3 +17,5 @@ handler.group = true
 handler.botAdmin = true
 
 module.exports = handler
+
+const delay = time => new Promise(res => setTimeout(res, time))
