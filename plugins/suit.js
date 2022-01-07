@@ -1,5 +1,5 @@
 let timeout = 90000
-
+let fetch = require('node-fetch')
 let handler = async (m, { conn, usedPrefix, text, isOwner }) => {
     if (!m.isGroup) {
         if (!isOwner) {
