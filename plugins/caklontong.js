@@ -18,7 +18,7 @@ Ketik ${usedPrefix}calo untuk bantuan
 Bonus: ${poin} XP
 `.trim()
     conn.caklontong[id] = [
-        await conn.sendButtonLoc(m.chat, caption, wm, await(await fetch(fla + `${command}`)).buffer(),, [['Bantuan', '.calo']], m),
+        await conn.sendButtonLoc(m.chat, caption, wm, await(await fetch(fla + `${command}`)).buffer(), [['Bantuan', '.calo']], m),
         json, poin,
         setTimeout(async () => {
             if (conn.caklontong[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*\n${json.deskripsi}`, wm, false, [['Cak Lontong', '.caklontong']], conn.caklontong[id])
