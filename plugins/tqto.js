@@ -57,6 +57,6 @@ https://github.com/raselcomel
 }
 handler.help = ['tqto']
 handler.tags = ['info']
-handler.command = /^(credits?|t(hanks)?t?(o)?(q)?|tq(to)?)$/i
+handler.command = /^(credits?|t(hanks)?to|tq(to)?)$/i
 
 module.exports = handler
