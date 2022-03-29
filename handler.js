@@ -559,7 +559,8 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        //if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+                        let lang = db.data.users[m.sender].language 
+                        if (m.limit) m.reply(+ m.limit + `${await this.trans(lang, 'Limit terpakai').catch(async _ => await this.trans2(lang, ' Limit terpakai'))}`)
                     }
                     break
                 }
