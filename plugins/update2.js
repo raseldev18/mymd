@@ -5,7 +5,7 @@ const { join } = require('path')
 
 let confirmation = {}
 let repository = 'raselcomel/mymd'
-let branch = 'multi-device'
+let branch = 'master'
 
 async function handler(m, { text }) {
     let res = await fetch(`https://raw.githubusercontent.com/${repository}/${branch}/${text}`)
