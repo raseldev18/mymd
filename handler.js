@@ -560,7 +560,7 @@ module.exports = {
                             }
                         }
                         let lang = db.data.users[m.sender].language 
-                        if (m.limit) m.reply(+ m.limit + `${await this.trans(lang, 'Limit terpakai').catch(async _ => await this.trans2(lang, ' Limit terpakai'))}`)
+                        if (m.limit) m.reply(+ m.limit + `${await this.trans(lang, ' Limit terpakai').catch(async _ => await this.trans2(lang, ' Limit terpakai'))}`)
                     }
                     break
                 }
@@ -568,7 +568,7 @@ module.exports = {
         } catch (e) {
             console.error(e)
         } finally {
-            // conn.sendPresenceUpdate('composing', m.chat) 
+            if (opts['typing']) conn.sendPresenceUpdate('composing', m.chat) 
             //console.log(global.db.data.users[m.sender])
             let user, stats = global.db.data.stats
             if (m) {
