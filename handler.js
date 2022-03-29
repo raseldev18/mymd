@@ -503,26 +503,6 @@ module.exports = {
                         fail('unreg', m, this)
                         continue
                     }
-                    if (plugin.restrict && !isRestrict) { // Restrict 
-                        fail('restrict', m, this)
-                        continue
-                    }
-                    if (plugin.rpg && !isRpg) { // RPG
-                        fail('rpg', m, this)
-                        continue
-                    }
-                    if (plugin.game && !isGame) { // Game
-                        fail('game', m, this)
-                        continue
-                    }
-                    if (plugin.nsfw&& !isNsfw) { // NSFW
-                        fail('nsfw', m, this)
-                        continue
-                    }
-                    if (plugin.dewasa && !isDewasa) { // Dewasa
-                        fail('dewasa', m, this)
-                        continue
-                    }
                     m.isCommand = true
                     let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
                     if (xp > 200) m.reply('Ngecit -_-') // Hehehe
