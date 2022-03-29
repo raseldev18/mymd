@@ -624,7 +624,7 @@ module.exports = {
             } catch (e) {
                 console.log(m, m.quoted, e)
             }
-            await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
+            if (opts['autoread']) await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
             let quequeIndex = this.msgqueque.indexOf(m.id || m.key.id)
             if (opts['queque'] && m.text && quequeIndex !== -1) this.msgqueque.splice(quequeIndex, 1)
         }
@@ -694,8 +694,8 @@ module.exports = {
         await this.sendB(msg.key.remoteJid, `
 Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
 Untuk mematikan fitur ini, ketik
-*.enable antidelete*
-`.trim(), wm, null, [[`Matikan Antidelete`, `.enable antidelete`]], msg, {
+*.enable delete*
+`.trim(), wm, null, [[`Matikan Antidelete`, `.enable delete`]], msg, {
             mentions: [participant]
         })
         this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
@@ -703,7 +703,7 @@ Untuk mematikan fitur ini, ketik
 }
 
 global.dfail = async (type, m, conn) => {
-	let lang = db.data.users[m.sender].language
+    let lang = db.data.users[m.sender].language
     let msg = {
         rowner: `*${await this.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Untuk'))}* @${global.owner[0]}`,
         owner: `*${await this.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Untuk'))}* @${global.owner[0]}`,
@@ -711,7 +711,7 @@ global.dfail = async (type, m, conn) => {
         moderator: `*${await this.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Untuk Moderator'))}*`,
         prems: `*${await this.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium'))}*`,
         premium: `*${await this.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium'))}*`,
-        group `*${await this.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Dalam Grup').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Grup'))}*`,
+        group: `*${await this.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Dalam Grup').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Grup'))}*`,
         private: `*${await this.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi'))}* @${this.user.jid}`,
         admin: `*${await this.trans(lang, 'Perintah Ini Hanya Untuk Admin Grup').catch(async _ => await this.trans2(lang, 'Perintah Ini Hanya Untuk Admin Grup'))}*`,
         botAdmin: `*${await this.trans(lang, 'Perintah Ini Aktif Ketika Bot Menjadi Admin').catch(async _ => await this.trans2(lang, 'Perintah Ini Ketika Bot Menjadi Admin'))}*`,
