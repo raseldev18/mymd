@@ -1,5 +1,5 @@
 let handler = async (m, {conn}) => {
-  let pp = let pp = await conn.profilePictureUrl(who, 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
+  let pp = await conn.profilePictureUrl(who, 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
   conn.reply(m.chat, `Bot ini menggunakan script github
      
 https://github.com/raselcomel/mymd
