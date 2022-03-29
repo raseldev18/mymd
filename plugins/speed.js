@@ -131,6 +131,8 @@ let handler = async (m, { conn, command }) => {
   let b = Object.entries(a).slice(0).map(entry => entry[1])
   let groups = b.map(v => v.id)
   let groupsIn = groups.filter(v => !v.read_only).length 
+  let blok = await conn.fetchBlocklist()
+  let goblock = blok.length
   let txt = `Merespon dalam ${speed} millidetik
 ${readMore}
 💬 *Chat Info:*
@@ -139,7 +141,7 @@ ${readMore}
 • *${groups.length - groupsIn}* Groups Left
 • *${chats.length - groups.length}* Personal Chats
 • *${chats.length}* Total Chats
-• *${await conn.fetchBlocklist().length}* Terblock
+• *${goblock}* Terblock
 • *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
 • *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
 
