@@ -7,12 +7,13 @@ https://github.com/raselcomel/mymd
 don't forget to give star ✨`, m, {
   contextInfo: { mentionedJid: [m.sender],
     externalAdReply :{
-    mediaUrl: web,
+    mediaUrl: '',
     mediaType: 2,
     description: 'des', 
     title: `Hello ${m.name}`,
     body: wm, 
-    thumbnail: await(await fetch(pp)).buffer()
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: web
    }}           
 }) 
 }
