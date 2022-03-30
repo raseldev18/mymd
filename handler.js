@@ -19,6 +19,7 @@ module.exports = {
         if (chatUpdate.messages.length > 1) console.log(chatUpdate.messages)
         let m = chatUpdate.messages[chatUpdate.messages.length - 1]
         let d = new Date(new Date + 3600000)
+        
         const hariRaya = new Date('December 31, 2022 23:59:59')
         const sekarang = new Date().getTime()
         const Selisih = hariRaya - sekarang
@@ -33,13 +34,14 @@ module.exports = {
         const ojam = Math.floor(Kurang % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
         const onet = Math.floor(Kurang % (1000 * 60 * 60) / (1000 * 60))
         const detek = Math.floor(Kurang % (1000 * 60) / 1000)
+        global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi Ultah ku ðŸ¥°`
+        global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi Tahun Baru ðŸ¥³`
+      
         let locale = 'id'
         let old = performance.now()
         let neww = performance.now()
         global.speed = neww - old + ' ms'
         global.delay = time => new Promise(res => setTimeout(res, time))
-        global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi Ultah ku ðŸ¥°`
-        global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi Tahun Baru ðŸ¥³`
         global.week = d.toLocaleDateString(locale, { weekday: 'long' })
         global.date = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
         global.weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
@@ -51,8 +53,6 @@ module.exports = {
         global.sock = conn
         global.namabot = conn.user.name
 
-        let wf = await (await fetch('https://api.waifu.pics/sfw/waifu')).json()
-        let wfu = wf.url
         let ne = await (await fetch('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/random/anime/neko.txt')).text()
         let nek = ne.split('\n')
         let neko = pickRandom(nek)
@@ -74,7 +74,7 @@ module.exports = {
 
         global.td = pickRandom([jax, jbx, jcx, jdx, jex])
         global.docux = img
-        global.nd = pickRandom(['rasel', 'raselcomel'])
+        global.nd = pickRandom(['@rasel.ganz', 'rasel ganz', 'rasel comel ', 'rasel', '𝓇𝒶𝓈ℯ𝓁', '𝑟𝑎𝑠𝑒𝑙', '𝒓𝒂𝒔𝒆𝒍', '𝐫𝐚𝐬𝐞𝐥', '𝔯𝔞𝔰𝔢𝔩', '𝖗𝖆𝖘𝖊𝖑', '𝕣𝕒𝕤𝕖𝕝', '𝚛𝚊𝚜𝚎𝚕', 'r̸a̸s̸e̸l̸', 'r༙a༙s༙e༙l༙', 'r͜͡a͜͡s͜͡e͜͡l͜͡', 'rྂaྂsྂeྂlྂ', 'rཽaཽsཽeཽlཽ', 'r̽aྂsཽe͠ ʟ', 'ʳᵃˢᵉˡ'])
         global.time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss')
 
         if (!m) return
@@ -161,7 +161,7 @@ module.exports = {
                     if (!isNumber(user.lastweekly)) user.lastweekly = 0
                     if (!isNumber(user.lastmonthly)) user.lastmontly = 0
                     if (!('registered' in user)) user.registered = false
-                    if (!('lang' in user)) user.lang = 'id'
+                    if (!('language' in user)) user.language = global.langx
                     if (!user.registered) {
                         if (!('name' in user)) user.name = this.getName(m.sender)
                         if (!isNumber(user.age)) user.age = -1
@@ -173,6 +173,10 @@ module.exports = {
                     if (!('autolevelup' in user)) user.autolevelup = false
                     if (!('banned' in user)) user.banned = false
                     if (!('level' in user)) user.level = 0
+                    if (!('owner' in user)) user.owner = false
+                    if (!isNumber(user.ownerTime)) user.ownerTime = 0
+                    if (!('moderator' in user)) user.moderator = false
+                    if (!isNumber(user.moderatorTime)) user.moderatorTime = 0
                     if (!('premium' in user)) user.premium = false
                     if (!isNumber(user.premiumTime)) user.premiumTime = 0
                     if (!user.role) user.role = 'Bronze'
@@ -246,7 +250,7 @@ module.exports = {
                     lastweekly: 0,
                     lastmonthly: 0,
                     registered: false,
-                    lang: 'id',
+                    language: global.langx,
                     name: this.getName(m.sender),
                     age: -1,
                     regTime: -1,
@@ -256,6 +260,10 @@ module.exports = {
                     autolevelup: false,
                     banned: false,
                     level: 0,
+                    owner: false, 
+                    ownerTime: 0,
+                    moderator: false, 
+                    moderatorTime: 0,
                     premium: false,
                     premiumTime: 0,
                     role: 'Bronze',
@@ -286,7 +294,7 @@ module.exports = {
                     if (!('antiToxic' in chat)) chat.antitoxic = true
                     if (!('antidelete' in chat)) chat.antidelete = true
                     if (!isNumber(chat.expired)) chat.expired = 0
-                    if (!('viewonce' in chat)) chat.viewonce = false
+                    if (!('viewonce' in chat)) chat.viewonce = true
                     if (!('autoread' in chat)) chat.autoread = false
                     if (!('clear' in chat)) chat.clear = false
                     if (!isNumber(chat.clearTime)) chat.clearTime = (new Date() * 1) + 3600000 * 1
@@ -312,7 +320,7 @@ module.exports = {
                     antiToxic: true,
                     antidelete: true,
                     expired: 0,
-                    viewonce: false,
+                    viewonce: true,
                     autoread: false,
                     clear: false,
                     clearTime: (new Date() * 1) + 3600000 * 1,
@@ -329,6 +337,7 @@ module.exports = {
                     if (!'antitroli' in settings) settings.antitroli = true
                     if (!'backup' in settings) settings.backup = false
                     if (!isNumber(settings.backupDB)) settings.backupDB = 0
+                    if (!'developerMode' in settings) settings.developerMode = false
                     if (!'groupOnly' in settings) settings.groupOnly = false
                     if (!'jadibot' in settings) settings.groupOnly = false
                     if (!'nsfw' in settings) settings.nsfw = true
@@ -345,6 +354,7 @@ module.exports = {
                     antitroli: true,
                     backup: false,
                     backupDB: 0,
+                    developerMode: false, 
                     groupOnly: false,
                     jadibot: false,
                     nsfw: true,
@@ -402,7 +412,7 @@ module.exports = {
                 if (!plugin) continue
                 if (plugin.disabled) continue
                 if (!opts['restrict']) if (plugin.tags && plugin.tags.includes('admin')) {
-                    // global.dfail('restrict', m, this)
+                    global.dfail('restrict', m, this)
                     continue
                 }
                 const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
@@ -556,7 +566,9 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        //if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+                        let lang = db.data.users[m.sender].language 
+                        let lim = await this.trans(lang, ' Limit terpakai').catch(async _ => await this.trans2(lang, ' Limit terpakai'))
+                        if (m.limit) m.reply(+ m.limit + lim)
                     }
                     break
                 }
@@ -564,7 +576,7 @@ module.exports = {
         } catch (e) {
             console.error(e)
         } finally {
-            // conn.sendPresenceUpdate('composing', m.chat) 
+            if (opts['typing']) conn.sendPresenceUpdate('composing', m.chat) 
             //console.log(global.db.data.users[m.sender])
             let user, stats = global.db.data.stats
             if (m) {
@@ -606,8 +618,7 @@ module.exports = {
             if (opts['queque'] && m.text && quequeIndex !== -1) this.msgqueque.splice(quequeIndex, 1)
         }
     },
-
-    async participantsUpdate({ id, participants, action }) {
+        async participantsUpdate({ id, participants, action }) {
         if (opts['self']) return
         // if (id in conn.chats) return // First login will spam
         if (global.isInit) return
@@ -619,7 +630,7 @@ module.exports = {
                 if (chat.welcome) {
                     let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                     for (let user of participants) {
-                        let pp = 'https://telegra.ph/file/22fd84e4a3244e1b17e4e.png'
+                        let pp = 'https://telegra.ph/file/95ba12ea483750fc4e306.jpg'
                         try {
                             pp = await this.profilePictureUrl(user, 'image')
                         } catch (e) {
@@ -627,16 +638,35 @@ module.exports = {
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            this.sendBL(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'WelcomeðŸ™' : 'GoodbyeðŸ‘‹', '@rasel.ganz']], null, {
-                                //contextInfo: {
-                                mentions: [user]
-                                // }
-                            })
-                        }
-                    }
-                }
-                break
-
+                            this.sendBD(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
+                            key: {
+                                fromMe: false,
+                                participant: '0@s.whatsapp.net',
+                                remoteJid: 'status@broadcast'
+                            },
+                            message: {
+                                 contactMessage: {
+                                 displayName: this.getName(user),
+                                 vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;WA;;;\nFN: WA\nTEL ; type=VOICE;waid=${user.split('@')[0]}:${user.split('@')[0]}\nEND:VCARD`
+                                }
+                              }                                 
+                            }, { 
+                             contextInfo: {
+                               mentionedJid: [user],
+                               externalAdReply :{
+                                  mediaUrl: linkgc,
+                                  mediaType: 2,
+                                  description: deslink, 
+                                  title: titlink,
+                                  body: bodlink,
+                                  thumbnail: await(await fetch(pp)).buffer(),
+                                  sourceUrl: ''
+                              }}
+                           })
+                       }
+                   }
+               }
+               break             
             case 'promote':
                 text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
             case 'demote':
@@ -660,8 +690,8 @@ module.exports = {
         await this.sendB(msg.key.remoteJid, `
 Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
 Untuk mematikan fitur ini, ketik
-*.enable antidelete*
-`.trim(), wm, null, [[`Matikan Antidelete`, `.enable antidelete`]], msg, {
+*.enable delete*
+`.trim(), wm, null, [[`Matikan Antidelete`, `.enable delete`]], msg, {
             mentions: [participant]
         })
         this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
@@ -669,22 +699,27 @@ Untuk mematikan fitur ini, ketik
 }
 
 global.dfail = async (type, m, conn) => {
+    let lang = db.data.users[m.sender].language
     let msg = {
-        rowner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        owner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        mods: `Perintah ini hanya dapat digunakan oleh *Moderator*`,
-        premium: `Perintah ini hanya dapat digunakan oleh member *Premium*, Upgrade ke premium? ketik #uptoprem*`,
-        group: `Perintah ini hanya dapat digunakan di grup!`,
-        private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-        admin: 'Perintah ini hanya untuk *Admin* grup!',
-        botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
-        nsfw: `NSFW tidak aktif, Silahkan hubungi Team Bot Discussion untuk mengaktifkan fitur ini!`,
-        rpg: `RPG tidak aktif, Silahkan hubungi Team Bot Discussion Untuk mengaktifkan fitur ini!`,
-        restrict: 'Fitur ini di *disable*!'
-    }[type]
-    if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg) })
-}
+        rowner: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk'))}* @${global.owner[0]}`,
+        owner: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk'))}* @${global.owner[0]}`,
+        mods: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Moderator'))}*`,
+        moderator: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Moderator'))}*`,
+        prems: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium'))}*`,
+        premium: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium'))}*`,
+        group: `*${await conn.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Dalam Grup').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Grup'))}*`,
+        private: `*${await conn.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi'))}* @${this.user.jid}`,
+        admin: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Admin Grup').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Admin Grup'))}*`,
+        botAdmin: `*${await conn.trans(lang, 'Perintah Ini Aktif Ketika Bot Menjadi Admin').catch(async _ => await conn.trans2(lang, 'Perintah Ini Ketika Bot Menjadi Admin'))}*`,
+        unreg: `*${await conn.trans(lang, 'Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur').catch(async _ => await conn.trans2(lang, 'Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur'))}*`,
+        dewasa: `*${await conn.trans(lang, 'Fitur DEWASA Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur DEWASA Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
+        nsfw: `*${await conn.trans(lang, 'Fitur NSFW Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur NSFW Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
+        game: `*${await conn.trans(lang, 'Fitur GAME Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur GAME Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
+        rpg: `*${await conn.trans(lang, 'Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
+        restrict: `*${await conn.trans(lang, 'Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
+      }[type]
+    if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg), jpegThumbnail: await (await fetch(img)).buffer() })
+  }
 
 let fs = require('fs')
 let chalk = require('chalk')
