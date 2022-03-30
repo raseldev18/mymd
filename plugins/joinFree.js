@@ -3,6 +3,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
   if (new Date - db.data.users[m.sender].lastjoin < 86400000) throw `Kamu sudah menggunakan limit invite bot harian hari ini\ntunggu selama ${msToTime(time - new Date())} lagi`
   var linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
   var delay = time => new Promise(res => setTimeout(res, time))
+ 
   var name = m.sender
   var fkonn = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '6285346545126@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${await conn.getName(name)}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
   var [_, code] = text.match(linkRegex) || []
@@ -14,7 +15,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
   try {
   var res = await conn.groupAcceptInvite(code)
   var b = await conn.groupMetadata(res)
-  var d = await b.participants.map(v => v.id)
+  var d = b.participants.map(v => v.id)
   var member = d.toString()
   var e = await d.filter(v => v.endsWith(anubot + '@s.whatsapp.net'))
   var jumlahHari = 86400000 * 0.1
@@ -27,7 +28,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
 @${conn.user.jid.split(`@`)[0]} akan keluar 5 detik lagi
 Bye😑
 Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
-    mentions: [m.sender, conn.user.jid, anubot + '@s.whatsapp.net']
+    mentions: d
      }).then(async () => {
      await delay(5000)
      }).then( async () => {
@@ -36,7 +37,6 @@ Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
      })
      if (!e.length) await conn.reply(owner[0]+'@s.whatsapp.net', `*INVITING!*\n\n@${m.sender.split('@')[0]} telah mengundang ${conn.user.name} ke grup\n\n${await conn.getName(res)}\n\n${res}\n\nPesan : ${args[0]}\n\nBot akan keluar otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`, null, {mentions: [m.sender]})
      if (!e.length) await m.reply(`Sukses invite bot ke group\n\n${await conn.getName(res)}\n\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`).then(async () => {
-     let hide = await conn.groupMetadata(m.chat)
      let mes = `Hello Everyone👋🏻
 
 *${conn.user.name}* adalah salah satu Bot WhatsApp Multi-Device yang di bangun dengan Node.js, *${conn.user.name}* Baru aja di invite oleh @${m.sender.split('@')[0]}
@@ -45,7 +45,7 @@ Untuk menggunakan *${conn.user.name}* silahkan ketik
 
 @${conn.user.jid.split('@')[0]} akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`
   await conn.sendB(res, mes, wm, null, [[`Owner`, `.owner`], [`Menu`, `${usedPrefix}menu`]], fkonn, {
-        mentions: hide.participants.map(a => a.id)
+        mentions: d
          })
      })
   db.data.users[m.sender].lastjoin = new Date * 1
