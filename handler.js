@@ -34,8 +34,8 @@ module.exports = {
         const ojam = Math.floor(Kurang % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
         const onet = Math.floor(Kurang % (1000 * 60 * 60) / (1000 * 60))
         const detek = Math.floor(Kurang % (1000 * 60) / 1000)
-        global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi Ultah ku ðŸ¥°`
-        global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi Tahun Baru ðŸ¥³`
+        global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi`
+        global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi`
       
         let locale = 'id'
         let old = performance.now()
@@ -696,6 +696,7 @@ Untuk mematikan fitur ini, ketik
 }
 
 global.dfail = async (type, m, conn) => {
+    let pp = await conn.profilePictureUrl(m.sender, 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
     let lang = db.data.users[m.sender].language 
     let msg = {
         rowner: `Perintah Ini Hanya Untuk @${global.owner[0]}`,
