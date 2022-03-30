@@ -94,6 +94,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         chat.antiBadword = isEnable
         break
       case 'autodelvn':
+      case 'delvn':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -144,11 +145,14 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       case 's':
       case 'stiker':
       case 'sticker':
-        if (m.isGroup) {
-          if (!(isAdmin || isOwner)) {
-            global.dfail('admin', m, conn)
+        if (!m.isGroup) {
+          if (!isOwner) {
+            global.dfail('group', m, conn)
             throw false
           }
+        } else if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
         }
         chat.stiker = isEnable
         break
@@ -239,8 +243,11 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
           throw false
         }
         opts['restrict'] = isEnable
+        break
       case 'ketik':
       case 'mengetik':
+      case 'typing':
+      case 'type':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -292,11 +299,17 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         break
       case 'nsfw':
         isAll = true
-        if (!isOwner) {
-          global.dfail('owner', m, conn)
+        if (!m.isGroup) {
+          if (!isOwner) {
+            global.dfail('group', m, conn)
+            throw false
+          }
+        } else if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
           throw false
-        }
-        setting.nsfw = isEnable
+        } 
+        if(m.isGroup) return chat.nsfw = isEnable
+        if(!m.isGroup) return setting.nsfw = isEnable
         break
       case 'jadibot':
       case 'bot':
