@@ -706,7 +706,7 @@ global.dfail = async (type, m, conn) => {
         prems: `Perintah Ini Hanya Untuk Pengguna Premium`,
         premium: `Perintah Ini Hanya Untuk Pengguna Premium`,
         group: `Perintah Ini Hanya Dapat Digunakan Di Dalam Grup`,
-        private: `Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi ${conn.user.jid.split('@')[0]}`,
+        private: `Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi @${conn.user.jid.split('@')[0]}`,
         admin: `Perintah Ini Hanya Untuk Admin Grup`,
         botAdmin: `Perintah Ini Aktif Ketika Bot Menjadi Admin`,
         unreg: `Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur`,
