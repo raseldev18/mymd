@@ -6,10 +6,10 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     let type = (args[0] || '').toLowerCase()
     let isAll = false
     let isUser = false
-    switch (type) {
-      case 'w':
-      case 'wel':
-      case 'welcome':
+      switch (type) {
+        case 'w':
+        case 'wel':
+        case 'welcome':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -21,9 +21,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.welcome = isEnable
         break
-      case 'detect':
-      case 'deteksi':
-      case 'detek':
+        case 'detect':
+        case 'deteksi':
+        case 'detek':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -35,8 +35,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.detect = isEnable
         break
-      case 'pclink':
-      case 'privatelink':
+        case 'pclink':
+        case 'privatelink':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -48,9 +48,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.privatelink = isEnable
         break
-      case 'desc':
-      case 'desk':
-      case 'deskripsi':
+        case 'desc':
+        case 'desk':
+        case 'deskripsi':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -62,9 +62,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.descUpdate = isEnable
         break
-      case 'd':
-      case 'del':
-      case 'delete':
+        case 'd':
+        case 'del':
+        case 'delete':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -73,9 +73,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.delete = isEnable
         break
-      case 'antid':
-      case 'antidel':
-      case 'antidelete':
+        case 'antid':
+        case 'antidel':
+        case 'antidelete':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -84,7 +84,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.antidelete = !isEnable
         break
-      case 'antibadword':
+        case 'antibadword':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -93,8 +93,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.antiBadword = isEnable
         break
-      case 'autodelvn':
-      case 'delvn':
+        case 'autodelvn':
+        case 'delvn':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -103,7 +103,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.autodelvn = isEnable
          break
-      case 'antivirus':
+        case 'antivirus':
             if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -112,7 +112,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.antivirus = isEnable
         break
-      case 'antivirtex':
+        case 'antivirtex':
+        case 'antivirtext':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
@@ -121,7 +122,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
          chat.antiVirtext = isEnable
          break
-      case 'antitroli':
+        case 'antitroli':
         isAll = true
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
@@ -131,15 +132,15 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.antitroli = isEnable
         break
-      case 'document':
-      case 'doc':
-      case 'dokumen':
-      case 'dok':
+        case 'document':
+        case 'doc':
+        case 'dokumen':
+        case 'dok':
         chat.useDocument = isEnable
         break
-      case 'publik':
-      case 'public':
-      case 'p':
+        case 'publik':
+        case 'public':
+        case 'p':
         isAll = true
         if (!isROwner) {
           global.dfail('rowner', m, conn)
@@ -147,8 +148,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         global.opts['self'] = !isEnable
         break
-      case 'antilink':
-      case 'antiurl':
+        case 'antilink':
+        case 'antiurl':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -159,9 +160,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
           throw false
         }
         chat.antiLink = isEnable
-      case 's':
-      case 'stiker':
-      case 'sticker':
+        case 's':
+        case 'stiker':
+        case 'sticker':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -173,40 +174,54 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.stiker = isEnable
         break
-      case 'autolevelup':
-      case 'levelup':
-      case 'level':
+        case 'autolevelup':
+        case 'levelup':
+        case 'level':
         isUser = true
         user.autolevelup = isEnable
         break
-      case 'mycontact':
-      case 'mycontacts':
-      case 'whitelistcontact':
-      case 'whitelistcontacts':
-      case 'whitelistmycontact':
-      case 'whitelistmycontacts':
+        case 'mycontact':
+        case 'mycontacts':
+        case 'whitelistcontact':
+        case 'whitelistcontacts':
+        case 'whitelistmycontact':
+        case 'whitelistmycontacts':
         if (!isOwner) {
           global.dfail('owner', m, conn)
           throw false
         }
         conn.callWhitelistMode = isEnable
         break
-      case 'gc':
-      case 'gconly':
-      case 'grup':
-      case 'gruponly':
-      case 'grouponly':
+        case 'gc':
+        case 'gconly':
+        case 'grup':
+        case 'group':
+        case 'gruponly':
+        case 'grouponly':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
           throw false
         }
-        global.opts['gconly'] = !isEnable
+        global.opts['gconly'] = isEnable
         break
-      case 'backup':
-      case 'backupdb':
-      case 'autobackup':
-      case 'autobackupdb':
+        case 'pc':
+        case 'pconly':
+        case 'private':
+        case 'privat':
+        case 'privatonly':
+        case 'privateonly':
+        isAll = true
+        if (!isOwner) {
+          global.dfail('owner', m, conn)
+          throw false
+        }
+        global.opts['gconly'] = isEnable
+        break
+        case 'backup':
+        case 'backupdb':
+        case 'autobackup':
+        case 'autobackupdb':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -214,10 +229,10 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.backup = isEnable
         break
-      case 'anticall':
-      case 'antivc':
-      case 'antitelfon':
-      case 'antitelpon':
+        case 'anticall':
+        case 'antivc':
+        case 'antitelfon':
+        case 'antitelpon':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -225,7 +240,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.anticall = isEnable
         break
-      case 'publicjoin': 
+        case 'publicjoin': 
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -233,8 +248,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.publicjoin = isEnable
         break
-      case 'autoread':
-      case 'read':
+        case 'autoread':
+        case 'read':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -242,9 +257,9 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         opts['autoread'] = isEnable
         break
-      case 'restrict':
-      case 'rest':
-      case 'res':
+        case 'restrict':
+        case 'rest':
+        case 'res':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -252,10 +267,10 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         opts['restrict'] = isEnable
         break
-      case 'ketik':
-      case 'mengetik':
-      case 'typing':
-      case 'type':
+        case 'ketik':
+        case 'mengetik':
+        case 'typing':
+        case 'type':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -263,8 +278,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         opts['typing'] = isEnable
         break
-      case 'antispam':
-      case 'nospam':
+        case 'antispam':
+        case 'nospam':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -281,23 +296,23 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         setting.autogetmsg = isEnable
         setting.getmsg = isEnable
         break
-      case 'status': 
-      case 'updatestatus':
+        case 'status': 
+        case 'updatestatus':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
         }
         setting.statusUpdate = isEnable
         break
-      case 'antivirus':
+        case 'antivirus':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
         }
         setting.antivirus = true
         break
-      case 'anon':
-      case 'anonymous':
+        case 'anon':
+        case 'anonymous':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
@@ -305,7 +320,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.anon = isEnable
         break
-      case 'nsfw':
+        case 'nsfw':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -317,7 +332,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         chat.nsfw = isEnable
         break
-      case 'mature':
+        case 'mature':
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -329,8 +344,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.mature = isEnable
         break
-      case 'jadibot':
-      case 'bot':
+        case 'jadibot':
+        case 'bot':
         isAll = true
         if (!isOwner) {
           global.dfail('owner', m, conn)
