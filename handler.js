@@ -651,9 +651,10 @@ module.exports = {
                                 }
                               }                                 
                             }, { 
-                             contextInfo: {
+                             //contextInfo: {
                                jpegThumbnail: await (await fetch(pp)).buffer(), fileName: global.nd, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentions: [user],
+                               contextInfo: {
                                externalAdReply :{
                                   mediaUrl: linkig,
                                   mediaType: 2,
