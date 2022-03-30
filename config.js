@@ -17,7 +17,10 @@ global.baileys = require('@adiwajshing/baileys')
 global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Change owner number => src/premium.json
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Premium user has unlimited limit
-global.DeveloperMode = 'false'
+
+global.devx = 'false' //developer mode
+global.langx = 'en' //language users
+
 global.APIs = { // API Prefix
 //======= name: 'https://website' ========//
   nrtm: 'https://nurutomo.herokuapp.com',
