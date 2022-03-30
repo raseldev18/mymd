@@ -36,7 +36,7 @@ Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
      })
      if (!e.length) await conn.reply(owner[0]+'@s.whatsapp.net', `*INVITING!*\n\n@${m.sender.split('@')[0]} telah mengundang ${conn.user.name} ke grup\n\n${await conn.getName(res)}\n\n${res}\n\nPesan : ${args[0]}\n\nBot akan keluar otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`, null, {mentions: [m.sender]})
      if (!e.length) await m.reply(`Sukses invite bot ke group\n\n${await conn.getName(res)}\n\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`).then(async () => {
-     let weem = `Powered by: @0\nCreated by: @${owner[0]}`
+     let hide = await conn.groupMetadata(m.chat)
      let mes = `Hello Everyone👋🏻
 
 *${conn.user.name}* adalah salah satu Bot WhatsApp Multi-Device yang di bangun dengan Node.js, *${conn.user.name}* Baru aja di invite oleh @${m.sender.split('@')[0]}
@@ -44,8 +44,8 @@ Untuk menggunakan *${conn.user.name}* silahkan ketik
 #menu
 
 @${conn.user.jid.split('@')[0]} akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`
-  await conn.sendB(res, mes, weem, null, [[`Owner`, `.owner`], [`Menu`, `${usedPrefix}menu`]], fkonn, {
-        mentions: conn.parseMention(mes + weem) 
+  await conn.sendB(res, mes, wm, null, [[`Owner`, `.owner`], [`Menu`, `${usedPrefix}menu`]], fkonn, {
+        mentions: hide.participants.map(a => a.id)
          })
      })
   db.data.users[m.sender].lastjoin = new Date * 1
