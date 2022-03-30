@@ -630,27 +630,19 @@ module.exports = {
                 if (chat.welcome) {
                     let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                     for (let user of participants) {
-                        let ppuser = 'https://telegra.ph/file/95ba12ea483750fc4e306.jpg'
+                        let pp = 'https://telegra.ph/file/118a75cb0c8396bdd7975.jpg'
                         try {
-                            ppuser = await this.profilePictureUrl(user, 'image')
+                            pp = await this.profilePictureUrl(user, 'image')
                         } catch (e) {
 
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            this.sendBD(id, text, wm, ppuser, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
-                            key: {
-                                fromMe: false,
-                                participant: '0@s.whatsapp.net',
-                                remoteJid: 'status@broadcast'
-                            },
-                            message: {
-                                 contactMessage: {
-                                 displayName: this.getName(user),
-                                 vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;WA;;;\nFN: WA\nTEL ; type=VOICE;waid=${user.split('@')[0]}:${user.split('@')[0]}\nEND:VCARD`
-                                }
-                              }                                 
-                            }, { 
+                            this.sendBD(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
+                              key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${await this.getName(user)}`, vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${user}\nitem1.TEL;waid=${user.split('@')[0]}:${user.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}},
+                            //key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${await this.getName(user)}`, vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;WA;;;\nFN: WA\nTEL ; type=VOICE;waid=${user.split('@')[0]}:${user.split('@')[0]}\nEND:VCARD`}}}, 
+                               //...options 
+                               { 
                                jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: `Welcome ${await conn.getName(user)} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentions: [user],
                                contextInfo: {
@@ -719,7 +711,7 @@ global.dfail = async (type, m, conn) => {
         rpg: `Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya`,
         restrict: `Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya`,
       }[type]
-    if (msg) return conn.reply(m.chat, await conn.trans(lang, msg).catch(async _ => await conn.trans2(lang, msg)), m, { mentions: conn.parseMention(msg) })
+    if (msg) return conn.reply(m.chat, await conn.trans(lang, msg).catch(async _ => await conn.trans2(lang, msg)), m, { mentions: conn.parseMention(msg), jpegThumbnail: await (await fetch(pp)).buffer() })
 }
 
 let fs = require('fs')
