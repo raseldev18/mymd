@@ -104,15 +104,32 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         chat.autodelvn = isEnable
          break
       case 'antivirus':
+            if (m.isGroup) {
+          if (!(isAdmin || isOwner)) {
+            global.dfail('admin', m, conn)
+            throw false
+          }
+        }
+        setting.antivirus = isEnable
+        break
       case 'antivirtex':
-      case 'antivirtext':
         if (m.isGroup) {
           if (!(isAdmin || isOwner)) {
             global.dfail('admin', m, conn)
             throw false
           }
         }
-        chat.antivirtext = isEnable
+         chat.antiVirtext = isEnable
+         break
+      case 'antitroli':
+        isAll = true
+        if (m.isGroup) {
+          if (!(isAdmin || isOwner)) {
+            global.dfail('admin', m, conn)
+            throw false
+          }
+        }
+        chat.antitroli = isEnable
         break
       case 'document':
       case 'doc':
@@ -208,14 +225,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
         setting.anticall = isEnable
         break
-      case 'antitroli':
-        isAll = true
-        if (!isOwner) {
-          global.dfail('owner', m, conn)
-          throw false
-        }
-        setting.antitroli = isEnable
-        break
       case 'publicjoin': 
         isAll = true
         if (!isOwner) {
@@ -278,7 +287,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         if (!isOwner) {
           global.dfail('owner', m, conn)
         }
-        setting.bio = isEnable
+        setting.statusUpdate = isEnable
         break
       case 'antivirus':
         isAll = true
