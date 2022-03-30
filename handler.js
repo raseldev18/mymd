@@ -651,8 +651,7 @@ module.exports = {
                                 }
                               }                                 
                             }, { 
-                             //contextInfo: {
-                               jpegThumbnail: await (await fetch(pp)).buffer(), fileName: global.nd, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
+                               jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: global.nd, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentions: [user],
                                contextInfo: {
                                externalAdReply :{
@@ -748,7 +747,6 @@ function pickRandom(list) {
 
 global.tmbnld = [
     'https://telegra.ph/file/27e90a619b30082694bde.jpg',
-    'https://telegra.ph/file/61f2d6d9694b49a2ce7aa.jpg'
 ]
 
 global.tmbnlm = [
