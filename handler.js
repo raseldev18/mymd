@@ -716,7 +716,7 @@ global.dfail = async (type, m, conn) => {
         rpg: `Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya`,
         restrict: `Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya`,
       }[type]
-    if (msg) return conn.reply(m.chat, await conn.trans(lang, msg).catch(async _ => await conn.trans2(lang, msg)), m, { mentions: conn.parseMention(msg), jpegThumbnail: await (await fetch(pp)).buffer() })
+    if (msg) return conn.reply(m.chat,  msg, m, { mentions: conn.parseMention(msg), jpegThumbnail: await (await fetch(pp)).buffer() })
 }
 
 let fs = require('fs')
