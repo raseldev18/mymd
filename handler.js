@@ -337,7 +337,7 @@ module.exports = {
                     if (!'antitroli' in settings) settings.antitroli = true
                     if (!'backup' in settings) settings.backup = false
                     if (!isNumber(settings.backupDB)) settings.backupDB = 0
-                    if (!'developerMode' in settings) settings.developerMode = false
+                    if (!'developerMode' in settings) settings.developerMode = global.devx
                     if (!'groupOnly' in settings) settings.groupOnly = false
                     if (!'jadibot' in settings) settings.groupOnly = false
                     if (!'nsfw' in settings) settings.nsfw = true
@@ -354,7 +354,7 @@ module.exports = {
                     antitroli: true,
                     backup: false,
                     backupDB: 0,
-                    developerMode: false, 
+                    developerMode: global.devx, 
                     groupOnly: false,
                     jadibot: false,
                     nsfw: true,
@@ -567,8 +567,8 @@ module.exports = {
                             }
                         }
                         let lang = db.data.users[m.sender].language 
-                        let lim = await this.trans(lang, ' Limit terpakai').catch(async _ => await this.trans2(lang, ' Limit terpakai'))
-                        if (m.limit) m.reply(+ m.limit + lim)
+                        let lim = await this.trans(lang, 'Limit terpakai').catch(async _ => await this.trans2(lang, 'Limit terpakai'))
+                        if (m.limit) m.reply(+ m.limit + ' ' + lim)
                     }
                     break
                 }
@@ -613,7 +613,7 @@ module.exports = {
             } catch (e) {
                 console.log(m, m.quoted, e)
             }
-            await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
+            if (opts['autoread']) await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
             let quequeIndex = this.msgqueque.indexOf(m.id || m.key.id)
             if (opts['queque'] && m.text && quequeIndex !== -1) this.msgqueque.splice(quequeIndex, 1)
         }
@@ -652,9 +652,10 @@ module.exports = {
                               }                                 
                             }, { 
                              contextInfo: {
+                               jpegThumbnail: await (await fetch(pp)).buffer(), fileName: global.nd, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentionedJid: [user],
                                externalAdReply :{
-                                  mediaUrl: linkgc,
+                                  mediaUrl: linkig,
                                   mediaType: 2,
                                   description: deslink, 
                                   title: titlink,
@@ -700,18 +701,22 @@ Untuk mematikan fitur ini, ketik
 
 global.dfail = async (type, m, conn) => {
     let msg = {
-        rowner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        owner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        mods: `Perintah ini hanya dapat digunakan oleh *Moderator*`,
-        premium: `Perintah ini hanya dapat digunakan oleh member *Premium*, Upgrade ke premium? ketik #uptoprem*`,
-        group: `Perintah ini hanya dapat digunakan di grup!`,
-        private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-        admin: 'Perintah ini hanya untuk *Admin* grup!',
-        botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
-        nsfw: `NSFW tidak aktif, Silahkan hubungi Team Bot Discussion untuk mengaktifkan fitur ini!`,
-        rpg: `RPG tidak aktif, Silahkan hubungi Team Bot Discussion Untuk mengaktifkan fitur ini!`,
-        restrict: 'Fitur ini di *disable*!'
+        rowner: await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk')) + ` @${global.owner[0]}`,
+        owner: await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk')) + ` @${global.owner[0]}`,
+        mods: await conn.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Moderator')),
+        moderator: await conn.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Moderator')),
+        prems: await conn.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium')),
+        premium: await conn.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium')),
+        group: await conn.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Dalam Grup').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Grup')),
+        private: await conn.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi')) + ` @${this.user.jid}`,
+        admin: await conn.trans(lang, 'Perintah Ini Hanya Untuk Admin Grup').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Admin Grup')),
+        botAdmin: await conn.trans(lang, 'Perintah Ini Aktif Ketika Bot Menjadi Admin').catch(async _ => await conn.trans2(lang, 'Perintah Ini Ketika Bot Menjadi Admin')),
+        unreg: await conn.trans(lang, 'Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur').catch(async _ => await conn.trans2(lang, 'Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur')),
+        dewasa: await conn.trans(lang, 'Fitur DEWASA Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur DEWASA Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya')),
+        nsfw: await conn.trans(lang, 'Fitur NSFW Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur NSFW Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya')),
+        game: await conn.trans(lang, 'Fitur GAME Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur GAME Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya')),
+        rpg: await conn.trans(lang, 'Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya')),
+        restrict: await conn.trans(lang, 'Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya')),
     }[type]
     if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg) })
 }
