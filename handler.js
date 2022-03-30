@@ -716,29 +716,6 @@ global.dfail = async (type, m, conn) => {
     if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg) })
 }
 
-global.dfail2 = async (type, m, conn) => {
-    let lang = db.data.users[m.sender].language
-    let msg = {
-        rowner: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk'))}* @${global.owner[0]}`,
-        owner: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk'))}* @${global.owner[0]}`,
-        mods: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Moderator'))}*`,
-        moderator: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Moderator').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Moderator'))}*`,
-        prems: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium'))}*`,
-        premium: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Pengguna Premium').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Pengguna Premium'))}*`,
-        group: `*${await conn.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Dalam Grup').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Grup'))}*`,
-        private: `*${await conn.trans(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Dapat Digunakan Di Chat Pribadi'))}* @${this.user.jid}`,
-        admin: `*${await conn.trans(lang, 'Perintah Ini Hanya Untuk Admin Grup').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk Admin Grup'))}*`,
-        botAdmin: `*${await conn.trans(lang, 'Perintah Ini Aktif Ketika Bot Menjadi Admin').catch(async _ => await conn.trans2(lang, 'Perintah Ini Ketika Bot Menjadi Admin'))}*`,
-        unreg: `*${await conn.trans(lang, 'Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur').catch(async _ => await conn.trans2(lang, 'Belum Terdaftar, Silahkan Daftar Dengan Mengetik #daftar nama.umur'))}*`,
-        dewasa: `*${await conn.trans(lang, 'Fitur DEWASA Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur DEWASA Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
-        nsfw: `*${await conn.trans(lang, 'Fitur NSFW Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur NSFW Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
-        game: `*${await conn.trans(lang, 'Fitur GAME Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur GAME Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
-        rpg: `*${await conn.trans(lang, 'Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
-        restrict: `*${await conn.trans(lang, 'Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya').catch(async _ => await conn.trans2(lang, 'Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya'))}*`,
-      }[type]
-    if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg), jpegThumbnail: await (await fetch(img)).buffer() })
-  }
-
 let fs = require('fs')
 let chalk = require('chalk')
 const { default: fetch } = require('node-fetch')
