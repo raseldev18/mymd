@@ -184,7 +184,6 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
           global.dfail('owner', m, conn)
           throw false
         }
-         
         global.opts['gconly'] = !isEnable
         break
       case 'backup':
@@ -308,8 +307,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
           global.dfail('admin', m, conn)
           throw false
         } 
-        if(m.isGroup) return chat.nsfw = isEnable
-        if(!m.isGroup) return setting.nsfw = isEnable
+        chat.nsfw = isEnable
         break
       case 'jadibot':
       case 'bot':
