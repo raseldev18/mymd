@@ -652,7 +652,7 @@ module.exports = {
                                   description: deslink, 
                                   title: titlink + 'ツ',
                                   body: bodlink,
-                                  thumbnail: await(await fetch(ppuser)).buffer(),
+                                  thumbnail: await(await fetch(pp)).buffer(),
                                   sourceUrl: ''
                               }}
                            })
