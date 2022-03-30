@@ -239,6 +239,14 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
           throw false
         }
         opts['restrict'] = isEnable
+      case 'ketik':
+      case 'mengetik':
+        isAll = true
+        if (!isOwner) {
+          global.dfail('owner', m, conn)
+          throw false
+        }
+        opts['typing'] = isEnable
         break
       case 'antispam':
       case 'nospam':
@@ -332,7 +340,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
             break
       default:
         if (!/[01]/.test(command)) throw `
-${sa}${kki} *Daftar Opsi* ${kka}${isOwner ? `\n${gy} anon\n${gy} antispam\n${gy} antitroli\n${gy} autoread\n${gy} antitoxic\n${gy} backup\n${gy} antivirus\n${gy} status\n${gy} getmsg\n${gy} publicjoin\n${gy} clear\n${gy} grouponly\n${gy} jadibot\n${gy} nsfw\n${gy} public\n${gy} mycontact` : ''}
+${sa}${kki} *Daftar Opsi* ${kka}${isOwner ? `\n${gy} anon\n${gy} antispam\n${gy} antitroli\n${gy} autoread\n${gy} antitoxic\n${gy} backup\n${gy} antivirus\n${gy} status\n${gy} getmsg\n${gy} publicjoin\n${gy} clear\n${gy} grouponly\n${gy} jadibot\n${gy} mengetik\n${gy} nsfw\n${gy} public\n${gy} mycontact` : ''}
 ${gy} antilink 
 ${gy} autolevelup 
 ${gy} delete
