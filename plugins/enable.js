@@ -297,7 +297,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         setting.anon = isEnable
         break
       case 'nsfw':
-        isAll = true
+        isUser = true
         if (!m.isGroup) {
           if (!isOwner) {
             global.dfail('group', m, conn)
@@ -306,7 +306,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         } else if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
           throw false
-        } 
+        }
         chat.nsfw = isEnable
         break
       case 'jadibot':
