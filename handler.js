@@ -647,7 +647,7 @@ module.exports = {
                             //key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${await this.getName(user)}`, vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;WA;;;\nFN: WA\nTEL ; type=VOICE;waid=${user.split('@')[0]}:${user.split('@')[0]}\nEND:VCARD`}}}, 
                                //...options 
                                { 
-                               jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: `Welcome ${await conn.getName(user)} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
+                               jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: action === 'add' ? 'Welcome' : 'Goodbye' + ` ${await conn.getName(user)} `, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentions: [user],
                                contextInfo: {
                                externalAdReply :{
