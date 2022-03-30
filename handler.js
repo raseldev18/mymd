@@ -638,7 +638,7 @@ module.exports = {
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            this.sendBD(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
+                            this.sendBD(id, text, wm, ppuser, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
                             key: {
                                 fromMe: false,
                                 participant: '0@s.whatsapp.net',
@@ -651,7 +651,7 @@ module.exports = {
                                 }
                               }                                 
                             }, { 
-                               jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: global.nd, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
+                               jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: `Welcome ${await conn.getName(user)} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentions: [user],
                                contextInfo: {
                                externalAdReply :{
@@ -719,7 +719,7 @@ global.dfail = async (type, m, conn) => {
         rpg: `Fitur RPG Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya`,
         restrict: `Fitur Admin Tidak Aktif Silahkan Hubungi Owner Untuk Mengaktifkannya`,
       }[type]
-    if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg) })
+    if (msg) return conn.reply(m.chat, await conn.trans(lang, msg).catch(async _ => await conn.trans2(lang, msg)), m, { mentions: conn.parseMention(msg) })
 }
 
 let fs = require('fs')
