@@ -412,7 +412,7 @@ module.exports = {
                 if (!plugin) continue
                 if (plugin.disabled) continue
                 if (!opts['restrict']) if (plugin.tags && plugin.tags.includes('admin')) {
-                    global.dfail('restrict', m, this)
+                    //global.dfail('restrict', m, this)
                     continue
                 }
                 const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
