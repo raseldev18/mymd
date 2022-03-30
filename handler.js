@@ -286,16 +286,18 @@ module.exports = {
                     if (!('delete' in chat)) chat.delete = true
                     if (!('antiBadword' in chat)) chat.antiBadword = true
                     if (!('rpg' in chat)) chat.rpg = true
-                    if (!('nsfw' in chat)) chat.nsfw = false
+                    if (!('nsfw' in chat)) chat.nsfw = true
                     if (!('stiker' in chat)) chat.stiker = false
                     if (!('antiBadword' in chat)) chat.antiBadword = true
                     if (!('antiLink' in chat)) chat.antiLink = false
-                    if (!('antiVrtex' in chat)) chat.antivirtex = true
+                    if (!('antiVrtext' in chat)) chat.antivirtext = true
                     if (!('antiToxic' in chat)) chat.antitoxic = true
                     if (!('antidelete' in chat)) chat.antidelete = true
                     if (!isNumber(chat.expired)) chat.expired = 0
                     if (!('viewonce' in chat)) chat.viewonce = true
                     if (!('autoread' in chat)) chat.autoread = false
+                    if (!('autodelvn' in chat)) chat.autodelvn = false
+                    if (!isNumber(chat.autodelvnTime)) chat.autodelvnTime = (new Date() * 1) + 3600000 * 1
                     if (!('clear' in chat)) chat.clear = false
                     if (!isNumber(chat.clearTime)) chat.clearTime = (new Date() * 1) + 3600000 * 1
                     if (!('autodownload' in chat)) chat.autodownload = true
@@ -312,16 +314,18 @@ module.exports = {
                     descUpdate: true,
                     delete: true,
                     rpg: true,
-                    nsfw: false,
+                    nsfw: true,
                     stiker: false,
                     antiBadword: true,
                     antiLink: false,
-                    antiVirtex: true,
+                    antiVirtext: true,
                     antiToxic: true,
                     antidelete: true,
                     expired: 0,
                     viewonce: true,
                     autoread: false,
+                    autodelvn: false,
+                    autodelvnTime: (new Date() * 1) + 3600000 * 1,
                     clear: false,
                     clearTime: (new Date() * 1) + 3600000 * 1,
                     autodownload: true,
@@ -340,7 +344,7 @@ module.exports = {
                     if (!'developerMode' in settings) settings.developerMode = global.devx
                     if (!'groupOnly' in settings) settings.groupOnly = false
                     if (!'jadibot' in settings) settings.groupOnly = false
-                    if (!'nsfw' in settings) settings.nsfw = true
+                    if (!'nsfw' in settings) settings.nsfw= true
                     if (!isNumber(settings.status)) settings.status = 0
                     if (!'statusUpdate' in settings) settings.statusUpdate = false
                     if (!'antivirus' in settings) settings.antivirus = false
@@ -357,7 +361,7 @@ module.exports = {
                     developerMode: global.devx, 
                     groupOnly: false,
                     jadibot: false,
-                    nsfw: true,
+                    nsfw: true, 
                     status: 0,
                     statusUpdate: false,
                     antivirus: false,
