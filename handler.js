@@ -618,7 +618,7 @@ module.exports = {
             if (opts['queque'] && m.text && quequeIndex !== -1) this.msgqueque.splice(quequeIndex, 1)
         }
     },
-        async participantsUpdate({ id, participants, action }) {
+    async participantsUpdate({ id, participants, action }) {
         if (opts['self']) return
         // if (id in conn.chats) return // First login will spam
         if (global.isInit) return
