@@ -653,12 +653,12 @@ module.exports = {
                             }, { 
                              contextInfo: {
                                jpegThumbnail: await (await fetch(pp)).buffer(), fileName: global.nd, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
-                               mentionedJid: [user],
+                               mentions: [user],
                                externalAdReply :{
                                   mediaUrl: linkig,
                                   mediaType: 2,
                                   description: deslink, 
-                                  title: titlink,
+                                  title: titlink + 'ツ',
                                   body: bodlink,
                                   thumbnail: await(await fetch(pp)).buffer(),
                                   sourceUrl: ''
@@ -692,7 +692,7 @@ module.exports = {
 Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
 Untuk mematikan fitur ini, ketik
 *.enable delete*
-`.trim(), wm, null, [[`Matikan Antidelete`, `.enable delete`]], msg, {
+`.trim(), wm, null, [[`Nyalakan Delelete`, `.enable delete`]], msg, {
             mentions: [participant]
         })
         this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
@@ -700,6 +700,7 @@ Untuk mematikan fitur ini, ketik
 }
 
 global.dfail = async (type, m, conn) => {
+    let lang = db.data.users[m.sender].language 
     let msg = {
         rowner: await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk')) + ` @${global.owner[0]}`,
         owner: await conn.trans(lang, 'Perintah Ini Hanya Untuk').catch(async _ => await conn.trans2(lang, 'Perintah Ini Hanya Untuk')) + ` @${global.owner[0]}`,
