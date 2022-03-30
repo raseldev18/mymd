@@ -308,7 +308,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
           global.dfail('admin', m, conn)
           throw false
         } 
-        setting.nsfw = isEnable
+        if(m.isGroup) chat.nsfw = isEnable
+        if(!m.isGroup) setting.nsfw = isEnable
         break
       case 'jadibot':
       case 'bot':
