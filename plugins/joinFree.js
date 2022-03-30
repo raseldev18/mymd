@@ -49,7 +49,8 @@ Untuk menggunakan *${conn.user.name}* silahkan ketik
          })
      })
   db.data.users[m.sender].lastjoin = new Date * 1
-    } catch {
+    } catch (e) {
+      conn.reply(owner[0]+'@s.whatsapp.net', e)
       throw `Maaf bot tidak bisa bergabung ke grup!`
       }
 }
