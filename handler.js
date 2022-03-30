@@ -344,7 +344,7 @@ module.exports = {
                     if (!'developerMode' in settings) settings.developerMode = global.devx
                     if (!'groupOnly' in settings) settings.groupOnly = false
                     if (!'jadibot' in settings) settings.groupOnly = false
-                    if (!'nsfw' in settings) settings.nsfw= true
+                    if (!'mature' in settings) settings.mature = true
                     if (!isNumber(settings.status)) settings.status = 0
                     if (!'statusUpdate' in settings) settings.statusUpdate = false
                     if (!'antivirus' in settings) settings.antivirus = false
@@ -361,7 +361,7 @@ module.exports = {
                     developerMode: global.devx, 
                     groupOnly: false,
                     jadibot: false,
-                    nsfw: true, 
+                    mature: true, 
                     status: 0,
                     statusUpdate: false,
                     antivirus: false,
@@ -662,7 +662,7 @@ module.exports = {
                            })
                        }
                    }
-               }
+               },
                break             
             case 'promote':
                 text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
