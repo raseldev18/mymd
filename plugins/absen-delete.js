@@ -20,7 +20,7 @@ let handler = async (m, { conn, isAdmin, isOwner, usedPrefix }) => {
 }
 handler.help = ['deleteabsent']
 handler.tags = ['absen']
-handler.command = /^((delete|hapus|removed?)absent?|absent?(delete|hapus|removed?))$/i
+handler.command = /^((delete|hapus|removed?)absent?|absent?(delete|hapus|removed?)|healabsent?)$/i
 
 handler.group = true
 
