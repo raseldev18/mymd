@@ -23,9 +23,9 @@ let handler = async (m, { conn, isAdmin, isOwner, usedPrefix, text, participants
         text
     ]
 }
-handler.help = ['startabsen <text>']
+handler.help = ['startabsent <text>']
 handler.tags = ['absen']
-handler.command = /^((start|mulai)absent?|absent?(start|mulai))$/i
+handler.command = /^(start?absent?|absent?start?|mulaiabsent?|absent?mulai)$/i
 
 handler.group = true
 
