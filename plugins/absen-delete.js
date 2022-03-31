@@ -18,9 +18,9 @@ let handler = async (m, { conn, isAdmin, isOwner, usedPrefix }) => {
     delete conn.absen[id]
     m.reply(await conn.trans(lang, 'Absen dihapus').catch(async _ => await conn.trans2(lang, 'Absen dihapus')))
 }
-handler.help = ['hapusabsen']
+handler.help = ['deleteabsent']
 handler.tags = ['absen']
-handler.command = /^(d(e?l?e?t?e?)?|ha?pu?s)abs(ent?)?|abs(ent?)?(ha?pu?s|d(e?l?e?t?e?)?)$/i
+handler.command = /^((d(e?l?e?t?e?)?|hapus|remove?d?)absent?)$/i
 
 handler.group = true
 
