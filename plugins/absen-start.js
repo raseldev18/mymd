@@ -12,7 +12,7 @@ let handler = async (m, { conn, isAdmin, isOwner, usedPrefix, text, participants
         let cc = await conn.trans(lang, ca).catch(async _ => await conn.trans2(lang, ca))
         let cd = await conn.trans(lang, cb).catch(async _ => await conn.trans2(lang, cb)) 
         let capt = '_*'+cc+'*_\n\n'+cd
-        conn.sendB(m.chat, capt, wm, null, [[await conn.trans(lang, 'Hapus Absen').catch(async _ => await conn.trans2(lang, 'Hapus Absen')), `${usedPrefix}mulaiabsen`]], m)
+        conn.sendB(m.chat, capt, wm, null, [[await conn.trans(lang, 'Hapus Absen').catch(async _ => await conn.trans2(lang, 'Hapus Absen')), `${usedPrefix}hapusabsen`]], m)
         throw false
     }
     let hid = await conn.groupMetadata(m.chat)
