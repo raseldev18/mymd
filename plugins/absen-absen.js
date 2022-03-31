@@ -3,12 +3,9 @@ let handler = async (m, { conn, usedPrefix }) => {
     let lang = db.data.users[m.sender].language
     conn.absen = conn.absen ? conn.absen : {}
     if (!(id in conn.absen)) {
-        let ca = `Tidak ada absen berlangsung digrup ini!` 
-        let ca2 = `ketik ${usedPrefix}mulaiabsen untuk memulai absen`
+        let ca = `Tidak ada absen berlangsung digrup ini!\n\nketik ${usedPrefix}mulaiabsen untuk memulai absen`
         let capt = await conn.trans(lang, ca).catch(async _ => await conn.trans2(lang, ca)) 
-        let capt2 = await conn.trans(lang, ca2).catch(async _ => await conn.trans2(lang, ca2)) 
-        let captionn = '_*'+capt+'*_\n\n'+capt2
-        conn.sendB(m.chat, captionn, wm, null, [[await conn.trans(lang, 'Mulai Absen').catch(async _ => await conn.trans2(lang, 'Mulai Absen')), `${usedPrefix}mulaiabsen`]], m)
+        conn.sendB(m.chat, capt, wm, null, [[await conn.trans(lang, 'Mulai Absen').catch(async _ => await conn.trans2(lang, 'Mulai Absen')), `${usedPrefix}mulaiabsen`]], m)
         throw false
     }
     let absen = conn.absen[id][1]
@@ -24,19 +21,19 @@ let handler = async (m, { conn, usedPrefix }) => {
         year: 'numeric'
     })
     let list = absen.map((v, i) => `${gy} ${i + 1}. ${conn.getName(v)}`).join('\n')
-    let caption = `_*${await conn.trans(lang, `Tanggal: ${date}`).catch(async _ => await conn.trans2(lang, `Tanggal: ${date}`))}*_
+    let caption = `${await conn.trans(lang, `Tanggal: ${date}`).catch(async _ => await conn.trans2(lang, `Tanggal: ${date}`))}
     ${conn.absen[id][2]}
-${sa}${kki} *${await conn.trans(lang, `Daftar Absen`).catch(async _ =>await conn.trans2(lang, `Daftar Absen`))}* ${kka}
+${sa}${kki} ${await conn.trans(lang, `Daftar Absen`).catch(async _ =>await conn.trans2(lang, `Daftar Absen`))} ${kka}
 ${gz}
 ${gx} ${await conn.trans(lang, `Total: ${absen.length}`).catch(async _ => await conn.trans2(lang, `Total: ${absen.length}`))}
 ${list}
 ${gz}
 ${sb}`
-    conn.sendB(m.chat, caption, wm, null, [[await conn.trans(lang, 'Hadir').catch(async _ => await conn.trans2(lang, 'Hadir')), `${usedPrefix}absen`], [await conn.trans(lang, 'Cek Absen').catch(async _ => await conn.trans2(lang, 'Cek Absen')), `${usedPrefix}cekabsen`]], m, {mentions: conn.parseMention(caption)})
+    conn.sendB(m.chat, caption, wm, null, [[await conn.trans(lang, 'Absen').catch(async _ => await conn.trans2(lang, 'Absen')), `${usedPrefix}absen`], [await conn.trans(lang, 'Cek Absen').catch(async _ => await conn.trans2(lang, 'Cek Absen')), `${usedPrefix}cekabsen`]], m, {mentions: conn.parseMention(caption)})
 }
-handler.help = ['absent']
+handler.help = ['absen']
 handler.tags = ['absen']
-handler.command = /^(absent?|present?|hadir)$/i
+handler.command = /^(abs(en)?|hadir)$/i
 
 handler.group = true
 
