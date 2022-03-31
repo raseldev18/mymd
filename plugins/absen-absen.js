@@ -3,8 +3,8 @@ let handler = async (m, { conn, usedPrefix }) => {
     let lang = db.data.users[m.sender].language
     conn.absen = conn.absen ? conn.absen : {}
     if (!(id in conn.absen)) {
-        let ca = `Tidak ada absen berlangsung digrup ini!`
-        let cb = `Ketik ${usedPrefix}mulaiabsen untuk memulai absen!`
+        let ca = `Tidak ada absen berlangsung digrup ini`
+        let cb = `Ketik *${usedPrefix}mulaiabsen* untuk memulai absen!`
         let cc = await conn.trans(lang, ca).catch(async _ => await conn.trans2(lang, ca))
         let cd = await conn.trans(lang, cb).catch(async _ => await conn.trans2(lang, cb)) 
         let capt = '_*'+cc+'*_\n\n'+cd
