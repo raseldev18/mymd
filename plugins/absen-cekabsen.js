@@ -3,9 +3,12 @@ let handler = async (m, { conn, usedPrefix }) => {
     let lang = db.data.users[m.sender].language
     conn.absen = conn.absen ? conn.absen : {}
     if (!(id in conn.absen)) {
-        let ca = `Tidak ada absen berlangsung digrup ini!\n\nketik ${usedPrefix}mulaiabsen untuk memulai absen`
-        let capt = await conn.trans(lang, ca).catch(async _ => await conn.trans2(lang, ca))
-        conn.sendB(m.chat, capt, wm, null, [[await conn.trans(lang, 'Mulai Absen').catch(async _ => await conn.trans2(lang, 'Mulai Absen')), `${usedPrefix}mulaiabsen`]], m)
+        let ca = `Tidak ada absen berlangsung digrup ini!` 
+        let ca2 = `ketik ${usedPrefix}mulaiabsen untuk memulai absen`
+        let capt = await conn.trans(lang, ca).catch(async _ => await conn.trans2(lang, ca)) 
+        let capt2 = await conn.trans(lang, ca2).catch(async _ => await conn.trans2(lang, ca2)) 
+        let captionn = capt+'\n\n'+capt2
+        conn.sendB(m.chat, captionn, wm, null, [[await conn.trans(lang, 'Mulai Absen').catch(async _ => await conn.trans2(lang, 'Mulai Absen')), `${usedPrefix}mulaiabsen`]], m)
         throw false
     }
     let d = new Date
@@ -18,7 +21,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let list = absen.map((v, i) => `${gy} ${i + 1}. ${conn.getName(v)}`).join('\n')
     let caption = `${await conn.trans(lang, `Tanggal: ${date}`).catch(async _ => await conn.trans2(lang, `Tanggal: ${date}`))}
     ${conn.absen[id][2]}
-${sa}${kki} ${await conn.trans(lang, `Daftar Absen`).catch(async _ =>await conn.trans2(lang, `Daftar Absen`))} ${kka}
+${sa}${kki} *${await conn.trans(lang, `Daftar Absen`).catch(async _ =>await conn.trans2(lang, `Daftar Absen`))}* ${kka}
 ${gz}
 ${gx} ${await conn.trans(lang, `Total: ${absen.length}`).catch(async _ => await conn.trans2(lang, `Total: ${absen.length}`))}
 ${list}
@@ -28,7 +31,7 @@ ${sb}`
 }
 handler.help = ['cekabsen']
 handler.tags = ['absen']
-handler.command = /^ch?ekabs(en)?$/i
+handler.command = /^ch?ekabs(ent?)?$/i
 
 handler.group = true
 
