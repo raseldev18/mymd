@@ -27,7 +27,7 @@ ${gx} ${await conn.trans(lang, `Total: ${absen.length}`).catch(async _ => await 
 ${list}
 ${gz}
 ${sb}`
-    conn.sendB(m.chat, caption, wm, null, [[await conn.trans(lang, 'Absen').catch(async _ => await conn.trans2(lang, 'Absen')), `${usedPrefix}absen`], [await conn.trans(lang, 'Hapus Absen').catch(async _ => await conn.trans2(lang, 'Hapus Absen')), `${usedPrefix}hapusabsen`]], m, { mentions: conn.parseMention(caption) })
+    conn.sendB(m.chat, caption, wm, null, [[await conn.trans(lang, 'Hadir').catch(async _ => await conn.trans2(lang, 'Hadir')), `${usedPrefix}absen`], [await conn.trans(lang, 'Hapus Absen').catch(async _ => await conn.trans2(lang, 'Hapus Absen')), `${usedPrefix}hapusabsen`]], m, { mentions: conn.parseMention(caption) })
 }
 handler.help = ['cekabsen']
 handler.tags = ['absen']
