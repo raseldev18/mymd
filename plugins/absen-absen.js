@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         let ca2 = `ketik ${usedPrefix}mulaiabsen untuk memulai absen`
         let capt = await conn.trans(lang, ca).catch(async _ => await conn.trans2(lang, ca)) 
         let capt2 = await conn.trans(lang, ca2).catch(async _ => await conn.trans2(lang, ca2)) 
-        let captionn = capt+'\n\n'+capt2
+        let captionn = '_*'+capt+'*_\n\n'+capt2
         conn.sendB(m.chat, captionn, wm, null, [[await conn.trans(lang, 'Mulai Absen').catch(async _ => await conn.trans2(lang, 'Mulai Absen')), `${usedPrefix}mulaiabsen`]], m)
         throw false
     }
