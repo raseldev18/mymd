@@ -20,8 +20,8 @@ let handler = async (m, { conn, args }) => {
     require('../config')
     let user = db.data.users[m.sender]
     user.moderator = true
-    user.moderatorTime = args[0]
-    } catch (e) {
+    user.moderatorTime = `${args[0]}`
+    } catch(e) {
       return m.reply(await conn.trans(lang, '@tag atau balas pesan user').catch(async _ => await conn.trans2(lang, '@tag atau balas pesan user')))
       console.log(e)
   }
