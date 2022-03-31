@@ -1,9 +1,8 @@
 const translate = require('translate-google-api')
-const translate2 = require('translate-google')
 const defaultLang = 'id'
 const tld = 'cn'
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+let handler = async (m, { args, usedPrefix, command }) => {
     let err = `
 Contoh:
 ${usedPrefix + command} <lang> [text]
@@ -33,28 +32,12 @@ Daftar bahasa yang didukung: https://cloud.google.com/translate/docs/languages
         })
         throw err
     } finally {
-        if(result) return conn.reply(m.chat, result, m)
-        else return 
-    let result2
-    try {
-        result2 = await translate2(`${text}`, {
-            tld,
-            to: lang,
-        })
-    } catch (e) {
-        result2 = await translate2(`${text}`, {
-            tld,
-            to: defaultLang,
-        })
-        throw err
-    } finally {
-        conn.reply(m.chat, result2, m)
+        conn.reply(m.chat, result[0], m)
     }
-  }
+
 }
 handler.help = ['translate'].map(v => v + ' <lang> <teks>')
 handler.tags = ['tools']
 handler.command = /^(tr(anslate)?)$/i
 
 module.exports = handler
-
