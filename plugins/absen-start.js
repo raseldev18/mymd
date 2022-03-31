@@ -18,12 +18,12 @@ let handler = async (m, { conn, isAdmin, isOwner, usedPrefix, text, participants
     let hid = await conn.groupMetadata(m.chat)
     let amu = await conn.trans(lang, 'Absen dimulai').catch(async _ => await conn.trans2(lang, 'Absen dimulai'))
     conn.absen[id] = [   
-        conn.sendB(m.chat, amu, wm, null, [[await conn.trans(lang, 'Absen').catch(async _ => await conn.trans2(lang, 'Absen')), `${usedPrefix}absen`]], m, {mentions: hid.participants.map(a => a.id)}),
+        conn.sendB(m.chat, amu, wm, null, [[await conn.trans(lang, 'Hadir').catch(async _ => await conn.trans2(lang, 'Hadir')), `${usedPrefix}absen`]], m, {mentions: hid.participants.map(a => a.id)}),
         [],
         text
     ]
 }
-handler.help = ['mulaiabsen [teks]']
+handler.help = ['mulaiabsen <text>']
 handler.tags = ['absen']
 handler.command = /^(start|mulai)absen|absen(start|mulai)$/i
 
