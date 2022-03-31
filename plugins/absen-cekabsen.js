@@ -29,9 +29,9 @@ ${gz}
 ${sb}`
     conn.sendB(m.chat, caption, wm, null, [[await conn.trans(lang, 'Hadir').catch(async _ => await conn.trans2(lang, 'Hadir')), `${usedPrefix}absen`], [await conn.trans(lang, 'Hapus Absen').catch(async _ => await conn.trans2(lang, 'Hapus Absen')), `${usedPrefix}hapusabsen`]], m, { mentions: conn.parseMention(caption) })
 }
-handler.help = ['cekabsen']
+handler.help = ['checkabsen']
 handler.tags = ['absen']
-handler.command = /^ch?ekabs(ent?)?$/i
+handler.command = /^(ch?ec?kabsent?)$/i
 
 handler.group = true
 
