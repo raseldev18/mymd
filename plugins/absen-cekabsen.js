@@ -31,7 +31,7 @@ ${sb}`
 }
 handler.help = ['checkabsent']
 handler.tags = ['absen']
-handler.command = /^(ch?ekabsent?)$/i
+handler.command = /^(ch?ec?kabsent?|absent?ch?ec?k)$/i
 
 handler.group = true
 
