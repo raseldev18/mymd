@@ -36,7 +36,7 @@ ${sb}`
 }
 handler.help = ['absen']
 handler.tags = ['absen']
-handler.command = /^(abs(en)?|hadir)$/i
+handler.command = /^(abs(ent?)?|hadir|present?)$/i
 
 handler.group = true
 
