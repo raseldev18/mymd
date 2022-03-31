@@ -18,8 +18,7 @@ global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Change owner n
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Moderator?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Premium user has unlimited limit
 
-global.devx = 'false' //developer mode
-global.langx = 'en' //language users
+global.devx = 'false'
 
 global.APIs = { // API Prefix
 //======= name: 'https://website' ========//
