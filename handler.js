@@ -81,6 +81,7 @@ module.exports = {
         //console.log(JSON.stringify(m, null, 4))
         try {
             m = simple.smsg(this, m) || m
+            global.langx = db.data.users[m.snder].language
             if (!m) return
             // console.log(m)
             m.exp = 0
