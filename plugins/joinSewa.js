@@ -58,6 +58,8 @@ handler.help = ['joins <chat.whatsapp.com> <day>']
 handler.tags = ['owner']
 handler.command = /^joins(ewa)?$/i
 
+handler.owner = true
+
 module.exports = handler
 
 function msToDate(ms) {
