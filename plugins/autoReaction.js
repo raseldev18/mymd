@@ -5,10 +5,10 @@ let handler = async (m, { text }) => {
      remoteJid: m.chat,
      fromMe: true
     },
-  text: `${pickRandom(['😂','🗿','😃','🥴','👍','😔', '🚶‍♂','👎'])}`}}, { messageId: m.id })
+  text: `${pickRandom(['🐤','🗿','😃','🥴','👍','😔', '🚶‍♂','👎'])}`}}, { messageId: m.id })
 }
 
-handler.customPrefix = /^oh|idk|cum|crot|y|f|g|adick|banh|dek$/i
+handler.customPrefix = /^(oh|idk|cum|crot|y|f|g|adick|banh|dek|turu||yntkts)$/i
 handler.command = new RegExp
 
 handler.exp = 3
