@@ -81,7 +81,7 @@ module.exports = {
         //console.log(JSON.stringify(m, null, 4))
         try {
             m = simple.smsg(this, m) || m
-            global.langx = global.db.data.users[m.sender].language
+            global.lang = global.db.data.users[m.sender].language
             if (!m) return
             // console.log(m)
             m.exp = 0
@@ -520,12 +520,16 @@ module.exports = {
                     if (xp > 200) m.reply('Ngecit -_-') // Hehehe
                     else m.exp += xp
                     if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
-                        this.sendB(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy(number/angka)* or *${usedPrefix}buyall*\n\nJadilah user premium agar limit anda unlimited, jika berminat silahkan ketik *#uptoprem*`, wm, null, [[`Buy`, `#buy1`], [`Buyall`, `#buyall`], [`Up To Premium`, `#uptopremiu`]], m)
+                        let cap = `Limit anda habis, silahkan beli melalui ${usedPrefix}buy atau ${usedPrefix}buyall Jadilah pengguna premium agar limit anda unlimited, jika berminat silahkan ketik #uptoprem`
+                        let caption = await this.trans(lang, cap).catch(async _ => await this.trans2(lang, cap))
+                        this.sendB(m.chat, caption, wm, null, [[`Buy`, `#buy1`], [`Buyall`, `#buyall`], [`Up To Premium`, `#uptopremiu`]], m)
                         // this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
                         continue // Limit habis
                     }
                     if (plugin.level > _user.level) {
-                        this.sendB(m.chat, `Diperlukan level *${plugin.level}* untuk menggunakan perintah ini. Level kamu *${_user.level},* naikan Levelmu dengan mengetik *${usedPrefix}levelup* atau klik button di bawah!`, wm, null, [[`Levelup`, `#levelup`]], m)
+                        let cap = `Diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}, naikan Levelmu dengan mengetik ${usedPrefix}levelup atau klik button di bawah!` 
+                        let caption = await this.trans(lang, cap).catch(async _ => await this.trans2(lang, cap))
+                        this.sendB(m.chat, caption, wm, null, [[`Levelup`, `#levelup`]], m)
                         // this.reply(m.chat, `diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}`, m)
                         continue // If the level has not been reached
                     }
@@ -560,7 +564,8 @@ module.exports = {
                             let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            m.reply(text, m.chat)
+                            let teks = await conn.trans(lang, text).catch(async _ => await conn.trans2(lang, text))
+                            m.reply(teks, m.chat)
                         }
                     } finally {
                         // m.reply(util.format(_user))
@@ -685,11 +690,13 @@ module.exports = {
         let msg = JSON.parse(chats[1].messages[id])
         let chat = global.db.data.chats[msg.key.remoteJid] || {}
         if (chat.delete) return
-        await this.sendB(msg.key.remoteJid, `
+        let caption = `
 Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
-Untuk mematikan fitur ini, ketik
-*.enable delete*
-`.trim(), wm, null, [[`Nyalakan Delelete`, `.enable delete`]], msg, {
+Untuk mematikan fitur ini, ketik #enable delete
+`
+        this.sendB(msg.key.remoteJid, caption, wm, null, [[`Nyalakan Delete`, `.enable delete`]], 
+            msg, 
+            {
             mentions: [participant]
         })
         this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
