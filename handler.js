@@ -81,7 +81,6 @@ module.exports = {
         //console.log(JSON.stringify(m, null, 4))
         try {
             m = simple.smsg(this, m) || m
-            global.lang = global.db.data.users[m.sender].language
             if (!m) return
             // console.log(m)
             m.exp = 0
@@ -373,6 +372,7 @@ module.exports = {
             } catch (e) {
                 console.error(e)
             }
+            global.lang = global.db.data.users[m.sender].language
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('s.whatsapp.net')) return
