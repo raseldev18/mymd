@@ -372,7 +372,7 @@ module.exports = {
             } catch (e) {
                 console.error(e)
             }
-           // global.lang = global.db.data.users[m.sender].language
+            global.lang = global.db.data.users[m.sender].language
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('s.whatsapp.net')) return
@@ -564,7 +564,7 @@ module.exports = {
                             let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            let teks = await conn.trans(lang, text).catch(async _ => await conn.trans2(lang, text))
+                            let teks = await conn.trans(lang, text).catch(async _ => await conn.trans2(lang, text)) //auto translate msg eror (throw)
                             m.reply(teks, m.chat)
                         }
                     } finally {
