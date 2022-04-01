@@ -1,6 +1,5 @@
 let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
   var time = db.data.users[m.sender].lastjoin + 86400000
-  if (new Date - db.data.users[m.sender].lastjoin < 86400000) throw `Kamu sudah menggunakan limit invite bot harian hari ini\ntunggu selama ${msToTime(time - new Date())} lagi`
   var linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
   var delay = time => new Promise(res => setTimeout(res, time))
  
@@ -50,15 +49,14 @@ Untuk menggunakan *${conn.user.name}* silahkan ketik
         mentions: d
          })
      })
-  db.data.users[m.sender].lastjoin = new Date * 1
     } catch (e) {
       conn.reply(owner[0]+'@s.whatsapp.net', e)
       throw `Maaf bot tidak bisa bergabung ke grup!`
       }
 }
-handler.help = ['join <chat.whatsapp.com>']
-handler.tags = ['main']
-handler.command = /^join$/i
+handler.help = ['joins <chat.whatsapp.com> <day>']
+handler.tags = ['owner']
+handler.command = /^joins(ewa)?$/i
 
 module.exports = handler
 
