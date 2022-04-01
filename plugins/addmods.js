@@ -1,11 +1,10 @@
 let fs = require('fs')
 let handler = async (m, { conn, args }) => {
-    try {
+    //try {
     const json = JSON.parse(fs.readFileSync('./src/moderator.json'))
-   // let who
-    //if (m.isGroup) 
-    let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender ? m.quoted.sender : m.chat ? m.chat : args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-    //else who = args[0] ? args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.chat
+    let who
+    if (m.isGroup) m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender ? m.quoted.sender : args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+    else who = m.quoted.sender ? m.quoted.sender : m.chat ? m.chat : args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net' //: m.chat
     if (json.includes(who.split`@`[0])) throw `${await conn.getName(who)} sudah moderator!`
     json.push(`${who.split`@`[0]}`)
     fs.writeFileSync('./src/moderator.json', JSON.stringify(json))
