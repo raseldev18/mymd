@@ -7,4 +7,4 @@ handler.command = /^(sc(ript(bot)?)?|sourcecode)$/i
 
 module.exports = handler
 
-
+//anggap aja credit banh 
