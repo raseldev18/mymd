@@ -13,14 +13,7 @@ let handler = async (m, { conn, args }) => {
     if (json.includes(who.split`@`[0])) throw `${await conn.getName(who)} sudah moderator!`
     json.push(`${who.split`@`[0]}`)
     fs.writeFileSync('./src/moderator.json', JSON.stringify(json))
-    let jumlahHari = 86400000 * args[1]
-    let now = new Date() * 1
-    //if (now < global.db.data.users[who].moderatorTime) global.db.data.users[who].moderatorTime += jumlahHari
-    //else global.db.data.users[who].moderatorTime = now + jumlahHari
-    let user = db.data.users[who]
-    user.moderator = true
-    user.moderatorTime = args[0]
-    m.reply2(`${await conn.getName(who)} sekarang adalah moderator, ${msToDate(global.db.data.users[who].moderatorTime - now)}`)
+    m.reply2(`${await conn.getName(who)} sekarang adalah moderator`)
     delete require.cache[require.resolve('../config')]
     require('../config')
 }
@@ -31,29 +24,3 @@ handler.command = /^(add|tambah|\+)mod?s?$/i
 handler.rowner = true
 
 module.exports = handler
-
-function msToDate(ms) {
-    temp = ms
-    days = Math.floor(ms / (24 * 60 * 60 * 1000));
-    daysms = ms % (24 * 60 * 60 * 1000);
-    hours = Math.floor((daysms) / (60 * 60 * 1000));
-    hoursms = ms % (60 * 60 * 1000);
-    minutes = Math.floor((hoursms) / (60 * 1000));
-    minutesms = ms % (60 * 1000);
-    sec = Math.floor((minutesms) / (1000));
-    return days + " hari " + hours + " jam " + minutes + " menit";
-    // +minutes+":"+sec;
-}
-
-function msToTime(duration) {
-  var milliseconds = parseInt((duration % 1000) / 100),
-  seconds = Math.floor((duration / 1000) % 60),
-  minutes = Math.floor((duration / (1000 * 60)) % 60),
-  hours = Math.floor((duration / (1000 * 60 * 60)) % 24)
-
-  hours = (hours < 10) ? "0" + hours : hours
-  minutes = (minutes < 10) ? "0" + minutes : minutes
-  seconds = (seconds < 10) ? "0" + seconds : seconds
-
-  return hours + " jam " + minutes + " menit"
-}
