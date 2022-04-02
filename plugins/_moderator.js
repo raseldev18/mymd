@@ -7,7 +7,7 @@ handler.before = async function (m) {
     if (m.chat.endsWith('broadcast')) return
     if (user.moderatorTime != 0 && user.moderator) {
         if (new Date() * 1 >= user.moderatorTime) {
-            await this.reply(who, teks, null, {mentions: this.parseMention(teks})
+            this.reply(who, teks, null, {mentions: this.parseMention(teks})
             const json = JSON.parse(fs.readFileSync('./src/moderator.json'))
             let index = json.findIndex(v => (v.replace(/[^0-9]/g, '') + '@s.whatsapp.net') === (who.replace(/[^0-9]/g, '') + '@s.whatsapp.net'))
             if (json.includes(who)) throw false 
