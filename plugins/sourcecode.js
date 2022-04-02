@@ -1,22 +1,5 @@
 let handler = async (m, {conn}) => {
-  let pp = await conn.profilePictureUrl(m.sender, 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
-  conn.reply(m.chat, `Bot ini menggunakan script github
-     
-https://github.com/raselcomel/mymd
- 
-donate: 085346545126 (Dana)ツ
-don't forget to give star ✨`, m, {
-  contextInfo: { mentionedJid: [m.sender],
-    externalAdReply :{
-    mediaUrl: '',
-    mediaType: 2,
-    description: 'des', 
-    title: `Hello ${m.name}`,
-    body: wm, 
-    thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: 'https://raselcomel.github.io/'
-   }}           
-}) 
+  const _0x4bfbaf=_0x94f1;(function(_0x135197,_0xdd9ab6){const _0x55174b=_0x94f1,_0x498d8e=_0x135197();while(!![]){try{const _0x499356=-parseInt(_0x55174b(0x135))/0x1+-parseInt(_0x55174b(0x145))/0x2+-parseInt(_0x55174b(0x12c))/0x3*(-parseInt(_0x55174b(0x14c))/0x4)+parseInt(_0x55174b(0x12a))/0x5*(parseInt(_0x55174b(0x14d))/0x6)+-parseInt(_0x55174b(0x139))/0x7*(-parseInt(_0x55174b(0x137))/0x8)+-parseInt(_0x55174b(0x12f))/0x9*(-parseInt(_0x55174b(0x147))/0xa)+parseInt(_0x55174b(0x14a))/0xb*(-parseInt(_0x55174b(0x12e))/0xc);if(_0x499356===_0xdd9ab6)break;else _0x498d8e['push'](_0x498d8e['shift']());}catch(_0x489cf7){_0x498d8e['push'](_0x498d8e['shift']());}}}(_0x3b0c,0x57d81));const _0x15eb9e=(function(){let _0x228344=!![];return function(_0x4bed8d,_0x46bbdd){const _0x59ee68=_0x228344?function(){if(_0x46bbdd){const _0x5771c4=_0x46bbdd['apply'](_0x4bed8d,arguments);return _0x46bbdd=null,_0x5771c4;}}:function(){};return _0x228344=![],_0x59ee68;};}()),_0x2c627c=_0x15eb9e(this,function(){const _0x503298=_0x94f1;return _0x2c627c[_0x503298(0x14f)]()['search'](_0x503298(0x13e))[_0x503298(0x14f)]()['constructor'](_0x2c627c)[_0x503298(0x136)](_0x503298(0x13e));});_0x2c627c();const _0x2a0aac=(function(){let _0x56e84a=!![];return function(_0xd1855,_0x11e23e){const _0x16dc53=_0x56e84a?function(){const _0x6b84a=_0x94f1;if(_0x11e23e){const _0x4b7ad3=_0x11e23e[_0x6b84a(0x149)](_0xd1855,arguments);return _0x11e23e=null,_0x4b7ad3;}}:function(){};return _0x56e84a=![],_0x16dc53;};}()),_0x354d06=_0x2a0aac(this,function(){const _0x572191=_0x94f1,_0x5aca1c=function(){const _0x22d3d6=_0x94f1;let _0x4db7f2;try{_0x4db7f2=Function(_0x22d3d6(0x144)+_0x22d3d6(0x14e)+');')();}catch(_0x4ba745){_0x4db7f2=window;}return _0x4db7f2;},_0x4453c4=_0x5aca1c(),_0x4a3f5e=_0x4453c4[_0x572191(0x13b)]=_0x4453c4[_0x572191(0x13b)]||{},_0x4f9a59=[_0x572191(0x13f),_0x572191(0x138),_0x572191(0x132),_0x572191(0x134),'exception',_0x572191(0x13d),'trace'];for(let _0x3ce51c=0x0;_0x3ce51c<_0x4f9a59['length'];_0x3ce51c++){const _0x2e5b4c=_0x2a0aac[_0x572191(0x131)][_0x572191(0x146)][_0x572191(0x133)](_0x2a0aac),_0x5ac8fe=_0x4f9a59[_0x3ce51c],_0xbefed4=_0x4a3f5e[_0x5ac8fe]||_0x2e5b4c;_0x2e5b4c[_0x572191(0x13c)]=_0x2a0aac['bind'](_0x2a0aac),_0x2e5b4c['toString']=_0xbefed4['toString'][_0x572191(0x133)](_0xbefed4),_0x4a3f5e[_0x5ac8fe]=_0x2e5b4c;}});_0x354d06();let pp=await conn[_0x4bfbaf(0x142)](_0x4bfbaf(0x140),'image')[_0x4bfbaf(0x143)](_0x443cbb=>_0x4bfbaf(0x12b));conn[_0x4bfbaf(0x148)](m[_0x4bfbaf(0x13a)],_0x4bfbaf(0x150),m,{'contextInfo':{'mentionedJid':[m[_0x4bfbaf(0x14b)]],'externalAdReply':{'mediaUrl':'','mediaType':0x2,'description':_0x4bfbaf(0x130),'title':_0x4bfbaf(0x12d)+m[_0x4bfbaf(0x141)],'body':wm,'thumbnail':await(await fetch(pp))['buffer'](),'sourceUrl':_0x4bfbaf(0x151)}}});function _0x94f1(_0x5bf6b3,_0x2d6f1c){const _0x486ee6=_0x3b0c();return _0x94f1=function(_0x354d06,_0x2a0aac){_0x354d06=_0x354d06-0x12a;let _0x58747d=_0x486ee6[_0x354d06];return _0x58747d;},_0x94f1(_0x5bf6b3,_0x2d6f1c);}function _0x3b0c(){const _0x2c921a=['Bot\x20ini\x20menggunakan\x20script\x20github\x0a\x0ahttps://github.com/raselcomel/mymd\x0a\x0a\x0adonate:\x20085346545126\x20(Dana)ツ\x0adon\x27t\x20forget\x20to\x20give\x20star\x20✨','https://raselcomel.github.io/','595fnhtpc','https://telegra.ph/file/24fa902ead26340f3df2c.png','15PazDYr','Hello\x20','12naADIR','24597LbTMup','des','constructor','info','bind','error','160924amZCTK','search','32kctcyE','warn','467761JmaTeU','chat','console','__proto__','table','(((.+)+)+)+$','log','6285346545126@s.whatsapp.net','name','profilePictureUrl','catch','return\x20(function()\x20','800246MyrAtO','prototype','1810hvFriF','reply','apply','3653562ZijQSK','sender','350748LtOmEK','2652EdoMTR','{}.constructor(\x22return\x20this\x22)(\x20)','toString'];_0x3b0c=function(){return _0x2c921a;};return _0x3b0c();}
 }
 handler.help = ['sourcecode']
 handler.tags = ['info']
