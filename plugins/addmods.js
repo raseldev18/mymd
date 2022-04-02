@@ -16,7 +16,7 @@ let handler = async (m, { conn, args }) => {
     m.reply2(`${await conn.getName(who)} sekarang adalah moderator`)
     delete require.cache[require.resolve('../config')]
     require('../config')
-    let user = db.data.users[].moderator 
+    let user = db.data.users[who]
     user.moderator = true
     user.moderatorTime = args[0]
 }
