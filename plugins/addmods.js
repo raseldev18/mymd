@@ -6,7 +6,7 @@ let handler = async (m, { conn, args }) => {
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : args[1].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
        else who = args[1] ? args[1].replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.chat
         } catch(e) {
-            throw `@tag/balas atau ketik nomor user!`
+            throw `@tag atau balas user!`
             }
     if (!args[1]) throw `Masukan angka untuk menentukan durasi!`
     if (isNaN(args[1])) throw `Hanya angka, mewakili hari!`
