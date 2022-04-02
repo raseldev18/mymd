@@ -2,6 +2,9 @@ let { Presence } = require('@adiwajshing/baileys')
 let { performance } = require('perf_hooks')
 const simple = require('./lib/simple')
 const util = require('util')
+const tr = requier('translate-google-api')
+const tr2 = require('translate-google')
+                           
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
@@ -565,8 +568,7 @@ module.exports = {
                             let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            let teks = await conn.trans(lang, text).catch(async _ => await conn.trans2(lang, text)) //auto translate msg eror (throw)
-                            m.reply(teks, m.chat)
+                            m.reply(await tr(text, {from: 'id', to: lang}).catch(async _ => await tr2(text, {from: 'auto', to: lang})), m.chat)
                         }
                     } finally {
                         // m.reply(util.format(_user))
@@ -577,9 +579,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        let lang = db.data.users[m.sender].language 
-                        let lim = await this.trans(lang, 'Limit terpakai').catch(async _ => await this.trans2(lang, 'Limit terpakai'))
-                        if (m.limit) m.reply(+ m.limit + ' ' + lim)
+                        if (m.limit) m.reply(+ m.limit + ' ' + await tr('Limit terpakai', {from: 'id', to: lang}).catch(async _ => await tr2('Limit terpakai', {from: 'auto', to: lang})))
                     }
                     break
                 }
