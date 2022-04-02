@@ -18,7 +18,7 @@ let handler = async (m, { conn, args }) => {
     require('../config')
     let user = db.data.users[who]
     user.moderator = true
-    user.moderatorTime = args[0]
+    user.moderatorTime = `${args[0]}`
 }
 handler.help = ['addmods <day> <@user>']
 handler.tags = ['owner']
