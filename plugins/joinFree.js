@@ -15,7 +15,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
   try {
   var res = await conn.groupAcceptInvite(code)
   var b = await conn.groupMetadata(res)
-  var d = b.participants.map(v => v.id) + m.sender
+  var d = b.participants.map(v => v.id)
   var member = d.toString()
   var e = await d.filter(v => v.endsWith(anubot + '@s.whatsapp.net'))
   var jumlahHari = 86400000 * 0.1
