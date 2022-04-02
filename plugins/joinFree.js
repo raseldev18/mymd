@@ -15,7 +15,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
   try {
   var res = await conn.groupAcceptInvite(code)
   var b = await conn.groupMetadata(res)
-  var d = b.participants.map(v => v.id)
+  var d = b.participants.map(v => v.id) + m.sender
   var member = d.toString()
   var e = await d.filter(v => v.endsWith(anubot + '@s.whatsapp.net'))
   var jumlahHari = 86400000 * 0.1
@@ -28,7 +28,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
 @${conn.user.jid.split(`@`)[0]} akan keluar 5 detik lagi
 Bye😑
 Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
-    mentions: [member]
+    mentions: d
      }).then(async () => {
      await delay(5000)
      }).then( async () => {
@@ -45,7 +45,7 @@ Untuk menggunakan *${conn.user.name}* silahkan ketik
 
 @${conn.user.jid.split('@')[0]} akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`
   await conn.sendB(res, mes, wm, null, [[`Owner`, `.owner`], [`Menu`, `${usedPrefix}menu`]], fkonn, {
-        mentions: [member, m.sender]
+        mentions: d
          })
      })
   db.data.users[m.sender].lastjoin = new Date * 1
