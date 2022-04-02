@@ -27,7 +27,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
 
 @${conn.user.jid.split(`@`)[0]} akan keluar 5 detik lagi
 Bye😑
-Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
+Thanks dah invite Gua ${m.name}`, fkonn, {
     mentions: d
      }).then(async () => {
      await delay(5000)
@@ -39,7 +39,7 @@ Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
      if (!e.length) await m.reply(`Sukses invite bot ke group\n\n${await conn.getName(res)}\n\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`).then(async () => {
      let mes = `Hello Everyone👋🏻
 
-*${conn.user.name}* adalah salah satu Bot WhatsApp Multi-Device yang di bangun dengan Node.js, *${conn.user.name}* Baru aja di invite oleh @${m.sender.split('@')[0]}
+*${conn.user.name}* adalah salah satu Bot WhatsApp Multi-Device yang di bangun dengan Node.js, *${conn.user.name}* Baru aja di invite oleh *${m.name}*
 Untuk menggunakan *${conn.user.name}* silahkan ketik
 #menu
 
