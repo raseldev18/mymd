@@ -28,7 +28,7 @@ let handler = async (m, { conn, text, usedPrefix, args, participants }) => {
 @${conn.user.jid.split(`@`)[0]} akan keluar 5 detik lagi
 Bye😑
 Thanks dah invite Gua @${m.sender.split('@')[0]}`, fkonn, {
-    mentions: d
+    mentions: [member]
      }).then(async () => {
      await delay(5000)
      }).then( async () => {
@@ -45,13 +45,17 @@ Untuk menggunakan *${conn.user.name}* silahkan ketik
 
 @${conn.user.jid.split('@')[0]} akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`
   await conn.sendB(res, mes, wm, null, [[`Owner`, `.owner`], [`Menu`, `${usedPrefix}menu`]], fkonn, {
-        mentions: d
+        mentions: [member, m.sender]
          })
      })
   db.data.users[m.sender].lastjoin = new Date * 1
-    } catch (e) {
-      conn.reply(owner[0]+'@s.whatsapp.net', e)
-      throw `Maaf bot tidak bisa bergabung ke grup!`
+    } catch(e) {
+      console.log(e)
+        throw `Maaf bot tidak bisa bergabung ke grup!`
+        if (devmode) {
+            for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) {
+                conn.sendMessage(jid, { text:'Speed.js error\nNo: *' + m.sender.split `@` [0] + '*\nCommand: *' + m.text + '*\n\n*' + e + '*' })
+            }
       }
 }
 handler.help = ['join <chat.whatsapp.com>']
