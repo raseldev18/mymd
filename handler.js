@@ -373,7 +373,7 @@ module.exports = {
                 console.error(e)
             }
             global.lang = global.db.data.users[m.sender].language
-            global.devmode = global.db.settings[this.user.jid].developerMode
+            global.devmode = global.db.data.settings[this.user.jid].developerMode
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('s.whatsapp.net')) return
