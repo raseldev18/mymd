@@ -15,8 +15,8 @@ let handler = async (m, { conn, args }) => {
     fs.writeFileSync('./src/moderator.json', JSON.stringify(json))
     let jumlahHari = 86400000 * args[1]
     let now = new Date() * 1
-    if (now < global.db.data.users[who].moderatorTime) global.db.data.users[who].moderatorTime += jumlahHari
-    else global.db.data.users[who].moderatorTime = now + jumlahHari
+    //if (now < global.db.data.users[who].moderatorTime) global.db.data.users[who].moderatorTime += jumlahHari
+    //else global.db.data.users[who].moderatorTime = now + jumlahHari
     let user = db.data.users[who]
     user.moderator = true
     user.moderatorTime = args[0]
