@@ -176,10 +176,6 @@ module.exports = {
                     if (!('autolevelup' in user)) user.autolevelup = false
                     if (!('banned' in user)) user.banned = false
                     if (!('level' in user)) user.level = 0
-                    if (!('owner' in user)) user.owner = false
-                    if (!isNumber(user.ownerTime)) user.ownerTime = 0
-                    if (!('moderator' in user)) user.moderator = false
-                    if (!isNumber(user.moderatorTime)) user.moderatorTime = 0
                     if (!('premium' in user)) user.premium = false
                     if (!isNumber(user.premiumTime)) user.premiumTime = 0
                     if (!user.role) user.role = 'Bronze'
@@ -263,10 +259,6 @@ module.exports = {
                     autolevelup: false,
                     banned: false,
                     level: 0,
-                    owner: false, 
-                    ownerTime: 0,
-                    moderator: false, 
-                    moderatorTime: 0,
                     premium: false,
                     premiumTime: 0,
                     role: 'Bronze',
