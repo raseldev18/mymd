@@ -8,8 +8,8 @@ let handler = async (m, { conn, args }) => {
         } catch(e) {
             throw `@tag atau balas user!`
             }
-    if (!args[1]) throw `Masukan angka untuk menentukan durasi!`
-    if (isNaN(args[1])) throw `Hanya angka, mewakili hari!`
+    if (!args[0]) throw `Masukan angka untuk menentukan durasi!`
+    if (isNaN(args[0])) throw `Hanya angka, mewakili hari!`
     if (json.includes(who.split`@`[0])) throw `${await conn.getName(who)} sudah moderator!`
     json.push(`${who.split`@`[0]}`)
     fs.writeFileSync('./src/moderator.json', JSON.stringify(json))
