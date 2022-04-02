@@ -8,7 +8,7 @@ let handler = async (m, { conn, args }) => {
         } catch(e) {
             throw `@tag atau balas user!`
             }
-    if (!args[0]) throw `Angakanya mana?`
+    if (!args[0]) throw `Masukan angka!`
     if (isNaN(args[0])) throw `Hanya angka, mewakili hari!`
     if (json.includes(who.split`@`[0])) throw `${await conn.getName(who)} sudah moderator!`
     json.push(`${who.split`@`[0]}`)
@@ -16,10 +16,10 @@ let handler = async (m, { conn, args }) => {
     let jumlahHari = 86400000 * args[1]
     let now = new Date() * 1
     if (now < global.db.data.users[who].moderatorTime) global.db.data.users[who].moderatorTime += jumlahHari
-       else global.db.data.users[who].moderatorTime = now + jumlahHari
+    else global.db.data.users[who].moderatorTime = now + jumlahHari
     let user = db.data.users[who]
     user.moderator = true
-    user.moderatorTime = `${args[0]}`
+    user.moderatorTime = args[0]
     m.reply2(`${await conn.getName(who)} sekarang adalah moderator, ${msToDate(global.db.data.users[who].moderatorTime - now)}`)
     delete require.cache[require.resolve('../config')]
     require('../config')
