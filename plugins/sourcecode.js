@@ -3,7 +3,8 @@ let handler = async (m, {conn}) => {
   conn.reply(m.chat, `Bot ini menggunakan script github
      
 https://github.com/raselcomel/mymd
-     
+ 
+donate: 085346545126 (Dana)ツ
 don't forget to give star ✨`, m, {
   contextInfo: { mentionedJid: [m.sender],
     externalAdReply :{
@@ -13,7 +14,7 @@ don't forget to give star ✨`, m, {
     title: `Hello ${m.name}`,
     body: wm, 
     thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: web
+    sourceUrl: 'https://raselcomel.github.io/'
    }}           
 }) 
 }
