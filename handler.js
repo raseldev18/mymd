@@ -40,7 +40,7 @@ module.exports = {
         global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi`
         global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi`
       
-        let locale = 'id'
+        let locale = global.langx
         let old = performance.now()
         let neww = performance.now()
         global.speed = neww - old + ' ms'
@@ -516,15 +516,13 @@ module.exports = {
                     if (xp > 200) m.reply('Ngecit -_-') // Hehehe
                     else m.exp += xp
                     if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
-                        let cap = `Limit anda habis, silahkan beli melalui ${usedPrefix}buy atau ${usedPrefix}buyall Jadilah pengguna premium agar limit anda unlimited, jika berminat silahkan ketik #uptoprem`
-                        let caption = await this.trans(lang, cap).catch(async _ => await this.trans2(lang, cap))
+                        let caption = await this.trans(`Limit anda habis, silahkan beli melalui ${usedPrefix}buy atau ${usedPrefix}buyall Jadilah pengguna premium agar limit anda unlimited, jika berminat silahkan ketik #uptoprem`)
                         this.sendB(m.chat, caption, wm, null, [[`Buy`, `#buy1`], [`Buyall`, `#buyall`], [`Up To Premium`, `#uptopremiu`]], m)
                         // this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
                         continue // Limit habis
                     }
                     if (plugin.level > _user.level) {
-                        let cap = `Diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}, naikan Levelmu dengan mengetik ${usedPrefix}levelup atau klik button di bawah!` 
-                        let caption = await this.trans(lang, cap).catch(async _ => await this.trans2(lang, cap))
+                        let captin = await this.trans(`Diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}, naikan Levelmu dengan mengetik ${usedPrefix}levelup atau klik button di bawah!`) 
                         this.sendB(m.chat, caption, wm, null, [[`Levelup`, `#levelup`]], m)
                         // this.reply(m.chat, `diperlukan level ${plugin.level} untuk menggunakan perintah ini. Level kamu ${_user.level}`, m)
                         continue // If the level has not been reached
@@ -560,7 +558,7 @@ module.exports = {
                             let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            m.reply(await tr(text, {from: 'id', to: lang}).catch(async _ => await tr2(text, {from: 'auto', to: lang})), m.chat)
+                            m.reply(await this.trans(text), m.chat)
                         }
                     } finally {
                         // m.reply(util.format(_user))
@@ -571,7 +569,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        if (m.limit) m.reply(+ m.limit + ' ' + await tr('Limit terpakai', {from: 'id', to: lang}).catch(async _ => await tr2('Limit terpakai', {from: 'auto', to: lang})))
+                        if (m.limit) m.reply(+ m.limit + ' ' + await this.trans('Limit terpakai'))
                     }
                     break
                 }
@@ -643,9 +641,7 @@ module.exports = {
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
                             this.sendBD(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
                               key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${await this.getName(user)}`, vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${user}\nitem1.TEL;waid=${user.split('@')[0]}:${user.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}},
-                            //key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${await this.getName(user)}`, vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;WA;;;\nFN: WA\nTEL ; type=VOICE;waid=${user.split('@')[0]}:${user.split('@')[0]}\nEND:VCARD`}}}, 
-                               //...options 
-                               { 
+                              { 
                                jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: action === 'add' ? `Welcome ${this.getName(user)} 🥰` : `Goodbye ${this.getName(user)} ☺`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
                                mentions: [user],
                                contextInfo: {
