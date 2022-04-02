@@ -2,7 +2,7 @@ let { Presence } = require('@adiwajshing/baileys')
 let { performance } = require('perf_hooks')
 const simple = require('./lib/simple')
 const util = require('util')
-const tr = requier('translate-google-api')
+const tr = require('translate-google-api')
 const tr2 = require('translate-google')
                            
 
