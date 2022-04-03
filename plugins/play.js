@@ -31,7 +31,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
      description: deslink, 
      title: titlink+'ツ', 
      body: bodlink,
-     thumbnail: await(await fetch(thumb)).buffer()
+     thumbnail: await(await fetch(thumbnail)).buffer()
      }} 
     })
     
