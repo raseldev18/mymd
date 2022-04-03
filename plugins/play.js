@@ -9,10 +9,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
     if (/playrand(om)?$/i.test(command)) vide = conn.rand(vid)
     else vide = vid[0]
     if(!vide) return conn.sendB(m.chat, await conn.trans('Video/Audio Tidak ditemukan'), wm, null, [[await conn.trans('Coba Lagi'), `.play ${text} lainnya`]], m) 
-    let { authorName, authorAvatar, title, description, url, thumbnail, videoId, durationH, viewH, publishedTime } = vide
-    let thumb
-    if (/playrand(om)?$/i.test(command)) thumb = thumbnail + '.png'
-    else thumb = thumbnail 
+    let { authorName, authorAvatar, title, description, url, thumbnail, videoId, durationH, viewH, publishedTime } = await vide
     let capt = `🎬 *YouTube Play*
   
 📌 *Title:* ${title}
@@ -60,7 +57,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
   if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m})
   } catch {
   try {
- let audi = await youtubedlv3(url)
+  let audi = await youtubedlv3(url)
   let { thumbnail, audio, title } = audi
   let det = audi.audio['128kbps']
   let { quality, fileSizeH, fileSize } = det
