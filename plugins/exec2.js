@@ -4,9 +4,7 @@ let exec = promisify(cp.exec).bind(cp)
 let handler = async (m, { conn, isOwner, command, text }) => {
   let lang = db.data.users[m.sender].lang
   if (global.conn.user.jid != conn.user.jid) return
-  let we = 'Harap tunggu...'
-  let wet = await conn.trans(lang, we).catch(async _ => await conn.trans2(lang, we))
-  m.reply(wet)                                          
+  m.reply(await this.trans('Harap tunggu...'))                                          
   let o
   try {
     o = await exec(command.trimStart()  + ' ' + text.trimEnd())
