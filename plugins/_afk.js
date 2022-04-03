@@ -1,11 +1,13 @@
 let handler = m => m
-handler.before = m => {
+
+handler.before = async (m) => {
     let user = global.db.data.users[m.sender]
     if (user.afk > -1) {
-        conn.sendB(m.chat, `
+    let cap = await this.trans(`
 Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
 Selama ${clockString(new Date - user.afk)}
-`.trim(), wm, null, [[`Menu`, `.menu`]], m)
+`)
+        this.sendB(m.chat, cap, wm, null, [[`Menu`, `.menu`]], m)
         user.afk = -1
         user.afkReason = ''
     }
