@@ -88,6 +88,9 @@ module.exports = {
             // console.log(m)
             m.exp = 0
             m.limit = false
+            let langx
+            if (m.sender.startsWith('62')) langx = 'id'
+            else langx = 'en'
             try {
                 let user = global.db.data.users[m.sender]
                 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
@@ -164,7 +167,7 @@ module.exports = {
                     if (!isNumber(user.lastweekly)) user.lastweekly = 0
                     if (!isNumber(user.lastmonthly)) user.lastmontly = 0
                     if (!('registered' in user)) user.registered = false
-                    if (!('language' in user)) user.language = 'id'
+                    if (!('language' in user)) user.language = langx
                     if (!user.registered) {
                         if (!('name' in user)) user.name = this.getName(m.sender)
                         if (!isNumber(user.age)) user.age = -1
@@ -249,7 +252,7 @@ module.exports = {
                     lastweekly: 0,
                     lastmonthly: 0,
                     registered: false,
-                    language: 'id',
+                    language: langx, 
                     name: this.getName(m.sender),
                     age: -1,
                     regTime: -1,
