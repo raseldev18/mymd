@@ -40,7 +40,7 @@ module.exports = {
         global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi`
         global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi`
       
-        let locale = global.langx
+        let locale = global.lang
         let old = performance.now()
         let neww = performance.now()
         global.speed = neww - old + ' ms'
