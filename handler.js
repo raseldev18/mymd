@@ -164,7 +164,7 @@ module.exports = {
                     if (!isNumber(user.lastweekly)) user.lastweekly = 0
                     if (!isNumber(user.lastmonthly)) user.lastmontly = 0
                     if (!('registered' in user)) user.registered = false
-                    if (!('language' in user)) user.language = global.langx
+                    if (!('language' in user)) user.language = 'id'
                     if (!user.registered) {
                         if (!('name' in user)) user.name = this.getName(m.sender)
                         if (!isNumber(user.age)) user.age = -1
@@ -249,7 +249,7 @@ module.exports = {
                     lastweekly: 0,
                     lastmonthly: 0,
                     registered: false,
-                    language: global.langx,
+                    language: 'id',
                     name: this.getName(m.sender),
                     age: -1,
                     regTime: -1,
@@ -368,7 +368,6 @@ module.exports = {
                 console.error(e)
             }
             global.lang = global.db.data.users[m.sender].language
-            global.devmode = global.db.data.settings[this.user.jid].developerMode
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('s.whatsapp.net')) return
