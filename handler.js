@@ -88,10 +88,8 @@ module.exports = {
             // console.log(m)
             m.exp = 0
             m.limit = false
-            let langx
-            if (m.sender.startsWith('62')) langx = 'id'
-            if (m.sender.startsWith('60')) langx = 'ms'
-            else langx = 'en'
+            let resx = require('awesome-phonenumber')('+'+m.sender.split('@')[0]).g
+            let langx = resx.regionCode
             try {
                 let user = global.db.data.users[m.sender]
                 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
