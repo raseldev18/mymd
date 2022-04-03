@@ -90,6 +90,7 @@ module.exports = {
             m.limit = false
             let langx
             if (m.sender.startsWith('62')) langx = 'id'
+            if (m.sender.startsWith('60')) langx = 'ms'
             else langx = 'en'
             try {
                 let user = global.db.data.users[m.sender]
