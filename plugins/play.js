@@ -21,7 +21,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 🚀 *Source:* ${url}
 📝 *Description:* ${description}`
     await conn.sendBD(m.chat, capt, wm, img, [['🎧 Audio 🎧', `${usedPrefix}yta ${url}`], ['📽 Video 📽', `${usedPrefix}ytv ${url}`], [`🔎 Play ${await conn.trans(lang, 'Acak').catch(async _ => await conn.trans2(lang, 'Acak'))} 🔍`, `${usedPrefix}playrand ${text}`]], m, {
-     fileName: await conn.trans('Selamat menonton')` ${m.name} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
+     fileName: await conn.trans('Selamat menonton')+` ${m.name} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
      contextInfo: {
      jpegThumbnail: await(await fetch(thumbd)).buffer(),
      mentionedJid: [m.sender],
