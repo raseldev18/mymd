@@ -11,7 +11,8 @@ global.xfr = require('xfarr-api')
 global.yzu = require('yuzzu-api')
 global.dhn = require('dhn-api')
 global.hxz = require('hxz-api')
-global.bochil = require('@bochilteam/scraper')
+global.clp = require('caliph-api')
+global.bs = require('@bochilteam/scraper')
 global.baileys = require('@adiwajshing/baileys')
 
 global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Change owner number => src/premium.json
