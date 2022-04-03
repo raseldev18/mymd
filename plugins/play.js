@@ -11,7 +11,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
     if(!vide) return conn.sendB(m.chat, await conn.trans('Video/Audio Tidak ditemukan'), wm, null, [[await conn.trans('Coba Lagi'), `.play ${text} lainnya`]], m) 
     let { authorName, authorAvatar, title, description, url, thumbnail, videoId, durationH, viewH, publishedTime } = vide
     let thumb
-    if (/playrand(om)?$/i.test(command)) thumb = thumb + '.png'
+    if (/playrand(om)?$/i.test(command)) thumb = thumbnail + '.png'
     else thumb = thumbnail 
     let capt = `🎬 *YouTube Play*
   
