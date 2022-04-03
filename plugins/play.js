@@ -9,6 +9,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     else vide = vid[0]
     if(!vide) return conn.sendB(m.chat, await conn.trans('Video/Audio Tidak ditemukan'), wm, null, [[await conn.trans('Coba Lagi'), `.play ${text} lainnya`]], m) 
     let { authorName, authorAvatar, title, description, url, thumbnail, videoId, durationH, viewH, publishedTime } = vide
+    let thumb = thumbnail+'.png'
     let capt = `🎬 *YouTube Play*
   
 📌 *Title:* ${title}
@@ -30,7 +31,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
      description: deslink, 
      title: titlink+'ツ', 
      body: bodlink,
-     thumbnail: await(await fetch(thumbnail)).buffer()
+     thumbnail: await(await fetch(thumb)).buffer()
      }} 
     })
 }
