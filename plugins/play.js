@@ -37,8 +37,8 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
   let user = db.data.users[m.sender]
   if (user.limit < 1 ) return  
   let limit
-  if((isOwner || isPrems)) limit = 150
-  else limit = 50
+  if((isOwner || isPrems)) limit = 100
+  else limit = 30
   try {
   let audi = await youtubedl(url)
   let { thumbnail, audio, title } = audi
