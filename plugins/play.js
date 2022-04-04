@@ -46,7 +46,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
   let { quality, fileSizeH, fileSize } = det
   let audiox = await det.download()
   let isLimit = (isPrems || isOwner ? limit : limit) * 1024 < fileSize
-  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m}).then(() => { if (m.limit) return user.limit -= 1 })
+  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m})
   } catch {
   try {
   let audi = await youtubedlv2(url)
@@ -55,7 +55,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
   let { quality, fileSizeH, fileSize } = det
   let audiox = await det.download()
   let isLimit = (isPrems || isOwner ? limit : limit) * 1024 < fileSize
-  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m}).then(() => { if (m.limit) return user.limit -= 1 })
+  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m})
   } catch {
   try {
   let audi = await youtubedlv3(url)
@@ -64,13 +64,13 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
   let { quality, fileSizeH, fileSize } = det
   let audiox = await det.download()
   let isLimit = (isPrems || isOwner ? limit : limit) * 1024 < fileSize
-  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m}).then(() => { if (m.limit) return user.limit -= 1 })
+  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: audiox }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m})
   }  catch {
   try {
   let server = (args[1] || servers[0]).toLowerCase()
   let { dl_link, thumb: thumbnail, title, filesize, filesizeF } = await yta(url, servers.includes(server) ? server : servers[0])
   let isLimit = (isPrems || isOwner ? limit : limit) * 1024 < filesize
-  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: dl_link }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m}).then(() => { if (m.limit) return user.limit -= 1 })
+  if (!isLimit) await conn.sendMessage(m.chat, { document: { url: dl_link }, mimetype: 'audio/mpeg', fileName: `${title}.mp3`}, {quoted: m})
   } catch {
     throw false 
         }
