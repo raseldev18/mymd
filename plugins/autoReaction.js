@@ -8,7 +8,7 @@ let handler = async (m, { conn, text }) => {
   
 }
 
-handler.customPrefix = /^(oh|idk|cum|crot|y|f|g|adick|banh|dek|turu||yntkts)$/i
+handler.customPrefix = /^sad|oh|idk|cum|crot|y|f|g|adick|banh|dek|turu||yntkts$/i
 handler.command = new RegExp
 
 handler.exp = 3
