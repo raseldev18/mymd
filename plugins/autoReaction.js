@@ -1,11 +1,11 @@
-let handler = async (m, { text }) => {
-  conn.relayMessage(m.chat, { reactionMessage: {
-    key: {
-     id: m.id,
-     remoteJid: m.chat,
-     fromMe: true
-    },
-  text: `${pickRandom(['🐤','🗿','😃','🥴','👍','😔', '🚶‍♂','👎'])}`}}, { messageId: m.id })
+let handler = async (m, { conn, text }) => {
+  
+  conn.sendMessage(m.chat, {
+        react: {
+          text: `${pickRandom(['🐤','🗿','😃','🥴','👍','😔', '🚶‍♂','👎'])`,
+          key: m.key,
+        }})
+  
 }
 
 handler.customPrefix = /^(oh|idk|cum|crot|y|f|g|adick|banh|dek|turu||yntkts)$/i
