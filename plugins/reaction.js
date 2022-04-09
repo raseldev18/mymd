@@ -1,6 +1,6 @@
 
 let handler = async(m, { conn, text }) => {
-  if (text) throw false 
+  if (!text) throw false 
   conn.sendMessage(m.chat, {
         react: {
           text: `${text}`, 
