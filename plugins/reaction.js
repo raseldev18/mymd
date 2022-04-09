@@ -3,7 +3,7 @@ let handler = async(m, { conn, text }) => {
   conn.sendMessage(m.chat, {
         react: {
           text: `${text}`, 
-          key: m.key,
+          key: m.quoted ? m.quoted.fakeObj.key : m.key,
         }})
 }
 handler.help = ['reaction <reply>']
