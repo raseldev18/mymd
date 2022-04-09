@@ -1,14 +1,10 @@
 
 let handler = async(m, { conn, text }) => {
-  if(!text) throw `emotnya mana?`
-  if(!m.quoted) throw `balas pesannya!`
-  conn.relayMessage(m.chat, { reactionMessage: {
-key: {
- id: m.quoted.id,
- remoteJid: m.chat,
- fromMe: true
- },
- text: text}}, { messageId: m.id })
+  conn.sendMessage(m.chat, {
+        react: {
+          text: `${text}`, 
+          key: m.key,
+        }})
 }
 handler.help = ['reaction <reply>']
 handler.tags = ['fun']
