@@ -1,7 +1,7 @@
 let handler = async (m, { conn, usedPrefix, command, text }) => {
   if(!text) throw `Example : *${usedPrefix + command} 🥵+🥶*`
   try {
-  var [emoji1, emoji2] = text.split`+&`
+  var [emoji1, emoji2] = text.split//``
   //rs = encodeURIComponent(emoji1+emoji2)
   var rs = emoji1+emoji2
   var ras = await fetch(global.API('neoxr', '/api/emoji', { q: rs }, 'apikey'))
