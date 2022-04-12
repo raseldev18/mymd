@@ -371,7 +371,7 @@ module.exports = {
             } catch (e) {
                 console.error(e)
             }
-            global.lang = global.db.data.users[m.sender].language
+            let lang = global.db.data.users[m.sender].language
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('s.whatsapp.net')) return
@@ -561,7 +561,7 @@ module.exports = {
                             let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            m.reply(await this.trans(text), m.chat)
+                            m.reply(await this.trans(lang, text), m.chat)
                         }
                     } finally {
                         // m.reply(util.format(_user))
@@ -572,7 +572,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        if (m.limit) m.reply(+ m.limit + ' ' + await this.trans('Limit terpakai'))
+                        if (m.limit) m.reply(+ m.limit + ' ' + await this.trans(lang, 'Limit terpakai'))
                     }
                     break
                 }
