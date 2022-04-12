@@ -1,8 +1,9 @@
 const { youtubeSearch, youtubedl, youtubedlv2, youtubedlv3 } = require('@bochilteam/scraper')
 const { servers, yta } = require('../lib/y2mate')
 let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) => {
+    let lang = db.data.users[m.sender].language 
     if(!text) throw `Contoh: ${usedPrefix}${command} i see your monster`
-    m.reply2(wait)
+    m.reply(await conn.trans(lang, wait))
     let anu = await youtubeSearch(text)
     let vid = anu.video
     let vide 
@@ -21,7 +22,7 @@ let handler = async (m, { conn, isOwner, isPrems, command, text, usedPrefix }) =
 🚀 *Source:* ${url}
 📝 *Description:* ${description}`
     await conn.sendBD(m.chat, capt, wm, img, [['🎧 Audio 🎧', `${usedPrefix}yta ${url}`], ['📽 Video 📽', `${usedPrefix}ytv ${url}`], [`🔎 Play ${await conn.trans('Acak')} 🔍`, `${usedPrefix}playrand ${text}`]], m, {
-     fileName: await conn.trans('Selamat menonton')+` ${m.name} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
+     fileName: await conn.trans(lang, 'Selamat menonton')+` ${m.name} 🤩`, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
      mentions: [m.sender],
      contextInfo: {
      jpegThumbnail: await(await fetch(thumbd)).buffer(),
