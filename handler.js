@@ -697,7 +697,6 @@ Untuk mematikan fitur ini, ketik #enable delete
 
 global.dfail = async (type, m, conn) => {
     let pp = await conn.profilePictureUrl(m.sender, 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")
-    let lang = db.data.users[m.sender].language 
     let msg = {
         rowner: `Perintah Ini Hanya Untuk @${global.owner[0]}`,
         owner: `Perintah Ini Hanya Untuk @${global.owner[0]}`,
