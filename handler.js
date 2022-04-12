@@ -40,7 +40,7 @@ module.exports = {
         global.ulangTahun = `Kurang ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik Lagi`
         global.tahunBaru = `Kurang ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik Lagi`
       
-        let locale = require('awesome-phonenumber')('+'+owner[0]).g.regionCode.toLowerCase()
+        let locale = 'id'//require('awesome-phonenumber')('+'+owner[0]).g.regionCode.toLowerCase()
         let old = performance.now()
         let neww = performance.now()
         global.speed = neww - old + ' ms'
@@ -88,7 +88,10 @@ module.exports = {
             // console.log(m)
             m.exp = 0
             m.limit = false
-            let langx = require('awesome-phonenumber')('+'+m.sender.split('@')[0]).g.regionCode.toLowerCase()
+            let langx 
+            if (m.sender.startsWith('62' || '60')) langx = 'id'
+            else langx = 'en'
+            //let langx = require('awesome-phonenumber')('+'+m.sender.split('@')[0]).g.regionCode.toLowerCase()
             try {
                 let user = global.db.data.users[m.sender]
                 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
