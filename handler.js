@@ -83,7 +83,9 @@ module.exports = {
             // console.log(m)
             m.exp = 0
             m.limit = false
-            let langx = 'en'
+            let langx
+            if (m.sender.startsWith('62' || '60')) langx = 'id'
+            else langx = 'en'
             try {
                 let user = global.db.data.users[m.sender]
                 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
