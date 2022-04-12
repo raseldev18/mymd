@@ -2,9 +2,9 @@ let cp = require('child_process')
 let { promisify } = require('util')
 let exec = promisify(cp.exec).bind(cp)
 let handler = async (m, { conn, isOwner, command, text }) => {
-  let lang = db.data.users[m.sender].lang
+  let lang = db.data.users[m.sender].language
   if (global.conn.user.jid != conn.user.jid) return
-  m.reply(await conn.trans('Harap tunggu...'))                                          
+  m.reply(await conn.trans(lang, 'Harap tunggu...'))                                          
   let o
   try {
     o = await exec(command.trimStart()  + ' ' + text.trimEnd())
