@@ -72,7 +72,7 @@ module.exports = {
 
         global.td = pickRandom([jax, jbx, jcx, jdx, jex])
         global.docux = img
-        
+        global.nd = pickRandom(['@rasel.ganz', 'rasel ganz', 'rasel comel ', 'rasel', '𝓇𝒶𝓈ℯ𝓁', '𝑟𝑎𝑠𝑒𝑙', '𝒓𝒂𝒔𝒆𝒍', '𝐫𝐚𝐬𝐞𝐥', '𝔯𝔞𝔰𝔢𝔩', '𝖗𝖆𝖘𝖊𝖑', '𝕣𝕒𝕤𝕖𝕝', '𝚛𝚊𝚜𝚎𝚕', 'r̸a̸s̸e̸l̸', 'r༙a༙s༙e༙l༙', 'r͜͡a͜͡s͜͡e͜͡l͜͡', 'rྂaྂsྂeྂlྂ', 'rཽaཽsཽeཽlཽ', 'r̽aྂsཽe͠ ʟ', 'ʳᵃˢᵉˡ'])
         global.time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss')
 
         if (!m) return
@@ -626,7 +626,7 @@ module.exports = {
                         } finally {
                             text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
                                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            this.sendBD(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome ' : 'Goodbye ', '@rasel.ganz']], {                      
+                            this.sendBD(id, text, wm, pp, [[`Menu`, `.menu`], [action === 'add' ? 'Welcome 🙏' : 'Goodbye 👋', '@rasel.ganz']], {                      
                               key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${await this.getName(user)}`, vcard: `BEGIN: VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${user}\nitem1.TEL;waid=${user.split('@')[0]}:${user.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}},
                               { 
                                jpegThumbnail: await (await fetch("https://telegra.ph/file/27e90a619b30082694bde.jpg")).buffer(), fileName: action === 'add' ? `Welcome ${this.getName(user)} ` : `Goodbye ${this.getName(user)} `, mimetype: global.td, fileLength: global.fsdx, pageCount: global.pcdx,
@@ -636,10 +636,9 @@ module.exports = {
                                   mediaUrl: linkig,
                                   mediaType: 2,
                                   description: deslink, 
-                                  title: titlink + '',
+                                  title: titlink + 'ツ',
                                   body: bodlink,
-                                  thumbnail: await(await fetch(pp)).buffer(),
-                                  sourceUrl: web
+                                  thumbnail: await(await fetch(pp)).buffer()
                               }}
                            })
                        }
