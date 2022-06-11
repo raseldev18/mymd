@@ -1,3 +1,4 @@
+let fs = require('fs')
 //============== Data jid =============//
 global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Change/add owner number => src/owner.json
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Moderator?
