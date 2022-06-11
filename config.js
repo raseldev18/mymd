@@ -1,23 +1,3 @@
-global.util = require('util')
-global.fs = require('fs')
-global.fetch = require('node-fetch')
-global.FormData = require('form-data')
-global.chalk = require('chalk')
-global.os = require('os')
-global.cp = require('child_process')
-global.moment = require('moment-timezone')
-global.axios = require('axios')
-global.cheerio = require('cheerio')
-global.scrape = require('./lib/scrape')
-global.xfr = require('xfarr-api')
-global.yzu = require('yuzzu-api')
-global.dhn = require('dhn-api')
-global.hxz = require('hxz-api')
-global.clp = require('caliph-api')
-global.bs = require('@bochilteam/scraper')
-global.baileys = require('@adiwajshing/baileys')
-global.prim = require('scrape-primbon')
-
 //============== Data jid =============//
 global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Change/add owner number => src/owner.json
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Moderator?
