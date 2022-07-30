@@ -833,8 +833,56 @@ Untuk mematikan fitur ini, ketik *#disable antidelete*
 `.trim()
         await this.sendB(msg.key.remoteJid, caption, wm, null, [[`Disable Antielete`, `.disable antidelete`]], msg, {mentions: [participant]})
         await this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
+    },
+    async onCall(json) {
+        if (global.opts['self']) return 
+	    if (!global.db.data.settings[this.user.jid].anticall) return
+        if (json.content[0].tag == 'offer') { 
+            let typeCall = json.content[0].content[0].tag
+            let callerId = json.content[0].attrs['call-creator']
+            let user = global.db.data.users[callerId]
+            if (user.whitelist) return
+            switch (this.callWhitelistMode) {
+                 case 'mycontact':
+                 if (callerId in this.contacts && 'short' in this.contacts[callerId])
+                 return
+                 break
+            }
+            let kontakk = [
+              [
+                `${owner[0]}`, 
+                `${this.getName(owner[0]+'@s.whatsapp.net')}`,
+                `👑 Developer Bot `,
+                `🚫 Don't call me 🥺`, 
+                `Not yet`,
+                `🇮🇩 Indonesia`,
+                `Mampus kena block lu makanya jangan asal nelfon" 🗿`,
+                `Folllow ig @rasel.ganz for open blocked`
+              ], 
+              [
+                `0`, 
+                `${this.getName('0@s.whatsapp.net')}`,
+                `🔥 Suhu 🔥`,
+                `Kang banned bot ilegal 😎`,
+                `whatsapp@gmail.com`,
+                `Cari sendiri`, 
+                `https://whatsapp.com`,
+                `Empat sehat le mark sempurna 👌🗿`
+              ]
+            ]
+            user.call += 1
+            if (user.call == 5) {
+               let sentMsg = await this.sendContactArray(callerId, kontakk)
+               await this.reply(callerId, `Sistem auto block, jangan menelepon bot silahkan hubungi owner untuk dibuka!`, sentMsg).then(async _=> {
+                 await this.updateBlockStatus(callerId, 'block')}).then(_=> { 
+		           user.call = 0 }).then(async _=> {
+                 await this.reply(owner[0]+'@s.whatsapp.net', `*NOTIF CALLER BOT!*\n\n@${callerId.split`@`[0]} telah menelpon *${this.user.name}*\n\n ${callerId.split`@`[0]}\n`, null, { mentions: [callerId] })
+               })
+            } else await this.reply(callerId, `Maaf tidak bisa menerima panggilan ${typeCall} Jika kamu menelepon lebih dari 5, kamu akan diblokir.\n\n${user.call} / 5`)
+        }
     }
 }
+
 
 global.dfail = async (type, m, conn) => {
     let msg = {
