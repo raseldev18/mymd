@@ -74,8 +74,8 @@ const connectionOptions = {
   printQRInTerminal: true,
   auth: state,
   logger: P({ level: 'silent' }),
-  browser: ['My-MD by rasel', 'IOS', '4.1.0'], 
-  version: [2, 2204, 13],
+  browser: ['My-MD by Acel', 'Safari', '1.0.0'], 
+  //version: [2, 2204, 13],
 }
 
 global.conn = simple.makeWASocket(connectionOptions)
@@ -91,20 +91,20 @@ if (opts['big-qr'] || opts['server']) conn.ev.on('qr', qr => generate(qr, { smal
 if (opts['server']) require('./server')(global.conn, PORT)
 
 async function connectionUpdate(update) {
-  const { connection, lastDisconnect } = update
-  if (connection == 'connecting') console.log(chalk.redBright('⚡ Activate the Bot, Please wait a moment...'))
-  if (connection == 'open') {
-      console.log(chalk.green('Connected ✅'))
-  }
-  if (connection == 'close') console.log(chalk.red('⏱️ Connection stopped and tried to reconnect...'))
+  const { connection, lastDisconnect, isNewLogin, isOnline } = update
+  if (isNewLogin) global.isInit = true
   global.timestamp.connect = new Date
   if (lastDisconnect && lastDisconnect.error && lastDisconnect.error.output && lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut && conn.ws.readyState !== WebSocket.CONNECTING) {
     console.log(global.reloadHandler(true))
   } 
-  if (global.db.data == null) await loadDatabase()
+  if (connection == 'connecting') console.log(chalk.redBright('⚡ Activate the Bot, please wait a moment...'))
+  if (connection == 'open') console.log(chalk.green('✅ Connected'))
+  if (isOnline == true) console.log(chalk.green('Status Online'))
+  if (isOnline == false) console.log(chalk.red('Status Offline'))
+  if (connection == 'close') console.log(chalk.red('⏱️ Connection stopped and tried to reconnect...'))
+  if (global.db.data == null) loadDatabase() 
   //console.log(JSON.stringify(update, null, 4))
 }
-
 
 process.on('uncaughtException', console.error)
 // let strQuot = /(["'])(?:(?=(\\?))\2.)*?\1/
@@ -135,10 +135,9 @@ global.reloadHandler = function (restatConn) {
     conn.ev.off('message.delete', conn.onDelete)
     conn.ev.off('connection.update', conn.connectionUpdate)
     conn.ev.off('creds.update', conn.credsUpdate)
+    conn.ws.off('CB:call', conn.onCall)
   }
-  let more = String.fromCharCode(8206)
-  let readMore = more.repeat(4001)
-  conn.welcome = `Hi, @user!\nWelcome in group @subject\n\n${readMore}@desc`
+  conn.welcome = `Hi, @user!\nWelcome in group @subject\n\n@desc`
   conn.bye = 'Goodbye @user!\n\nKalo balik lagi nitip seblak yaah!'
   conn.spromote = '@user is now Admin!'
   conn.sdemote = '@user is not an Admin!'
@@ -157,6 +156,7 @@ global.reloadHandler = function (restatConn) {
   conn.onDelete = handler.delete.bind(conn)
   conn.connectionUpdate = connectionUpdate.bind(conn)
   conn.credsUpdate = saveState.bind(conn)
+  conn.onCall = handler.onCall.bind(conn)
 
   conn.ev.on('messages.upsert', conn.handler)
   conn.ev.on('group-participants.update', conn.participantsUpdate)
@@ -164,6 +164,7 @@ global.reloadHandler = function (restatConn) {
   conn.ev.on('message.delete', conn.onDelete)
   conn.ev.on('connection.update', conn.connectionUpdate)
   conn.ev.on('creds.update', conn.credsUpdate)
+  conn.ws.on('CB:call', conn.onCall)
   isInit = false
   return true
 }
@@ -239,7 +240,7 @@ async function _quickTest() {
     gm,
     find
   }
-  require('./lib/sticker').support = s
+  // require('./lib/sticker').support = s
   Object.freeze(global.support)
 
   if (!s.ffmpeg) conn.logger.warn('Please install ffmpeg for sending videos (pkg install ffmpeg)')
