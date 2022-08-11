@@ -1,6 +1,7 @@
 let cp = require('child_process')
 let { promisify } = require('util')
 let exec = promisify(cp.exec).bind(cp)
+const readMore = String.fromCharCode(8206).repeat(4001)
 
 let handler = async (m, { conn, isOwner, command, text }) => {
   if (conn.user.jid != conn.user.jid) return
