@@ -23,7 +23,7 @@ global.APIKeys = { // APIKey Here
 }
 
 //=========== Sticker WM =============//
-const stick = JSON.parse(readFileSync("lib/exif.json"))
+const stick = JSON.parse(fs.readFileSync("lib/exif.json"))
 if (stick.spackname == '' || stick.sauthor == '') {
   var sticker_name = 'Made with WeA Bot'
   var sticker_author = '𝖻𝗂𝗍.𝗅𝗒/𝖠𝖼𝖾𝗅𝗅𝖢𝗈𝗆𝖾𝗅'
@@ -31,13 +31,13 @@ if (stick.spackname == '' || stick.sauthor == '') {
   var sticker_name = stick.spackname
   var sticker_author = stick.sauthor
 }
-const weem = JSON.parse(readFileSync("lib/wm.json"))
+const weem = JSON.parse(fs.readFileSync("lib/wm.json"))
 if (weem.watermark == '') {
   var hias_watermark = 'ᴡᴇᴀ ʙᴏᴛ ʙʏ ʀᴀsᴇʟ ⌤'
 } else {
   var hias_watermark = weem.watermark
 } 
-const symbol = JSON.parse(readFileSync("lib/symbol.json"))
+const symbol = JSON.parse(fs.readFileSync("lib/symbol.json"))
 if (symbol.symbol == '') {
   var hias_symbol = '•'
 } else {
