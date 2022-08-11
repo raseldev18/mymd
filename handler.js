@@ -607,13 +607,16 @@ module.exports = {
                         m.error = e
                         console.error(e)
                         if (e.name) {
+                            let text = util.format(e)
+                            for (let key of Object.values(global.APIKeys))
+                                 text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
                             for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
-                                let data = (await this.onWhatsApp(jid))[0] || {}
-                                let devmode = db.data.settings[this.user.jid].developerMode
-                                if (devmode) return this.reply(data.jid, `*ERROR!*\n\nPesan : ${m.text}\n\n\n\n*Plugin:* ${m.plugin}\n*Sender:* @${m.sender.split`@`[0]}\n*Chat:* ${m.chat}\n*Chat Name:* ${await this.getName(m.chat)}\n*Command:* ${usedPrefix + command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), m, { mentions: this.parseMention(text) })
-                                   .then(_=> m.react('❌') )
-                                   else return this.reply(m.chat, text, m)
-                                }
+                                 let data = (await this.onWhatsApp(jid))[0] || {}
+                                 let devmode = db.data.settings[this.user.jid].developerMode
+                                 if (devmode) return this.reply(data.jid, `*ERROR!*\n\nPesan : ${m.text}\n\n\n\n*Plugin:* ${m.plugin}\n*Sender:* @${m.sender.split`@`[0]}\n*Chat:* ${m.chat}\n*Chat Name:* ${await this.getName(m.chat)}\n*Command:* ${usedPrefix + command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), m, { mentions: this.parseMention(text) })
+                                     .then(_=> m.react('❌') )
+                                     else return this.reply(m.chat, text, m)
+                                 }
                             let tek = await translate(text, 'id', db.data.users[m.sender].language).catch(_=> [text])
                             let ras = await m.reply(tek.toString(), m.chat, { mentions: this.parseMention(text) })
                             m.react('❌').then(_=> this.react(m.chat, '❗', ras.key) )
