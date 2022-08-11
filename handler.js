@@ -6,29 +6,10 @@ const util = require('util')
 const fs = require('fs')
 const fetch = require('node-fetch')
 const chalk = require('chalk')
-
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
-
-global.gameList = {
-    title: `Silahkan Pilih Game Favorit-mu!`,
-    rows: [
-        {title: `Angka`, rowId: `.angka`},
-        {title: `Asah Otak`, rowId: `.asahotak`},
-        {title: `Cak Lontong`, rowId: `.caklontong`},
-        {title: `Family 100`, rowId: `.family100`},
-        {title: `Koboy`, rowId: `.koboy`},
-        {title: `Siapakah Aku`, rowId: `.siapakahaku`},
-        {title: `Suit Bot`, rowId: `.suitbot`},
-        {title: `Susun Kata`, rowId: `.susunkata`},
-        {title: `Tebak Gambar`, rowId: `.tebakgambar`},
-        {title: `Tebak Kata`, rowId: `.tebakkata`},
-        {title: `Tebak Lirik`, rowId: `.tebaklirik`},
-        {title: `Teka Teki`, rowId: `.tekateki`},
-     ]
-} 
  
 module.exports = {
     async handler(chatUpdate) {
@@ -46,27 +27,6 @@ module.exports = {
             let langx 
             if (m.sender.startsWith('62' || '60')) langx = 'id'
             else langx = 'en'
-            let eventx = new Date('July 8, 2022 23:59:59') //set time event here
-            let nowx = new Date().getTime()
-            let Selisih = eventx - nowx
-            let jhari = Math.floor(Selisih / (1000 * 60 * 60 * 24))
-            let jjam = Math.floor(Selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
-            let jmenit = Math.floor(Selisih % (1000 * 60 * 60) / (1000 * 60))
-            let jdetik = Math.floor(Selisih % (1000 * 60) / 1000)
-            let tmevn = `${jhari} Day ${jjam} Hour ${jmenit} Minute ${jdetik} Second`
-	    let l = require('./src/loli.json')
-	    let f = require('./src/fla.json')
-            let lo = pickRandom(l) 
-	    let fl = pickRandom(f)
-	    global.sock = conn    
-            global.img = lo 
-            global.fla = fl //set event here
-            global.Evn = 'Eid Al Adha Countdown'
-            global.timeEvn = tmevn
-            global.thumbd = "https://telegra.ph/file/27e90a619b30082694bde.jpg"
-            global.td = pickRandom(['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/pdf', 'text/rtf'])
-            global.nd = pickRandom(['@rasel.ganz', 'rasel ganz', 'rasel comel ', 'rasel', '𝓇𝒶𝓈ℯ𝓁', '𝑟𝑎𝑠𝑒𝑙', '𝒓𝒂𝒔𝒆𝒍', '𝐫𝐚𝐬𝐞𝐥', '𝔯𝔞𝔰𝔢𝔩', '𝖗𝖆𝖘𝖊𝖑', '𝕣𝕒𝕤𝕖𝕝', '𝚛𝚊𝚜𝚎𝚕', 'r̸a̸s̸e̸l̸', 'r༙a༙s༙e༙l༙', 'r͜͡a͜͡s͜͡e͜͡l͜͡', 'rྂaྂsྂeྂlྂ', 'rཽaཽsཽeཽlཽ', 'r̽aྂsཽe͠ ʟ', 'ʳᵃˢᵉˡ'])
-           
             try {
                 let user = global.db.data.users[m.sender]
                 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
@@ -415,9 +375,10 @@ module.exports = {
             } catch (e) {
                 console.error(e)
             }
-            global.lang = global.db.data.users[m.sender].language
+           
+            const isROwner = [this.user.jid, ...global.owner.map(([number]) => number)].map(v => v?.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
             if (opts['nyimak']) return
-            if (!m.fromMe && !m.fromOwner && opts['self']) return
+            if (opts['self'] && isROwner) return
             if (opts['pconly'] && !m.fromMe && !m.fromOwner && !m.chat.endsWith('s.whatsapp.net')) return 
             if (opts['gconly'] && !m.fromMe && !m.fromOwner && !m.chat.endsWith('g.us')) return 
             if (opts['swonly'] && m.key.remoteJid.endsWith('status@broadcast')) return
@@ -445,7 +406,7 @@ module.exports = {
             let usedPrefix
             let _user = global.db.data && global.db.data.users && global.db.data.users[m.sender]
 
-            let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+            // let isROwner = [conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
             let isOwner = isROwner || m.fromMe
             let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
             let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -454,7 +415,8 @@ module.exports = {
             let participants = (m.isGroup ? groupMetadata.participants : []) || []
 	    let user = (m.isGroup ? participants.find(u => this.decodeJid(u.id) === m.sender) : {}) || {} // User Data
             let bot = (m.isGroup ? participants.find(u => this.decodeJid(u.id) == this.user.jid) : {}) || {} // Your Data
-            let isAdmin = user && user?.admin || false // Is User Admin?
+	    let isRAdmin = user && user?.admin == 'superadmin' || false // Is User Super Admin?
+            let isAdmin = user && user?.admin == 'admin' || false // Is User Admin?
             let isBotAdmin = bot && bot?.admin || false // Are you Admin?
             for (let name in global.plugins) {
                 let plugin = global.plugins[name]
@@ -479,12 +441,14 @@ module.exports = {
                 if (typeof plugin.before === 'function') if (await plugin.before.call(this, m, {
                     match,
                     conn: this,
+                    ownerGroup,
                     participants,
                     groupMetadata,
                     user,
                     bot,
                     isROwner,
                     isOwner,
+                    isRAdmin,
                     isAdmin,
                     isBotAdmin,
                     isPrems,
@@ -515,8 +479,8 @@ module.exports = {
                     if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
                         let chat = global.db.data.chats[m.chat]
                         let user = global.db.data.users[m.sender]
-			if (!['unbanchat.js', 'exec.js', 'exec2.js', 'creator.js', 'banned_list.js'].includes(name) && chat && chat?.isBanned && !isPrems) return // Kecuali ini, bisa digunakan
-                        if (!['unbanchat.js', 'exec.js', 'exec2.js', 'creator.js', 'banned_list.js'].includes(name) && user && user?.banned) return 
+			if (!['unbanchat.js', 'exec.js', 'exec2.js', 'creator.js', 'listban.js'].includes(name) && chat && chat?.isBanned && !isPrems) return // Kecuali ini, bisa digunakan
+                        if (!['unbanchat.js', 'exec.js', 'exec2.js', 'creator.js', 'listban.js'].includes(name) && user && user?.banned) return 
                     }
                     if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
                         fail('owner', m, this)
@@ -544,7 +508,7 @@ module.exports = {
                     } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
                         fail('botAdmin', m, this)
                         continue
-                    } else if (plugin.admin && !isAdmin) { // User Admin
+                    } else if (plugin.admin && !isAdmin && isROwner) { // User Admin
                         fail('admin', m, this)
                         continue
                     }
@@ -575,7 +539,7 @@ module.exports = {
                         continue
                     }
                     if (plugin.desc && text.includes('-h')) { //Plugin description 
-                        m.reply(await this.trans(lang, plugin.desc))
+                        m.reply(plugin.desc.toString())
                         continue 
                     }
                     let nsfwmod
@@ -622,12 +586,14 @@ module.exports = {
                         command,
                         text,
                         conn: this,
+                        ownerGroup,
                         participants,
                         groupMetadata,
                         user,
                         bot,
                         isROwner,
                         isOwner,
+                        isRAdmin,
                         isAdmin,
                         isBotAdmin,
                         isPrems,
@@ -640,15 +606,17 @@ module.exports = {
                         // Error occured
                         m.error = e
                         console.error(e)
-                        if (e) {
-                            let devmode = global.db.data.settings[this.user.jid].developerMode
-                            let text = util.format(e)
-                            for (let key of Object.values(global.APIKeys))
-                                text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            if (e.name) {
-				if (devmode) this.reply(owner[0]+'@s.whatsapp.net', `*Plugin:* ${m.plugin}\n*Sender:* @${m.sender.split`@`[0]}\n*Chat:* ${m.chat}\n*Chat Name:* ${await this.getName(m.chat)}\n*Command:* ${usedPrefix + command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), m, { mentions: [m.sender] }).then(_=> { m.replys(eror) })
-                                else m.reply(text)
-			    }
+                        if (e.name) {
+                            for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
+                                let data = (await this.onWhatsApp(jid))[0] || {}
+                                let devmode = db.data.settings[this.user.jid].developerMode
+                                if (devmode) return this.reply(data.jid, `*ERROR!*\n\nPesan : ${m.text}\n\n\n\n*Plugin:* ${m.plugin}\n*Sender:* @${m.sender.split`@`[0]}\n*Chat:* ${m.chat}\n*Chat Name:* ${await this.getName(m.chat)}\n*Command:* ${usedPrefix + command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), m, { mentions: this.parseMention(text) })
+                                   .then(_=> m.react('❌') )
+                                   else return this.reply(m.chat, text, m)
+                                }
+                            let tek = await translate(text, 'id', db.data.users[m.sender].language).catch(_=> [text])
+                            let ras = await m.reply(tek.toString(), m.chat, { mentions: this.parseMention(text) })
+                            m.react('❌').then(_=> this.react(m.chat, '❗', ras.key) )
                         }
                     } finally {
                         // m.reply(util.format(_user))
@@ -667,11 +635,6 @@ module.exports = {
         } catch (e) {
             console.error(e)
         } finally {
-            if (opts['typing']) {
-                if (m.isCommand) { 
-                    this.sendPresenceUpdate('composing', m.chat) 
-                }
-            }
             //console.log(global.db.data.users[m.sender])
             let user, stats = global.db.data.stats
             if (m) {
@@ -709,11 +672,15 @@ module.exports = {
             } catch (e) {
                 console.log(m, m.quoted, e)
             }
-            if (opts['autoread']) {
-		if (m.isCommand) {
-                    this.chatRead(m.chat, m.isGroup ? m.sender : m.chat || m.key.remoteJid, m.id || m.key.id).catch(() => { })
-                }
-            }
+            
+            /* if (m.isCommand) if (db.data.settings[this.user.jid].autotyping) this.sendPresenceUpdate('composing', m.chat)
+            if (db.data.settings[this.user.jid].autoreadsw) if (m.key.remoteJid === 'status@broadcast') this.readMessages([m.key]).then(_=> { console.log(`SW : ${m.name}`) })
+            if (db.data.settings[this.user.jid].autoread) {
+                if (!m.isGroup) {
+                    if (m.isCommand) this.readMessages([m.key])
+                } else this.readMessages([m.key])
+             } */
+		
             let quequeIndex = this.msgqueque.indexOf(m.id || m.key.id)
             if (opts['queque'] && m.text && quequeIndex !== -1) this.msgqueque.splice(quequeIndex, 1)
         }
