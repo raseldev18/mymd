@@ -4,8 +4,8 @@ const { promisify } = require('util')
 const { join } = require('path')
 
 let confirmation = {}
-let repository = repox // 'raselcomel/mymd'
-let branch = branx //'master'
+let repository = 'raselcomel/mymd'
+let branch = 'master'
 
 async function handler(m, { text }) {
     let res = await fetch(`https://raw.githubusercontent.com/${repository}/${branch}/${text}`)
