@@ -173,7 +173,7 @@ let handler = async (m, { conn, usedPrefix: _p, command: _c, args, __dirname }) 
   }
   
   try {  
-    let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => '{}'))
+    let package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => '{}'))
     let sortedCmd = Object.entries(db.data.stats).map(([key, value]) => {
         return { ...value, name: key }
     }).map(toNumber('total')).sort(sort('total')) 
@@ -241,8 +241,8 @@ let sel = `●────━───༺༻───━────●
 ⚚ Developer : *${ownerName}*
 ⚚ Library : *Baileys* ( *MD* )
 ⚚ Language : *JavaScript*
-⚚ Version : *^${_package.version}*
-⚚ Browser : *${_package.browser.name}@${_package.browser.version}*
+⚚ Version : *^${package.version}*
+⚚ Browser : *${package.browser.name}@${package.browser.version}*
 ⚚ Database : *${db.adapter.url ? "MongoDB" : "Storage System"}*
 ⚚ Users : *${rtotalreg}* / ( *${totalreg}* )
 ⚚ Fiturs : *${totalcmd}*
@@ -356,14 +356,14 @@ let sel = `●────━───༺༻───━────●
       ucapan: ucapan(),
       p: _p, uptime, muptime,
       me: conn.user.name,
-      npmname: _package.name,
-      npmdesc: _package.description,
-      version: _package.version,
+      npmname: package.name,
+      npmdesc: package.description,
+      version: package.version,
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
       xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
-      github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
+      github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
       level, limit, name, umur, money, age, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
@@ -373,6 +373,7 @@ let sel = `●────━───༺༻───━────●
     throw e
   }
 }
+
 handler.help = ['menu', 'help']
 handler.tags = ['main']
 handler.command = /^(menu|help|allmenu|command|cmd|\?)$/i
