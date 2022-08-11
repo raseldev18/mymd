@@ -620,7 +620,7 @@ module.exports = {
                                      else return this.reply(m.chat, text, m)
                                  }
                             let tek = await translate(text, 'id', db.data.users[m.sender].language).catch(_=> [text])
-                            let ras = await m.reply(tek.toString(), m.chat, { mentions: this.parseMention(text) })
+                            let ras = await this.reply(m.chat, tek, m, { mentions: this.parseMention(text) })
                             m.react('❌').then(_=> this.react(m.chat, '❗', ras.key) )
                         }
                     } finally {
