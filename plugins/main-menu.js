@@ -188,7 +188,7 @@ let handler = async (m, { conn, usedPrefix: _p, command: _c, args, __dirname }) 
     let umur = `${age == '-1' ? 'Not Registered' : age + ' Age'}`
     let name = registered ? db.data.users[m.sender].name : conn.getName(m.sender)
     let botName = conn.user.name
-    let ownerName = conn.getName(owner[0] + '@s.whatsapp.net')
+    let ownerName = conn.getName(owner[0][0] + '@s.whatsapp.net')
     let totalcmd = Object.values(plugins).filter(v => v.help).map(v => v.command).length
     let totalreg = Object.values(db.data.users).length
     let rtotalreg = Object.values(db.data.users).filter(user => user.registered == true).length
