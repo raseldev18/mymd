@@ -8,8 +8,7 @@ const fetch = require('node-fetch')
 const chalk = require('chalk')
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
-const more = String.fromCharCode(8206)
-const readMore = more.repeat(4001)
+const readMore = String.fromCharCode(8206).repeat(4001)
  
 module.exports = {
     async handler(chatUpdate) {
@@ -24,9 +23,6 @@ module.exports = {
             if (!m) return
             m.exp = 0
             m.limit = false 
-            let langx 
-            if (m.sender.startsWith('62' || '60')) langx = 'id'
-            else langx = 'en'
             try {
                 let user = global.db.data.users[m.sender]
                 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
@@ -95,7 +91,7 @@ module.exports = {
                     if (!isNumber(user.lastmonthly)) user.lastmontly = 0  
                     if (!('registered' in user)) user.registered = false
                     if (!user.registered) {
-                        if (!('name' in user)) user.name = this.getName(m.sender)
+                        if (!('name' in user)) user.name = await this.getName(m.sender)
                         if (!('email' in user)) user.email = ''
                         if (!('label' in user)) user.label = ''
                         if (!isNumber(user.age)) user.age = -1
@@ -105,7 +101,9 @@ module.exports = {
                     if (!isNumber(user.bannedTime)) user.bannedTime = 0
                     if (!('afkReason' in user)) user.afkReason = ''
                     if (!('pasangan' in user)) user.pasangan = ''
-                    if (!('language' in user)) user.language = langx
+                    if (!('language' in user)) user.language = m.sender.startsWith('62') ? 'id' : 'en'
+                    if (!('languageSimi' in user)) user.languageSimi = m.sender.startsWith('62') ? 'id' : 'en'
+                    if (!('languageCountry' in user)) user.languageCountry = m.sender.startsWith('62') ? 'Indonesia' : 'English'
                     if (!('owner' in user)) user.owner = false
                     if (!isNumber(user.ownerTime)) user.ownerTime = 0
                     if (!('premium' in user)) user.premium = false
@@ -210,12 +208,14 @@ module.exports = {
                     lastweekly: 0,
                     lastmonthly: 0,
                     registered: false,
-                    name: this.getName(m.sender),
+                    name: await this.getName(m.sender),
                     email: '',
                     label: '',
                     age: -1,
                     regTime: -1,
-                    language: langx, 
+                    language: m.sender.startsWith('62') ? 'id' : 'en',
+                    languageSimi: m.sender.startsWith('62') ? 'id' : 'en', 
+                    languageCountry: m.sender.startsWith('62') ? 'Indonesia' : 'English',
                     owner: false,
                     ownerTime: 0,
                     moderator: false,
@@ -845,6 +845,10 @@ function clockString(ms) {
 
 function pickRandom(list) {
     return list[Math.floor(list.length * Math.random())]
+}
+
+async function translate(text, from, to) {
+   return await tr(text, { from: from, to: to }).catch(async _=> [await tr2(text, { from: from, to: to })] ) 
 }
 
 function isUrl(text){
