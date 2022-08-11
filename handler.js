@@ -823,7 +823,7 @@ global.dfail = async (type, m, conn) => {
         download: `Fitur *Downloader* Tidak Aktif Silahkan Hubungi @${global.owner[0]} Untuk Mengaktifkannya`,
         restrict: `Fitur *Admin* Tidak Aktif Silahkan Hubungi @${global.owner[0]} Untuk Mengaktifkannya`,
       }[type]
-    if (msg) return conn.sendBL(m.chat, "*「 ACCESS DENIED 」*\n\n" + await conn.trans(lang, msg), wm, fla + "access denied", [['Menu', '.menu']], m, { mentions: conn.parseMention(msg) })
+    if (msg) return conn.sendButton(m.chat, "*「 ACCESS DENIED 」*\n\n" + msg, wm, fla + "access denied", [['Menu', '.menu']], m, { mentions: conn.parseMention(msg) })
     //if (msg) return conn.replys(m.chat, msg, m, { mentions: conn.parseMention(msg) })
 }
 
