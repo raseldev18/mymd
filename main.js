@@ -68,16 +68,15 @@ loadDatabase()
 // if (opts['cluster']) {
 //   require('./lib/cluster').Cluster()
 // }
-global.authFile = `${opts._[0] || 'session'}.data.json`
+let authFile = `${opts._[0] || 'session'}.data.json`
 global.isInit = !fs.existsSync(authFile)
-const { state, saveState } = useSingleFileAuthState(global.authFile)
+const { state, saveState } = useSingleFileAuthState(authFile)
 
 const connectionOptions = {
   printQRInTerminal: true,
   auth: state,
   logger: P({ level: 'silent' }),
-  browser: ['My-MD by rasel', 'IOS', '4.1.0'], 
-  version: [2, 2204, 13],
+  version: [2, 2204, 13]
 }
 
 global.conn = simple.makeWASocket(connectionOptions)
@@ -140,10 +139,10 @@ global.reloadHandler = function (restatConn) {
   }
   let more = String.fromCharCode(8206)
   let readMore = more.repeat(4001)
-  conn.welcome = `Hi, @user!\nWelcome in group @subject\n\n${readMore}@desc`
-  conn.bye = 'Goodbye @user!\n\nKalo balik lagi nitip seblak yaah!'
-  conn.spromote = '@user is now Admin!'
-  conn.sdemote = '@user is not an Admin!'
+  conn.sWelcome = `Hi, @user!\nWelcome in group @subject\n\n${readMore}@desc`
+  conn.sBye = 'Goodbye @user!\n\nKalo balik lagi nitip seblak yaah!'
+  conn.sPromote = '@user is now Admin!'
+  conn.sDemote = '@user is not an Admin!'
   conn.sDesc = 'Group description has been changed to\n@desc'
   conn.sSubject = 'Group name has been changed to\n@subject'
   conn.sIcon = 'Group icon has been changed!'
@@ -241,7 +240,7 @@ async function _quickTest() {
     gm,
     find
   }
-  require('./lib/sticker').support = s
+  // require('./lib/sticker').support = s
   Object.freeze(global.support)
 
   if (!s.ffmpeg) conn.logger.warn('Please install ffmpeg for sending videos (pkg install ffmpeg)')
