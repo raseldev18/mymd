@@ -8,16 +8,17 @@ const Readline = require('readline')
 const yargs = require('yargs/yargs')
 const rl = Readline.createInterface(process.stdin, process.stdout)
 
-CFonts.say('WhatsApp Bot\nMulti Device', {
-  font: 'chrome',
+CFonts.say('My-MD', {
+  colors: [pickRandom(["#FF0000","#FFFF00","#00FF00","#7F00FF","#FF007F"])],
+  font: 'block',
   align: 'center',
-  gradient: ['red', 'magenta']
 })
-CFonts.say(`'${package.name}' By @${package.author.name || package.author}`, {
+CFonts.say(`${package.name} Oleh @${package.author.name || package.author}`, {
+  colors: [pickRandom(["#FF007F","#7F00FF","#00FF00","#FFFF00","#FF0000"])],
   font: 'console',
   align: 'center',
-  gradient: ['red', 'magenta']
 })
+
 
 var isRunning = false
 /**
@@ -69,3 +70,7 @@ function start(file) {
 }
 
 start('main.js')
+
+function pickRandom(list) {
+   return list[Math.floor(Math.random() * list.length)]
+}
