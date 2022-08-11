@@ -1,6 +1,10 @@
 {
     "name": "mymd",
     "version": "1.0.0",
+    "browser": {
+        "name": "Safari",
+        "version": "1.0.0"
+    },
     "description": "WhatsApp Bot Ringan, Yang Berat Dosamuツ",
     "depecrated": false,
     "main": "index.js",
