@@ -609,7 +609,7 @@ module.exports = {
                         m.error = e
                         console.error(e)
                         if (e) {
-                            let text = format(e)
+                            let text = util.format(e)
                             for (let key of Object.values(global.APIKeys))
                                  text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
                             if (e.name) {
