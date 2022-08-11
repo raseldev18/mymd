@@ -173,7 +173,7 @@ let handler = async (m, { conn, usedPrefix: _p, command: _c, args, __dirname }) 
   }
   
   try {  
-    let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
+    let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => '{}'))
     let sortedCmd = Object.entries(db.data.stats).map(([key, value]) => {
         return { ...value, name: key }
     }).map(toNumber('total')).sort(sort('total')) 
