@@ -136,3 +136,19 @@ fs.watchFile(file_exif, () => {
   delete require.cache[file_exif]
   require('./lib/exif.json')
 })
+
+let file_wm = "lib/wm.json"
+fs.watchFile(file_wm, () => {
+  fs.unwatchFile(file_wm)
+  console.log(chalk.redBright("Update 'wm.json'"))
+  delete require.cache[file_wm]
+  require('./lib/wm.json')
+})
+
+let file_symbol = "lib/symbol.json"
+fs.watchFile(file_symbol, () => {
+  fs.unwatchFile(file_symbol)
+  console.log(chalk.redBright("Update 'symbol.json'"))
+  delete require.cache[file_symbol]
+  require('./lib/symbol.json')
+})
