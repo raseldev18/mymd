@@ -9,6 +9,8 @@ const chalk = require('chalk')
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
 const readMore = String.fromCharCode(8206).repeat(4001)
+const tr = require('translate-google-api')
+const tr2 = require('translate-google')
  
 module.exports = {
     async handler(chatUpdate) {
