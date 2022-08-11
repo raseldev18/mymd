@@ -1,10 +1,10 @@
 let fs = require('fs')
 let chalk = require('chalk')
-// global.owner = [
-  // ['6285346545126', 'Acel', true]
+global.owner = [
+  ['6285346545126', 'Acel', true],
   // [number, dia creator/owner?, dia developer?]
-// ] // Put your number here
-global.owner = JSON.parse(fs.readFileSync('./src/owner.json'))  
+  JSON.parse(fs.readFileSync('./src/owner.json'))
+] // Put your number here
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) 
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json'))
 
