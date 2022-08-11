@@ -184,7 +184,7 @@ let handler = async (m, { conn, usedPrefix: _p, command: _c, args, __dirname }) 
         sall += i.success
     } 
     let { exp, limit, age, money, level, role, registered } = db.data.users[m.sender]
-    let { min, xp, max } = xpRange(level, 69)
+    let { min, xp, max } = xpRange(level, 100)
     let umur = `${age == '-1' ? 'Not Registered' : age + ' Age'}`
     let name = registered ? db.data.users[m.sender].name : conn.getName(m.sender)
     let botName = conn.user.name
