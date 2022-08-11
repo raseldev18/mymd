@@ -1,10 +1,10 @@
 let cp = require('child_process')
 let { promisify } = require('util')
 let exec = promisify(cp.exec).bind(cp)
+
 let handler = async (m, { conn, isOwner, command, text }) => {
-  let lang = db.data.users[m.sender].language
-  if (global.conn.user.jid != conn.user.jid) return
-  m.reply(await conn.trans(lang, 'Harap tunggu...'))                                          
+  if (conn.user.jid != conn.user.jid) return
+  m.reply('Harap tunggu...')                                        
   let o
   try {
     o = await exec(command.trimStart()  + ' ' + text.trimEnd())
@@ -13,13 +13,16 @@ let handler = async (m, { conn, isOwner, command, text }) => {
   } finally {
     let { stdout, stderr } = o
     if (stdout.trim()) {
-let a = stdout.replace(/C:/gi, '').replace(/Users/gi, 'home').replace(/rdp/gi, 'usr').replace(/Desktop/gi, 'root')
-m.reply(a)
-}
+      let a = stdout.replace(/C:/gi, '').replace(/Users/gi, 'home').replace(/rdp/gi, 'usr').replace(/Desktop/gi, 'root')
+      if (m.text.startsWith('$ node test')) return conn.sendButton(m.chat, readMore + a, "No eror, silahkan turu dulu 😪", null, [[`Restart`, `.restart`]], m) 
+      conn.reply(m.chat, a, m)
+    }
     if (stderr.trim()) {
-let serr = stderr.replace(/C:/gi, '').replace(/Users/gi, 'home').replace(/rdp/gi, 'usr').replace(/Desktop/gi, 'root')
-m.reply(serr)
-}
+      let b = stderr.replace(/C:/gi, '').replace(/Users/gi, 'home').replace(/rdp/gi, 'usr').replace(/Desktop/gi, 'root')
+      conn.reply(m.chat, m.text.startsWith('$ node test') ? readMore + b : b, m).then(_=> {
+        if (m.text.startsWith('$ node test')) conn.sendButton(m.chat, "Eror don't restart bot, kocok lagi 😎", "", null, [[`Ok`, `.say semangat:v`]], m) 
+      })
+    }
   }
 }
 
@@ -28,4 +31,5 @@ handler.tags = ['advanced']
 handler.customPrefix = /^[$]/
 handler.command = new RegExp
 handler.rowner = true
+
 module.exports = handler
