@@ -1,5 +1,5 @@
 let fs = require('fs')
-let chalk = reqyire('chalk')
+let chalk = require('chalk')
 // global.owner = [
   // ['6285346545126', 'Acel', true]
   // [number, dia creator/owner?, dia developer?]
