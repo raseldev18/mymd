@@ -2,7 +2,7 @@ let { youtubedl, youtubedlv2, youtubedlv3 } = require('@bochilteam/scraper')
 let { servers, yta } = require('../lib/y2mate.js')
 let axios = require('axios')
 
-let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
+let handler = async (m, { conn, args, usedPrefix, command, isPrems, expiration }) => {
    if (!args[0]) throw `${set.sb} *Example* : ${usedPrefix + command} url`
    let ras = `Url salah, perintah ini untuk mengunduh audio youtube (watch/shorts)`
    if (!args[0].match(/(https|http):\/\/(www.youtube.com|www.youtube|www.youtu.be|youtube.com|youtu.be.com|youtu.be)\/(watch|shorts)?/gi)) throw ras
@@ -63,16 +63,13 @@ ${set.sb} *Quality* : ${res.audio[qua]?.quality ? res.audio[qua]?.quality : 'Not
 ${anu}
   `
    let sentMsg = await conn.reply(m.chat, capt, m, {
-     ephemeralExpiration: 86400,
+     ephemeralExpiration: expiration,
      contextInfo: {
-       mentionedJid: [m.sender],
        externalAdReply :{
-         showAdAttribution: true,
          mediaType: 1,
          title: set.wm, 
          thumbnail: await conn.getBuffer(res.thumbnail),
          renderLargerThumbnail: true,
-         sourceUrl: 'https://chat.whatsapp.com/CUCsW6BWfmJLJwJgPQIaKM'
        }
      }
    })
