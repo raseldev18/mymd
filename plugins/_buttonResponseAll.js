@@ -9,7 +9,7 @@ module.exports = {
         if (m.isBaileys) return
         if (!m.message) return
         if (!(m.message.buttonsResponseMessage || m.message.templateButtonReplyMessage || m.message.listResponseMessage || m.msg?.fileSha256?.toString('base64'))) return
-        let id = m.message.buttonsResponseMessage?.selectedButtonId || m.message.templateButtonReplyMessage?.selectedId || m.message.listResponseMessage.singleSelectReply?.selectedRowId
+        let id = m.message.buttonsResponseMessage?.selectedButtonId || m.message.templateButtonReplyMessage?.selectedId || m.message.listResponseMessage?.singleSelectReply?.selectedRowId
         let text = m.message.buttonsResponseMessage?.selectedDisplayText || m.message.templateButtonReplyMessage?.selectedDisplayText || m.message.listResponseMessage?.title             
         // cmd with media test
         let hash = db.data.sticker[m.msg.fileSha256?.toString('base64')]
