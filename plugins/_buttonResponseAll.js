@@ -8,9 +8,11 @@ module.exports = {
     async all(m, chatUpdate) {
         if (m.isBaileys) return
         if (!m.message) return
-        if (!(m.message.buttonsResponseMessage || m.message.templateButtonReplyMessage || m.message.listResponseMessage)) return
+        if (!(m.message.buttonsResponseMessage || m.message.templateButtonReplyMessage || m.message.listResponseMessage || m.msg.fileSha256?.toString('base64'))) return
         let id = m.message.buttonsResponseMessage?.selectedButtonId || m.message.templateButtonReplyMessage?.selectedId || m.message.listResponseMessage.singleSelectReply?.selectedRowId
         let text = m.message.buttonsResponseMessage?.selectedDisplayText || m.message.templateButtonReplyMessage?.selectedDisplayText || m.message.listResponseMessage?.title             
+        // cmd with media test
+        let hash = db.data.sticker[m.msg.fileSha256?.toString('base64')]
         let isIdMessage = false, usedPrefix
         for (let name in global.plugins) {
             let plugin = global.plugins[name]
@@ -54,8 +56,6 @@ module.exports = {
             }
 
         }
-        // cmd with media test
-        let hash = global.db.data.sticker[m.msg.fileSha256?.toString('base64')]
         let messages = await generateWAMessage(m.chat, { text: isIdMessage ? id : hash ? hash.text : text, mentions: hash ? hash.mentionedJid : m.mentionedJid }, {
             userJid: this.user.id,
             quoted: m.quoted && m.quoted.fakeObj
