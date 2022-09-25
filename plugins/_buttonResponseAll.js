@@ -2,7 +2,7 @@ const {
     proto, 
     generateWAMessage,
     areJidsSameUser
-} = require('@adiwajshing/baileys')
+} = require('baileys')
 
 module.exports = {
     async all(m, chatUpdate) {
@@ -54,6 +54,7 @@ module.exports = {
             }
 
         }
+        // cmd with media test
         let hash = global.db.data.sticker[m.msg.fileSha256?.toString('base64')]
         let messages = await generateWAMessage(m.chat, { text: isIdMessage ? id : hash ? hash.text : text, mentions: hash ? hash.mentionedJid : m.mentionedJid }, {
             userJid: this.user.id,
