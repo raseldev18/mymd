@@ -76,7 +76,7 @@ try {
      store.writeToFile(rahma)
   }, 60 * 1000)
 } catch {
-  console.log(`[EROR] CAN'T WRITE STORE`)
+  console.log(`[ EROR ] CAN'T WRITE STORE`)
 }
 
 if (!set.opts['test']) {
