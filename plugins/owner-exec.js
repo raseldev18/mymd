@@ -3,7 +3,6 @@ const util = require('util')
 const fetch = require('node-fetch')
 const axios = require('axios')
 const fs = require('fs')
-const bail = require('@adiwajshing/baileys')
 const bocil = require('@bochilteam/scraper')
 const scrape = require('../lib/scrape.js')
 
@@ -23,7 +22,7 @@ let handler  = async (m, _2) => {
       if (--i < 1) return
       console.log(...args)
       return conn.reply(m.chat, util.format(...args), m)
-    }, m, handler, require, conn, CustomArray, process, args, groupMetadata, expiration, axios, fs, fetch, bail, bocil, scrape, f, f.exports, [conn, _2])
+    }, m, handler, require, conn, CustomArray, process, args, groupMetadata, expiration, axios, fs, fetch, bocil, scrape, f, f.exports, [conn, _2])
   } catch (e) {
     let err = await syntaxerror(_text, 'Execution Function', {
       allowReturnOutsideFunction: true,
