@@ -12,7 +12,7 @@
     "scripts": {
         "start": "node index.js",
         "mongo": "node . --db 'url mongodb'",
-        "test": "node test.js",
+        "test": "node test.js"
     },
     "keywords": [
         "termux-whatsapp-bot",
