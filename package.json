@@ -33,14 +33,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/raselcomel/mymd.git"
+        "url": "https://github.com/raselcomel/mymd.git"
     },
     "bugs": {
         "url": "https://github.com/raselcomel/mymd/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@adiwajshing/baileys": "github:amiruldev20/baileys",
+        "baileys": "^5.0.2",
         "@bochilteam/scraper": "^3.0.0",
         "awesome-phonenumber": "^2.69.0",
         "axios": "^0.26.0",
