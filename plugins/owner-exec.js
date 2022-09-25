@@ -3,7 +3,7 @@ const util = require('util')
 const fetch = require('node-fetch')
 const axios = require('axios')
 const fs = require('fs')
-const bail = require('baileys')
+const bail = require('@adiwajshing/baileys')
 const bocil = require('@bochilteam/scraper')
 const scrape = require('../lib/scrape.js')
 
