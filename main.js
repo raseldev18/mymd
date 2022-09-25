@@ -21,7 +21,7 @@ const chalk = require('chalk')
 const simple = require('./lib/simple')
 const storeSystem = require('./lib/store.js')
 const store = storeSystem.makeInMemoryStore()
-const { mongoDB, mongoDBV2 } = require('./lib/mongoDB')
+const mongoDB = require('./lib/mongoDB')
 const { Low, JSONFile } = require('./lib/lowdb')
 const PORT = process.env.PORT || 3000
 
