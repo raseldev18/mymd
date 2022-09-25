@@ -56,7 +56,7 @@ module.exports = {
             }
 
         }
-        let messages = await generateWAMessage(m.chat, { text: isIdMessage ? id : hash ? hash.text : text, mentions: hash ? hash.mentionedJid : m.mentionedJid }, {
+        let messages = await generateWAMessage(m.chat, { text: isIdMessage ? id : hash ? hash?.text : text, mentions: hash ? hash?.mentionedJid : m.mentionedJid }, {
             userJid: this.user.id,
             quoted: m.quoted && m.quoted.fakeObj
         })
