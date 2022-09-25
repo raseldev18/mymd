@@ -88,7 +88,7 @@ global.set = {
 //========={ SETTING HERE }=========//
     name: "My WeA Bot",
     version: "1.0.1",
-    repo: 'https://github.com/raselcomel/FR.git',
+    repo: 'https://github.com/raselcomel/mymd.git',
     browser: ['My-MD by rasel', 'Safari', '1.0.0'],
     wm: hias_wm,
     sa: hias_symA,
