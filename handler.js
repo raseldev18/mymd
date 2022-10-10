@@ -595,15 +595,14 @@ module.exports = {
                                 let devmode = db.data.settings[this.user.jid].developerMode
                                 let tekk = `*ERROR!*\n\nPesan : ${m.text}\n\n\n\n*Plugin:* ${m.plugin}\n*Sender:* @${m.sender.split`@`[0]}\n*Chat:* ${m.chat}\n*Chat Name:* ${await this.getName(m.chat)}\n*Command:* ${usedPrefix + command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``
                                 if (devmode) return this.reply(set.owner[0][0] + '@s.whatsapp.net', tekk, m, { mentions: this.parseMention(tekk) })
-                                   .then(_=> m.react('❌') )
+                                   .then(_=> m.react('❌') ).then(_=> m.reply('Maaf terjadi kesalahan!'))
                                 else return this.reply(m.chat, text, m)
                             }
                             /* let tek = text.split('\n\n')
 			    let teknya = tek[0]
 			    let footnya = tek[1] == '' ? tek[2] : tek[1] ? tek[1] : '' */
-                            m.react('❌')
-                            .then(_=> this.sendHydrated(m.chat, text, set.wm, null, null, null, 'https://www.whatsapp.com/otp/copy/' + usedPrefix  + command, 'Copy Command', [[]])
-                            )            
+                            m.react('❌').then(_=> m.reply(text, m.chat, { mentions: this.parseMention(text)}))
+                              // .then(_=> this.sendHydrated(m.chat, text, set.wm, null, null, null, 'https://www.whatsapp.com/otp/copy/' + usedPrefix  + command, 'Copy Command', [[]]))            
                         }
                     } finally {
                         if (typeof plugin.after === 'function') {
