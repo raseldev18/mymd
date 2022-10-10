@@ -7,7 +7,6 @@ const {
   useSingleFileAuthState,
   DisconnectReason
 } = require('baileys')
-const { generate } = require('qrcode-terminal')
 const WebSocket = require('ws')
 const path = require('path')
 const fs = require('fs')
