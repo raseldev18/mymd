@@ -86,7 +86,6 @@ if (!set.opts['test']) {
   }, 30 * 1000)
 }
 
-if (set.opts['big-qr'] || set.opts['server']) conn.ev.on('qr', qr => generate(qr, { small: false }))
 if (set.opts['server']) require('./server')(global.conn, PORT)
 
 async function connectionUpdate(update) {
