@@ -2,21 +2,30 @@ let express = require('express')
 let path = require('path')
 let SocketIO = require('socket.io')
 let qrcode = require('qrcode')
+let fetch = require('node-fetch')
+let yargs = require('yargs')
+let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
 function connect(conn, PORT) {
     let app = global.app = express()
 
-    app.use(express.static(path.join(__dirname, 'views')))
+    //app.use(express.static(path.join(__dirname, 'views')))
     let _qr = 'invalid'
+
+    conn.ev.on('connection.update', function appQR({ qr }) {
+        if (qr) _qr = qr
+    })
+
     app.use(async (req, res) => {
         res.setHeader('content-type', 'image/png')
         res.end(await qrcode.toBuffer(_qr))
     })
-    conn.on('qr', qr => {
-        _qr = qr
+
+    let server = app.listen(PORT, () => {
+      console.log('Aplikasi berjalan di port', PORT)
+      if (opts['keepalive']) keepAlive()
     })
-    
-    let server = app.listen(PORT, () => console.log('App listened on port', PORT))
+
     let io = SocketIO(server)
     io.on('connection', socket => {
         let { unpipeEmit } = pipeEmit(conn, socket, 'conn-')
@@ -37,5 +46,12 @@ function pipeEmit(event, event2, prefix = '') {
     }
 }
 
+function keepAlive() {
+  const url = `https://${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`
+  if (/(\/\/|\.)undefined\./.test(url)) return
+  setInterval(()=> {
+    fetch(url).catch(console.error)
+  }, 5 * 1000 * 60)
+}
 
 module.exports = connect
