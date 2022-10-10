@@ -69,7 +69,7 @@ const connectionOptions = {
 
 global.conn = simple.makeWASocket(connectionOptions)
 
-try {
+/* try {
   store.bind(conn.ev, { groupMetadata: conn.groupMetadata })
   let rahma = `${set.opts._[0] || 'rasel'}.store.json`
   setInterval(() => {
@@ -77,7 +77,7 @@ try {
   }, 60 * 1000)
 } catch {
   console.log(`[ EROR ] CAN'T WRITE STORE`)
-}
+} */
 
 if (!set.opts['test']) {
   if (global.db) setInterval(async () => {
