@@ -1,7 +1,6 @@
 let fs = require('fs')
 let handler = m => m
 
-
 handler.all = async function (m) {
     if (m.chat.endsWith('broadcast')) return  //@g.us
     let { isBanned } = db.data.chats[m.chat]
@@ -36,8 +35,6 @@ handler.all = async function (m) {
         conn.sendMessage(m.chat, {
             react: {text: `😂`, key: m.key,}})
        }
-  
-  
 }
 
 handler.exp = 3
