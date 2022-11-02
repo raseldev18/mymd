@@ -96,13 +96,9 @@ global.set = {
     pack: sticker_name,
     auth: sticker_author,
     owner: [
-        ['6285346545126', 'Acel', true],
-        // JSON.parse(readFileSync('./src/owner.json'))
-        // ['number', 'name', dev?]
+        ['6285346545126', 'Acel', true]
     ],
 //===================================//
-    mods: [], //JSON.parse(readFileSync('./src/owner.json')),
-    prems: [], //JSON.parse(readFileSync('./src/owner.json')),
     api: {
         name: { 
             s: {// API Prefix
@@ -131,7 +127,6 @@ global.set = {
     fla: flaTime,
     rpg: rpg,
 }
-// batas
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
