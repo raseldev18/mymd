@@ -63,7 +63,28 @@ const connectionOptions = {
   printQRInTerminal: true,
   auth: state,
   logger: P({ level: 'silent' }),
-  getMessage: async (key) => (conn.loadMessage(key.id) || store.loadMessage(key.id) || {}).message || { conversation: null } //'Please send messages again' }
+  getMessage: async (key) => (store.loadMessage(key.remoteJid, key.id) || store.loadMessage(key.id) || {}).message, //{ 'Please send messages again' }
+  patchMessageBeforeSending: (message) => {
+       const requiresPatch = !!(
+           message.buttonsMessage 
+           || message.templateMessage
+           || message.listMessage
+       )
+       if (requiresPatch) {
+           message = {
+               viewOnceMessage: {
+                   message: {
+                       messageContextInfo: {
+                           deviceListMetadataVersion: 2,
+                           deviceListMetadata: {}
+                       },
+                       ...message
+                   }           
+               }
+           }
+       }
+       return message
+   }
 }
 
 global.conn = simple.makeWASocket(connectionOptions)
@@ -82,7 +103,7 @@ if (!set.opts['test']) {
   if (global.db) setInterval(async () => {
     if (global.db.data) await global.db.write()
     if (!set.opts['tmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp'], tmp.forEach(filename => cp.spawn('find', [filename, '-amin', '3', '-type', 'f', '-delete'])))
-  }, 30 * 1000)
+  }, 60 * 1000)
 }
 
 if (set.opts['server']) require('./server')(global.conn, PORT)
